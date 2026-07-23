@@ -11,7 +11,7 @@ on:
     branches: [main]         # передеплой сайта при изменениях кода
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -35,13 +35,8 @@ jobs:
           python parser.py
           python aggregate.py
 
-      - name: Commit updated data
-        run: |
-          git config user.name "stats-bot"
-          git config user.email "actions@github.com"
-          git add frpoker.db docs/data.json
-          git diff --cached --quiet || git commit -m "auto: update stats $(date -u +%F)"
-          git push
+      # данные не коммитим: сайт собирается заново при каждом запуске,
+      # а коммиты бота создавали конфликты с локальной копией
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
