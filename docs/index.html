@@ -188,13 +188,14 @@ function render() {
   document.getElementById("lbTable").innerHTML =
     `<tr><th>#</th><th>Игрок</th><th class="num">Очки</th><th class="num">Игр</th>
      <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">💀</th>
-     <th class="num">% побед</th></tr>` +
+     <th class="num">% побед</th><th class="num">% топ-3</th></tr>` +
     lb.map((r, i) =>
       `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td><td>${esc(name(r.player_key))}</td>
        <td class="num">${r.points}</td><td class="num">${r.games}</td><td class="num">${r.wins}</td>
        <td class="num">${r.seconds}</td><td class="num">${r.thirds}</td>
        <td class="num">${r.kills}</td>
-       <td class="num">${r.games ? Math.round(r.wins / r.games * 100) : 0}%</td></tr>`).join("");
+       <td class="num">${r.games ? Math.round(r.wins / r.games * 100) : 0}%</td>
+       <td class="num">${r.games ? Math.round(r.podiums / r.games * 100) : 0}%</td></tr>`).join("");
 
   // --- турниры сезона ---
   const finals = DATA.tournaments.filter(t => t.season_id === activeTab && t.is_final);
@@ -215,10 +216,13 @@ function renderPlayers() {
     .sort((a, b) => b[1].points_total - a[1].points_total || b[1].games - a[1].games);
   document.getElementById("playersTable").innerHTML =
     `<tr><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th><th class="num">🥈</th>
-     <th class="num">🥉</th><th class="num">Очки за всё время</th><th>Достижения</th></tr>` +
+     <th class="num">🥉</th><th class="num">% побед</th><th class="num">% топ-3</th>
+     <th class="num">Очки за всё время</th><th>Достижения</th></tr>` +
     rows.map(([k, p]) =>
       `<tr><td>${esc(name(k))}</td><td class="num">${p.games}</td><td class="num">${p.wins}</td>
        <td class="num">${p.seconds}</td><td class="num">${p.thirds}</td>
+       <td class="num">${p.games ? Math.round(p.wins / p.games * 100) : 0}%</td>
+       <td class="num">${p.games ? Math.round(p.podiums / p.games * 100) : 0}%</td>
        <td class="num">${p.points_total}</td>
        <td>${p.badges.map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
 }
