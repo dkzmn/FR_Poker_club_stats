@@ -202,7 +202,7 @@ function render() {
   document.getElementById("lbTable").innerHTML =
     `<tr><th>#</th><th>Игрок</th><th class="num">Очки</th><th class="num">Игр</th>
      <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">💀</th>
-     <th class="num m-hide">% побед</th><th class="num m-hide">% топ-3</th></tr>` +
+     <th class="num m-hide">побед</th><th class="num m-hide">топ-3</th></tr>` +
     lb.map((r, i) =>
       `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td><td>${esc(name(r.player_key))}</td>
        <td class="num">${r.points}</td><td class="num">${r.games}</td><td class="num">${r.wins}</td>
@@ -230,7 +230,7 @@ function renderPlayers() {
     .sort((a, b) => b[1].points_total - a[1].points_total || b[1].games - a[1].games);
   document.getElementById("playersTable").innerHTML =
     `<tr><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th><th class="num">🥈</th>
-     <th class="num">🥉</th><th class="num m-hide">% побед</th><th class="num m-hide">% топ-3</th>
+     <th class="num">🥉</th><th class="num m-hide">побед</th><th class="num m-hide">топ-3</th>
      <th class="num">Очки за всё время</th><th>Достижения</th></tr>` +
     rows.map(([k, p]) =>
       `<tr><td>${esc(name(k))}</td><td class="num">${p.games}</td><td class="num">${p.wins}</td>
