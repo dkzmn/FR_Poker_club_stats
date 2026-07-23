@@ -1,0 +1,50 @@
+# Автообновление статистики: скрейпинг -> парсинг -> data.json -> GitHub Pages.
+# Внимание: папка .github должна лежать в корне репозитория. Если проект frpoker/
+# сам является корнем репозитория — всё уже на месте.
+name: update-stats
+
+on:
+  schedule:
+    - cron: "30 20 * * *"   # ежедневно в 23:30 МСК (турниры заканчиваются вечером)
+  workflow_dispatch: {}      # ручной запуск из интерфейса GitHub
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests beautifulsoup4
+
+      - name: Scrape, parse, aggregate
+        run: |
+          python scraper.py
+          python parser.py
+          python aggregate.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "stats-bot"
+          git config user.email "actions@github.com"
+          git add frpoker.db docs/data.json
+          git diff --cached --quiet || git commit -m "auto: update stats $(date -u +%F)"
+          git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

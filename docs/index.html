@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FR Poker Club — статистика</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b27; --card2: #1c2333; --text: #e6e8ee;
+    --muted: #8b93a7; --accent: #e0b34c; --green: #3fb96a; --line: #2a3142;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(1200px 600px at 50% -100px, #1a2438 0%, var(--bg) 60%); color: var(--text);
+         font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+  header { text-align: center; margin: 18px 0 26px; }
+  header h1 { margin: 0; font-size: 30px; letter-spacing: 1px; }
+  header h1 span { color: var(--accent); }
+  header p { color: var(--muted); margin: 6px 0 0; font-size: 14px; }
+  .tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 22px; flex-wrap: wrap; }
+  .tabs button { background: var(--card); color: var(--text); border: 1px solid var(--line); padding: 9px 20px;
+                 border-radius: 22px; cursor: pointer; font-size: 15px; }
+  .tabs button.active { background: var(--accent); color: #14181f; border-color: var(--accent); font-weight: 700; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  .card h2 { margin: 0 0 14px; font-size: 17px; color: var(--accent); }
+  .card.full { grid-column: 1 / -1; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.top1 td:first-child::before { content: "🥇 "; }
+  tr.top2 td:first-child::before { content: "🥈 "; }
+  tr.top3 td:first-child::before { content: "🥉 "; }
+  .badge { display: inline-block; background: var(--card2); border: 1px solid var(--line); border-radius: 12px;
+           padding: 2px 9px; margin: 2px 3px 2px 0; font-size: 12.5px; white-space: nowrap; }
+  .muted { color: var(--muted); }
+  details { border-bottom: 1px solid var(--line); }
+  details summary { cursor: pointer; padding: 9px 4px; font-size: 14.5px; list-style: none; display: flex; gap: 10px; }
+  details summary::before { content: "▸"; color: var(--muted); }
+  details[open] summary::before { content: "▾"; }
+  details table { margin: 4px 0 12px; }
+  .champ { font-size: 15px; margin: -6px 0 14px; }
+  canvas { max-height: 420px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>♠️ FR <span>Poker Club</span> — статистика</h1>
+    <p id="meta"></p>
+  </header>
+  <div class="tabs" id="tabs"></div>
+
+  <div class="grid" id="seasonView">
+    <div class="card full">
+      <h2 id="lbTitle">Лидерборд сезона</h2>
+      <div class="champ" id="champ"></div>
+      <canvas id="lbChart"></canvas>
+    </div>
+    <div class="card">
+      <h2>Таблица сезона</h2>
+      <div style="max-height:420px;overflow:auto"><table id="lbTable"></table></div>
+    </div>
+    <div class="card">
+      <h2>Турниры сезона</h2>
+      <div style="max-height:420px;overflow:auto" id="tournaments"></div>
+    </div>
+    <div class="card full">
+      <h2>Гонка за титул — очки нарастающим итогом (топ-8)</h2>
+      <canvas id="raceChart"></canvas>
+    </div>
+  </div>
+
+  <div class="grid" id="playersView" style="display:none">
+    <div class="card full">
+      <h2>Игроки и достижения (за всё время)</h2>
+      <div style="overflow:auto"><table id="playersTable"></table></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PALETTE = ["#e0b34c","#4c9be0","#3fb96a","#e05c4c","#b46ce0","#4ce0d2","#e08d4c","#8ea3c7"];
+let DATA, activeTab; // id сезона или "players"
+
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const name = k => DATA.player_names[k] || k;
+const fmtDate = d => { const [y, m, dd] = d.split("-"); return `${dd}.${m}.${y.slice(2)}`; };
+
+fetch("data.json").then(r => r.json()).then(d => {
+  DATA = d;
+  document.getElementById("meta").textContent =
+    `Источник: t.me/${d.channel} · обновлено ${new Date(d.generated_at).toLocaleString("ru-RU")}`;
+  const tabs = document.getElementById("tabs");
+  const addTab = (label, id) => {
+    const b = document.createElement("button");
+    b.textContent = label;
+    b.onclick = () => { activeTab = id; render(); };
+    b.dataset.tab = id;
+    tabs.appendChild(b);
+  };
+  d.seasons.forEach(s => addTab(s.name, s.id));
+  addTab("Игроки и достижения", "players");
+  activeTab = d.seasons[d.seasons.length - 1].id;
+  renderPlayers();
+  render();
+});
+
+let lbChart, raceChart;
+
+function render() {
+  document.querySelectorAll(".tabs button").forEach(b =>
+    b.classList.toggle("active", b.dataset.tab === String(activeTab)));
+  const isPlayers = activeTab === "players";
+  document.getElementById("seasonView").style.display = isPlayers ? "none" : "";
+  document.getElementById("playersView").style.display = isPlayers ? "" : "none";
+  if (isPlayers) return;
+
+  const s = DATA.seasons.find(x => x.id === activeTab);
+  const lb = s.leaderboard;
+
+  document.getElementById("champ").innerHTML = s.champion_key
+    ? `🏆 Чемпион сезона: <b>${esc(name(s.champion_key))}</b>`
+    : `<span class="muted">Сезон продолжается — финал ещё впереди</span>`;
+
+  // --- бар-чарт лидерборда ---
+  const top = lb.slice(0, 18);
+  document.getElementById("lbTitle").textContent =
+    `Лидерборд сезона — топ-${top.length} участников`;
+  lbChart?.destroy();
+  lbChart = new Chart(document.getElementById("lbChart"), {
+    type: "bar",
+    plugins: [ChartDataLabels],
+    data: { labels: top.map(r => name(r.player_key)),
+      datasets: [{ data: top.map(r => r.points), backgroundColor: top.map((_, i) =>
+        i === 0 ? "#e0b34c" : i < 3 ? "#c7cbd6" : "#4c9be0"), borderRadius: 5 }] },
+    options: { indexAxis: "y", layout: { padding: { right: 56 } },
+      plugins: { legend: { display: false },
+        datalabels: { anchor: "end", align: "right", offset: 4, color: "#e6e8ee",
+          font: { size: 12, weight: 600 }, formatter: v => v.toLocaleString("ru-RU") } },
+      scales: { x: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } },
+                y: { grid: { display: false }, ticks: { color: "#e6e8ee", font: { size: 13 } } } } }
+  });
+
+  // --- гонка нарастающим итогом ---
+  const ts = DATA.tournaments.filter(t => t.season_id === activeTab && !t.is_final);
+  const top8 = lb.slice(0, 8).map(r => r.player_key);
+  const cum = Object.fromEntries(top8.map(k => [k, 0]));
+  const series = Object.fromEntries(top8.map(k => [k, []]));
+  ts.forEach(t => {
+    t.results.forEach(r => { if (r.player_key in cum) cum[r.player_key] += r.points || 0; });
+    top8.forEach(k => series[k].push(cum[k]));
+  });
+  raceChart?.destroy();
+  raceChart = new Chart(document.getElementById("raceChart"), {
+    type: "line",
+    data: { labels: ts.map(t => fmtDate(t.date)),
+      datasets: top8.map((k, i) => ({ label: name(k), data: series[k], borderColor: PALETTE[i],
+        backgroundColor: PALETTE[i], tension: .25, pointRadius: 2.5 })) },
+    options: { plugins: { legend: { labels: { color: "#e6e8ee" } } },
+      scales: { x: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } },
+                y: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } } } }
+  });
+
+  // --- таблица сезона ---
+  document.getElementById("lbTable").innerHTML =
+    `<tr><th>#</th><th>Игрок</th><th class="num">Очки</th><th class="num">Игр</th>
+     <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">💀</th></tr>` +
+    lb.map((r, i) =>
+      `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td><td>${esc(name(r.player_key))}</td>
+       <td class="num">${r.points}</td><td class="num">${r.games}</td><td class="num">${r.wins}</td>
+       <td class="num">${r.seconds}</td><td class="num">${r.thirds}</td>
+       <td class="num">${r.kills}</td></tr>`).join("");
+
+  // --- турниры сезона ---
+  const finals = DATA.tournaments.filter(t => t.season_id === activeTab && t.is_final);
+  document.getElementById("tournaments").innerHTML = [...ts, ...finals].reverse().map(t => `
+    <details>
+      <summary><b>${fmtDate(t.date)}</b> ${esc(t.name || "Турнир")}${t.is_final ? " 🏆" : ""}
+        <span class="muted">· ${t.results.length} игроков</span></summary>
+      <table>${t.results.map(r =>
+        `<tr><td>${r.place}</td><td>${esc(name(r.player_key))}</td>
+         <td class="num">${r.points ?? ""}</td><td class="num">${r.kills != null ? r.kills + " ☠" : ""}</td></tr>`).join("")}
+      </table>
+      ${t.bounty_hunter_key ? `<p class="muted" style="margin:0 0 10px">🥊 Bounty Hunter: ${esc(name(t.bounty_hunter_key))} (${t.bounty_hunter_kills} 💀)</p>` : ""}
+    </details>`).join("");
+}
+
+function renderPlayers() {
+  const rows = Object.entries(DATA.players)
+    .sort((a, b) => b[1].points_total - a[1].points_total || b[1].games - a[1].games);
+  document.getElementById("playersTable").innerHTML =
+    `<tr><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th><th class="num">🥈</th>
+     <th class="num">🥉</th><th class="num">Очки за всё время</th><th>Достижения</th></tr>` +
+    rows.map(([k, p]) =>
+      `<tr><td>${esc(name(k))}</td><td class="num">${p.games}</td><td class="num">${p.wins}</td>
+       <td class="num">${p.seconds}</td><td class="num">${p.thirds}</td>
+       <td class="num">${p.points_total}</td>
+       <td>${p.badges.map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
+}
+</script>
+</body>
+</html>
