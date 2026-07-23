@@ -45,7 +45,14 @@
   details[open] summary::before { content: "▾"; }
   details table { margin: 4px 0 12px; }
   .champ { font-size: 15px; margin: -6px 0 14px; }
-  canvas { max-height: 420px; }
+  .chartbox { position: relative; width: 100%; }
+  @media (max-width: 600px) {
+    .wrap { padding: 14px 8px 40px; }
+    header h1 { font-size: 23px; }
+    .card { padding: 13px 10px; }
+    th, td { padding: 6px 5px; font-size: 13px; }
+    .tabs button { padding: 8px 14px; font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -60,7 +67,7 @@
     <div class="card full">
       <h2 id="lbTitle">Лидерборд сезона</h2>
       <div class="champ" id="champ"></div>
-      <canvas id="lbChart"></canvas>
+      <div class="chartbox" id="lbBox"><canvas id="lbChart"></canvas></div>
     </div>
     <div class="card">
       <h2>Таблица сезона</h2>
@@ -72,7 +79,7 @@
     </div>
     <div class="card full">
       <h2>Гонка за титул — очки нарастающим итогом (топ-8)</h2>
-      <canvas id="raceChart"></canvas>
+      <div class="chartbox" id="raceBox"><canvas id="raceChart"></canvas></div>
     </div>
   </div>
 
@@ -129,9 +136,12 @@ function render() {
     : `<span class="muted">Сезон продолжается — финал ещё впереди</span>`;
 
   // --- бар-чарт лидерборда ---
+  const mobile = window.innerWidth < 600;
   const top = lb.slice(0, 18);
   document.getElementById("lbTitle").textContent =
     `Лидерборд сезона — топ-${top.length} участников`;
+  // высота под количество строк, иначе на узких экранах график сплющивается
+  document.getElementById("lbBox").style.height = (top.length * (mobile ? 24 : 28) + 50) + "px";
   lbChart?.destroy();
   lbChart = new Chart(document.getElementById("lbChart"), {
     type: "bar",
@@ -139,12 +149,13 @@ function render() {
     data: { labels: top.map(r => name(r.player_key)),
       datasets: [{ data: top.map(r => r.points), backgroundColor: top.map((_, i) =>
         i === 0 ? "#e0b34c" : i < 3 ? "#c7cbd6" : "#4c9be0"), borderRadius: 5 }] },
-    options: { indexAxis: "y", layout: { padding: { right: 56 } },
+    options: { indexAxis: "y", maintainAspectRatio: false,
+      layout: { padding: { right: mobile ? 42 : 56 } },
       plugins: { legend: { display: false },
         datalabels: { anchor: "end", align: "right", offset: 4, color: "#e6e8ee",
-          font: { size: 12, weight: 600 }, formatter: v => v.toLocaleString("ru-RU") } },
+          font: { size: mobile ? 10 : 12, weight: 600 }, formatter: v => v.toLocaleString("ru-RU") } },
       scales: { x: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } },
-                y: { grid: { display: false }, ticks: { color: "#e6e8ee", font: { size: 13 } } } } }
+                y: { grid: { display: false }, ticks: { color: "#e6e8ee", font: { size: mobile ? 11 : 13 } } } } }
   });
 
   // --- гонка нарастающим итогом ---
@@ -156,15 +167,21 @@ function render() {
     t.results.forEach(r => { if (r.player_key in cum) cum[r.player_key] += r.points || 0; });
     top8.forEach(k => series[k].push(cum[k]));
   });
+  document.getElementById("raceBox").style.height = (mobile ? 300 : 420) + "px";
   raceChart?.destroy();
   raceChart = new Chart(document.getElementById("raceChart"), {
     type: "line",
     data: { labels: ts.map(t => fmtDate(t.date)),
       datasets: top8.map((k, i) => ({ label: name(k), data: series[k], borderColor: PALETTE[i],
-        backgroundColor: PALETTE[i], tension: .25, pointRadius: 2.5 })) },
-    options: { plugins: { legend: { labels: { color: "#e6e8ee" } } },
-      scales: { x: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } },
-                y: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } } } }
+        backgroundColor: PALETTE[i], tension: .25, pointRadius: mobile ? 1.5 : 2.5,
+        borderWidth: mobile ? 2 : 3 })) },
+    options: { maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: "#e6e8ee", boxWidth: mobile ? 18 : 40,
+        font: { size: mobile ? 11 : 12 } } } },
+      scales: { x: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7",
+                  maxTicksLimit: mobile ? 8 : 24, font: { size: mobile ? 10 : 12 } } },
+                y: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7",
+                  font: { size: mobile ? 10 : 12 } } } } }
   });
 
   // --- таблица сезона ---

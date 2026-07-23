@@ -7,6 +7,8 @@ on:
   schedule:
     - cron: "30 20 * * *"   # ежедневно в 23:30 МСК (турниры заканчиваются вечером)
   workflow_dispatch: {}      # ручной запуск из интерфейса GitHub
+  push:
+    branches: [main]         # передеплой сайта при изменениях кода
 
 permissions:
   contents: write
