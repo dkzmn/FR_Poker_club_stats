@@ -187,12 +187,14 @@ function render() {
   // --- таблица сезона ---
   document.getElementById("lbTable").innerHTML =
     `<tr><th>#</th><th>Игрок</th><th class="num">Очки</th><th class="num">Игр</th>
-     <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">💀</th></tr>` +
+     <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">💀</th>
+     <th class="num">% побед</th></tr>` +
     lb.map((r, i) =>
       `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td><td>${esc(name(r.player_key))}</td>
        <td class="num">${r.points}</td><td class="num">${r.games}</td><td class="num">${r.wins}</td>
        <td class="num">${r.seconds}</td><td class="num">${r.thirds}</td>
-       <td class="num">${r.kills}</td></tr>`).join("");
+       <td class="num">${r.kills}</td>
+       <td class="num">${r.games ? Math.round(r.wins / r.games * 100) : 0}%</td></tr>`).join("");
 
   // --- турниры сезона ---
   const finals = DATA.tournaments.filter(t => t.season_id === activeTab && t.is_final);
@@ -202,7 +204,7 @@ function render() {
         <span class="muted">· ${t.results.length} игроков</span></summary>
       <table>${t.results.map(r =>
         `<tr><td>${r.place}</td><td>${esc(name(r.player_key))}</td>
-         <td class="num">${r.points ?? ""}</td><td class="num">${r.kills != null ? r.kills + " ☠" : ""}</td></tr>`).join("")}
+         <td class="num">${r.points ?? ""}</td><td class="num">${r.kills != null ? r.kills + " 💀" : ""}</td></tr>`).join("")}
       </table>
       ${t.bounty_hunter_key ? `<p class="muted" style="margin:0 0 10px">🥊 Bounty Hunter: ${esc(name(t.bounty_hunter_key))} (${t.bounty_hunter_kills} 💀)</p>` : ""}
     </details>`).join("");
