@@ -35,11 +35,10 @@
   .card.full { grid-column: 1 / -1; }
   .table-wrap { max-height: 420px; overflow: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
   .table-wrap.no-max { max-height: none; overflow-x: auto; overflow-y: visible; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th, td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--line); }
-  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; white-space: nowrap; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  #lbTable th:nth-child(2), #lbTable td:nth-child(2) { width: 100%; }
   tr.top1 td:first-child::before { content: "🥇 "; }
   tr.top2 td:first-child::before { content: "🥈 "; }
   tr.top3 td:first-child::before { content: "🥉 "; }
@@ -84,11 +83,11 @@
       <div class="champ" id="champ"></div>
       <div class="chartbox" id="lbBox"><canvas id="lbChart"></canvas></div>
     </div>
-    <div class="card full">
+    <div class="card">
       <h2>Таблица сезона</h2>
       <div class="table-wrap"><table id="lbTable"></table></div>
     </div>
-    <div class="card full">
+    <div class="card">
       <h2>Турниры сезона</h2>
       <div class="table-wrap" id="tournaments"></div>
     </div>
