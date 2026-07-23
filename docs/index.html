@@ -20,6 +20,8 @@
   header h1 { margin: 0; font-size: 30px; letter-spacing: 1px; }
   header h1 span { color: var(--accent); }
   header p { color: var(--muted); margin: 6px 0 0; font-size: 14px; }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
   .tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 22px; flex-wrap: wrap; }
   .tabs button { background: var(--card); color: var(--text); border: 1px solid var(--line); padding: 9px 20px;
                  border-radius: 22px; cursor: pointer; font-size: 15px; }
@@ -36,6 +38,9 @@
   tr.top1 td:first-child::before { content: "🥇 "; }
   tr.top2 td:first-child::before { content: "🥈 "; }
   tr.top3 td:first-child::before { content: "🥉 "; }
+  tr.top1 td:first-child,
+  tr.top2 td:first-child,
+  tr.top3 td:first-child { white-space: nowrap; }
   .badge { display: inline-block; background: var(--card2); border: 1px solid var(--line); border-radius: 12px;
            padding: 2px 9px; margin: 2px 3px 2px 0; font-size: 12.5px; white-space: nowrap; }
   .muted { color: var(--muted); }
@@ -101,8 +106,8 @@ const fmtDate = d => { const [y, m, dd] = d.split("-"); return `${dd}.${m}.${y.s
 
 fetch("data.json").then(r => r.json()).then(d => {
   DATA = d;
-  document.getElementById("meta").textContent =
-    `Источник: t.me/${d.channel} · обновлено ${new Date(d.generated_at).toLocaleString("ru-RU")}`;
+  document.getElementById("meta").innerHTML =
+    `Источник: <a href="https://t.me/${esc(d.channel)}" target="_blank" rel="noopener">${esc("t.me/" + d.channel)}</a> · обновлено ${new Date(d.generated_at).toLocaleString("ru-RU")}`;
   const tabs = document.getElementById("tabs");
   const addTab = (label, id) => {
     const b = document.createElement("button");
