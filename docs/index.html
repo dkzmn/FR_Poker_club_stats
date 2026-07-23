@@ -34,6 +34,7 @@
   .card h2 { margin: 0 0 14px; font-size: 17px; color: var(--accent); }
   .card.full { grid-column: 1 / -1; }
   .table-wrap { max-height: 420px; overflow: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  .table-wrap.no-max { max-height: none; overflow-x: auto; overflow-y: visible; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th, td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--line); }
   th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }
@@ -99,7 +100,7 @@
   <div class="grid" id="playersView" style="display:none">
     <div class="card full">
       <h2>Игроки и достижения (за всё время)</h2>
-      <div class="table-wrap"><table id="playersTable"></table></div>
+      <div class="table-wrap no-max"><table id="playersTable"></table></div>
     </div>
   </div>
 </div>
