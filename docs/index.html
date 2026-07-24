@@ -44,8 +44,15 @@
   #lbTable th.num, #lbTable td.num { padding-left: 4px; padding-right: 4px; width: 1%; }
   #lbTable th:first-child, #lbTable td:first-child { width: 1%; white-space: nowrap; padding-right: 4px; }
   #lbTable th:nth-child(2), #lbTable td:nth-child(2) { padding-right: 10px; }
-  #lbTable tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
-  #playersTable tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.04); }
+  /* обе полосы с фоном — иначе «пустые» строки визуально кажутся уже/ниже */
+  #lbTable td, #playersTable td {
+    line-height: 1.35;
+    background: rgba(255, 255, 255, 0.015);
+  }
+  #lbTable tbody tr:nth-child(even) td,
+  #playersTable tbody tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.055);
+  }
   tr.top1 td:first-child::before { content: "🥇 "; }
   tr.top2 td:first-child::before { content: "🥈 "; }
   tr.top3 td:first-child::before { content: "🥉 "; }
