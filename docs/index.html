@@ -28,7 +28,8 @@
                  border-radius: 22px; cursor: pointer; font-size: 15px; }
   .tabs button.active { background: var(--accent); color: #14181f; border-color: var(--accent); font-weight: 700; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  /* до ~1100px таблица сезона на всю ширину — иначе в половине сетки обрезаются колонки */
+  @media (max-width: 1099px) { .grid { grid-template-columns: 1fr; } }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px;
           min-width: 0; max-width: 100%; overflow: hidden; }
   .card h2 { margin: 0 0 14px; font-size: 17px; color: var(--accent); }
@@ -44,6 +45,10 @@
   #lbTable th.num, #lbTable td.num { padding-left: 4px; padding-right: 4px; width: 1%; }
   #lbTable th:first-child, #lbTable td:first-child { width: 1%; white-space: nowrap; padding-right: 4px; }
   #lbTable th:nth-child(2), #lbTable td:nth-child(2) { padding-right: 10px; }
+  /* игроки: таблица на ширину карточки, бейджи переносятся */
+  #playersTable { width: 100%; }
+  #playersTable td.badges-cell { white-space: normal; line-height: 1.5; }
+  #playersTable td.badges-cell .badge { margin: 2px 3px 2px 0; }
   /* обе полосы с фоном — иначе «пустые» строки визуально кажутся уже/ниже */
   #lbTable td, #playersTable td {
     line-height: 1.35;
@@ -77,8 +82,14 @@
     th, td { padding: 6px 4px; font-size: 12px; }
     th { font-size: 10px; }
     .tabs button { padding: 8px 14px; font-size: 14px; }
-    /* узкие колонки прячем — иначе таблица не влезает без горизонтального скролла */
     .m-hide { display: none; }
+    .badge { font-size: 11px; padding: 2px 7px; }
+    #playersTable { table-layout: fixed; width: 100%; }
+    #playersTable th:first-child, #playersTable td:first-child { width: 26%; white-space: normal; word-break: break-word; }
+    #playersTable th:nth-child(2), #playersTable td:nth-child(2),
+    #playersTable th:nth-child(3), #playersTable td:nth-child(3) { width: 11%; }
+    #playersTable th:nth-child(8), #playersTable td:nth-child(8) { width: 16%; }
+    #playersTable th:last-child, #playersTable td:last-child { width: auto; }
   }
 </style>
 </head>
@@ -242,16 +253,16 @@ function renderPlayers() {
   const rows = Object.entries(DATA.players)
     .sort((a, b) => b[1].points_total - a[1].points_total || b[1].games - a[1].games);
   document.getElementById("playersTable").innerHTML =
-    `<tr><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th><th class="num">🥈</th>
-     <th class="num">🥉</th><th class="num m-hide">побед</th><th class="num m-hide">топ-3</th>
-     <th class="num">Очки за всё время</th><th>Достижения</th></tr>` +
+    `<tr><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th><th class="num m-hide">🥈</th>
+     <th class="num m-hide">🥉</th><th class="num m-hide">побед</th><th class="num m-hide">топ-3</th>
+     <th class="num">Очки</th><th>Достижения</th></tr>` +
     rows.map(([k, p]) =>
       `<tr><td>${esc(name(k))}</td><td class="num">${p.games}</td><td class="num">${p.wins}</td>
-       <td class="num">${p.seconds}</td><td class="num">${p.thirds}</td>
+       <td class="num m-hide">${p.seconds}</td><td class="num m-hide">${p.thirds}</td>
        <td class="num m-hide">${p.games ? Math.round(p.wins / p.games * 100) : 0}%</td>
        <td class="num m-hide">${p.games ? Math.round(p.podiums / p.games * 100) : 0}%</td>
        <td class="num">${p.points_total}</td>
-       <td>${p.badges.map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
+       <td class="badges-cell">${p.badges.map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
 }
 </script>
 </body>
