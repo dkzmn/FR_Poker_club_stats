@@ -27,7 +27,7 @@
   .tabs button { background: var(--card); color: var(--text); border: 1px solid var(--line); padding: 9px 20px;
                  border-radius: 22px; cursor: pointer; font-size: 15px; }
   .tabs button.active { background: var(--accent); color: #14181f; border-color: var(--accent); font-weight: 700; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; }
   @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px;
           min-width: 0; max-width: 100%; overflow: hidden; }
@@ -36,20 +36,14 @@
   .table-wrap { max-height: 420px; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
   .table-wrap.no-max { max-height: none; overflow-x: hidden; overflow-y: visible; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--line); }
-  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }
+  th, td { padding: 7px 6px; text-align: left; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; white-space: nowrap; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  /* таблица сезона в половине сетки: фиксированная раскладка, без горизонтального скролла */
-  #lbTable { table-layout: fixed; font-size: 12.5px; }
-  #lbTable th, #lbTable td { padding: 6px 3px; overflow: hidden; text-overflow: ellipsis; }
-  #lbTable th { font-size: 10px; white-space: nowrap; }
-  #lbTable th:nth-child(1), #lbTable td:nth-child(1) { width: 2.4em; }
-  #lbTable th:nth-child(2), #lbTable td:nth-child(2) { width: auto; white-space: nowrap; }
-  #lbTable th:nth-child(3), #lbTable td:nth-child(3) { width: 3.6em; }   /* очки */
-  #lbTable th:nth-child(4), #lbTable td:nth-child(4) { width: 2.2em; }   /* игр */
-  #lbTable th:nth-child(n+5):nth-child(-n+8),
-  #lbTable td:nth-child(n+5):nth-child(-n+8) { width: 1.9em; }           /* 🥇🥈🥉💀 */
-  #lbTable th:nth-child(n+9), #lbTable td:nth-child(n+9) { width: 3.2em; } /* побед / топ-3 */
+  /* компактные числовые колонки; таблица не растягивает ник на всю карточку */
+  #lbTable { width: auto; max-width: 100%; }
+  #lbTable th.num, #lbTable td.num { padding-left: 4px; padding-right: 4px; width: 1%; }
+  #lbTable th:first-child, #lbTable td:first-child { width: 1%; white-space: nowrap; padding-right: 4px; }
+  #lbTable th:nth-child(2), #lbTable td:nth-child(2) { padding-right: 10px; }
   tr.top1 td:first-child::before { content: "🥇 "; }
   tr.top2 td:first-child::before { content: "🥈 "; }
   tr.top3 td:first-child::before { content: "🥉 "; }
