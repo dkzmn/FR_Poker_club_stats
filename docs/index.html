@@ -33,12 +33,23 @@
           min-width: 0; max-width: 100%; overflow: hidden; }
   .card h2 { margin: 0 0 14px; font-size: 17px; color: var(--accent); }
   .card.full { grid-column: 1 / -1; }
-  .table-wrap { max-height: 420px; overflow: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
-  .table-wrap.no-max { max-height: none; overflow-x: auto; overflow-y: visible; }
+  .table-wrap { max-height: 420px; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  .table-wrap.no-max { max-height: none; overflow-x: hidden; overflow-y: visible; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th, td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--line); }
   th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  /* таблица сезона в половине сетки: фиксированная раскладка, без горизонтального скролла */
+  #lbTable { table-layout: fixed; font-size: 12.5px; }
+  #lbTable th, #lbTable td { padding: 6px 3px; overflow: hidden; text-overflow: ellipsis; }
+  #lbTable th { font-size: 10px; white-space: nowrap; }
+  #lbTable th:nth-child(1), #lbTable td:nth-child(1) { width: 2.4em; }
+  #lbTable th:nth-child(2), #lbTable td:nth-child(2) { width: auto; white-space: nowrap; }
+  #lbTable th:nth-child(3), #lbTable td:nth-child(3) { width: 3.6em; }   /* очки */
+  #lbTable th:nth-child(4), #lbTable td:nth-child(4) { width: 2.2em; }   /* игр */
+  #lbTable th:nth-child(n+5):nth-child(-n+8),
+  #lbTable td:nth-child(n+5):nth-child(-n+8) { width: 1.9em; }           /* 🥇🥈🥉💀 */
+  #lbTable th:nth-child(n+9), #lbTable td:nth-child(n+9) { width: 3.2em; } /* побед / топ-3 */
   tr.top1 td:first-child::before { content: "🥇 "; }
   tr.top2 td:first-child::before { content: "🥈 "; }
   tr.top3 td:first-child::before { content: "🥉 "; }
@@ -65,7 +76,6 @@
     .tabs button { padding: 8px 14px; font-size: 14px; }
     /* узкие колонки прячем — иначе таблица не влезает без горизонтального скролла */
     .m-hide { display: none; }
-    .table-wrap { overflow-x: hidden; }
   }
 </style>
 </head>
