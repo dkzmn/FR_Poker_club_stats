@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-23T15:17:47+00:00",
+ "generated_at": "2026-07-24T22:13:06+00:00",
  "channel": "FRPokerClub",
  "player_names": {
   "резниковфедор": "Резников Фёдор",
@@ -577,7 +577,7 @@
    "name": "Сезон 2",
    "start": "2026-05-17",
    "end": "2026-08-29",
-   "tournaments_count": 22,
+   "tournaments_count": 23,
    "leaderboard": [
     {
      "player_key": "папавздании",
@@ -603,8 +603,8 @@
     },
     {
      "player_key": "soulknight",
-     "points": 21000,
-     "games": 22,
+     "points": 21210,
+     "games": 23,
      "wins": 3,
      "seconds": 1,
      "thirds": 1,
@@ -613,26 +613,26 @@
      "bh_titles": 1
     },
     {
-     "player_key": "гурупокера",
-     "points": 16960,
+     "player_key": "dk",
+     "points": 18770,
      "games": 14,
+     "wins": 1,
+     "seconds": 4,
+     "thirds": 3,
+     "podiums": 8,
+     "kills": 13,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "гурупокера",
+     "points": 17590,
+     "games": 15,
      "wins": 2,
      "seconds": 0,
      "thirds": 1,
      "podiums": 3,
-     "kills": 17,
+     "kills": 20,
      "bh_titles": 1
-    },
-    {
-     "player_key": "dk",
-     "points": 15840,
-     "games": 13,
-     "wins": 0,
-     "seconds": 4,
-     "thirds": 3,
-     "podiums": 7,
-     "kills": 11,
-     "bh_titles": 0
     },
     {
      "player_key": "pannda",
@@ -658,8 +658,8 @@
     },
     {
      "player_key": "krysyuk",
-     "points": 8670,
-     "games": 7,
+     "points": 9390,
+     "games": 8,
      "wins": 0,
      "seconds": 0,
      "thirds": 3,
@@ -669,13 +669,35 @@
     },
     {
      "player_key": "andreyptichies",
-     "points": 5480,
-     "games": 3,
+     "points": 8150,
+     "games": 4,
      "wins": 1,
-     "seconds": 0,
+     "seconds": 1,
      "thirds": 0,
+     "podiums": 2,
+     "kills": 6,
+     "bh_titles": 1
+    },
+    {
+     "player_key": "leo",
+     "points": 5910,
+     "games": 6,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 2,
+     "podiums": 2,
+     "kills": 8,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "lo",
+     "points": 4880,
+     "games": 8,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
      "podiums": 1,
-     "kills": 0,
+     "kills": 3,
      "bh_titles": 0
     },
     {
@@ -687,28 +709,6 @@
      "thirds": 0,
      "podiums": 2,
      "kills": 6,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "lo",
-     "points": 4250,
-     "games": 7,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 1,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "leo",
-     "points": 3940,
-     "games": 5,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 4,
      "bh_titles": 0
     },
     {
@@ -731,6 +731,17 @@
      "thirds": 0,
      "podiums": 1,
      "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "туз",
+     "points": 3260,
+     "games": 4,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
+     "podiums": 1,
+     "kills": 2,
      "bh_titles": 0
     },
     {
@@ -767,34 +778,23 @@
      "bh_titles": 1
     },
     {
+     "player_key": "ladiesman_217",
+     "points": 2910,
+     "games": 4,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
+     "podiums": 1,
+     "kills": 2,
+     "bh_titles": 0
+    },
+    {
      "player_key": "скрф",
      "points": 2380,
      "games": 3,
      "wins": 1,
      "seconds": 0,
      "thirds": 0,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "ladiesman_217",
-     "points": 2160,
-     "games": 3,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "туз",
-     "points": 1850,
-     "games": 3,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
      "podiums": 1,
      "kills": 0,
      "bh_titles": 0
@@ -808,6 +808,17 @@
      "thirds": 1,
      "podiums": 1,
      "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "kobra",
+     "points": 1740,
+     "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 1,
      "bh_titles": 0
     },
     {
@@ -833,17 +844,6 @@
      "bh_titles": 0
     },
     {
-     "player_key": "kobra",
-     "points": 1380,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 0,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
      "player_key": "ильяк",
      "points": 1310,
      "games": 1,
@@ -852,6 +852,17 @@
      "thirds": 1,
      "podiums": 1,
      "kills": 3,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "дама",
+     "points": 1150,
+     "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
      "bh_titles": 0
     },
     {
@@ -1000,17 +1011,6 @@
     {
      "player_key": "уолтеруайт",
      "points": 270,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 0,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "дама",
-     "points": 230,
      "games": 1,
      "wins": 0,
      "seconds": 0,
@@ -3358,6 +3358,83 @@
      "points": 320
     }
    ]
+  },
+  {
+   "msg_id": 350,
+   "date": "2026-07-24",
+   "name": "BOUNTY",
+   "is_final": false,
+   "season_id": 2,
+   "bounty_hunter_key": "andreyptichies",
+   "bounty_hunter_kills": 6,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "dk",
+     "kills": 2,
+     "points": 2930
+    },
+    {
+     "place": 2,
+     "player_key": "andreyptichies",
+     "kills": 6,
+     "points": 2670
+    },
+    {
+     "place": 3,
+     "player_key": "leo",
+     "kills": 4,
+     "points": 1970
+    },
+    {
+     "place": 4,
+     "player_key": "туз",
+     "kills": 2,
+     "points": 1410
+    },
+    {
+     "place": 5,
+     "player_key": "дама",
+     "kills": 0,
+     "points": 920
+    },
+    {
+     "place": 6,
+     "player_key": "krysyuk",
+     "kills": 0,
+     "points": 720
+    },
+    {
+     "place": 7,
+     "player_key": "ladiesman_217",
+     "kills": 2,
+     "points": 750
+    },
+    {
+     "place": 8,
+     "player_key": "lo",
+     "kills": 2,
+     "points": 630
+    },
+    {
+     "place": 9,
+     "player_key": "гурупокера",
+     "kills": 3,
+     "points": 630
+    },
+    {
+     "place": 10,
+     "player_key": "kobra",
+     "kills": 1,
+     "points": 360
+    },
+    {
+     "place": 11,
+     "player_key": "soulknight",
+     "kills": 0,
+     "points": 210
+    }
+   ]
   }
  ],
  "players": {
@@ -3599,26 +3676,26 @@
    "badges": []
   },
   "гурупокера": {
-   "games": 26,
+   "games": 27,
    "wins": 7,
    "seconds": 3,
    "thirds": 2,
    "podiums": 12,
-   "points_total": 42320,
-   "kills": 49,
+   "points_total": 42950,
+   "kills": 52,
    "bh_titles": 1,
    "champion_seasons": [
     1
    ],
    "best_season_rank": 1,
    "first_seen": "2026-03-11",
-   "last_seen": "2026-07-22",
+   "last_seen": "2026-07-24",
    "badges": [
     "🏆 Чемпион сезона 1",
+    "📈 №1 сезона",
     "👑 7 побед",
     "💀 Bounty Hunter ×1",
-    "🎖 Ветеран клуба (25+ турниров)",
-    "📈 №1 лидерборда сезона"
+    "🎖 Ветеран клуба (25+ турниров)"
    ]
   },
   "глеббэт": {
@@ -3636,7 +3713,7 @@
    "last_seen": "2026-05-16",
    "badges": [
     "🥇 Побед: 1",
-    "🎯 Завсегдатай (10+ турниров)"
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "параллелепипед": {
@@ -3672,22 +3749,22 @@
    "badges": [
     "👑 8 побед",
     "💀 Bounty Hunter ×1",
-    "🎯 Завсегдатай (10+ турниров)"
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "soulknight": {
-   "games": 39,
+   "games": 40,
    "wins": 5,
    "seconds": 1,
    "thirds": 4,
    "podiums": 10,
-   "points_total": 35930,
+   "points_total": 36140,
    "kills": 42,
    "bh_titles": 1,
    "champion_seasons": [],
    "best_season_rank": 3,
    "first_seen": "2026-03-11",
-   "last_seen": "2026-07-22",
+   "last_seen": "2026-07-24",
    "badges": [
     "👑 5 побед",
     "💀 Bounty Hunter ×1",
@@ -3704,7 +3781,7 @@
    "kills": 13,
    "bh_titles": 1,
    "champion_seasons": [],
-   "best_season_rank": 17,
+   "best_season_rank": 18,
    "first_seen": "2026-03-11",
    "last_seen": "2026-07-12",
    "badges": [
@@ -3791,20 +3868,20 @@
    "badges": []
   },
   "lo": {
-   "games": 11,
+   "games": 12,
    "wins": 0,
    "seconds": 0,
    "thirds": 3,
    "podiums": 3,
-   "points_total": 6085,
-   "kills": 1,
+   "points_total": 6715,
+   "kills": 3,
    "bh_titles": 0,
    "champion_seasons": [],
    "best_season_rank": 11,
    "first_seen": "2026-03-21",
-   "last_seen": "2026-07-17",
+   "last_seen": "2026-07-24",
    "badges": [
-    "🎯 Завсегдатай (10+ турниров)"
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "кис.юля": {
@@ -3902,20 +3979,20 @@
    ]
   },
   "krysyuk": {
-   "games": 12,
+   "games": 13,
    "wins": 0,
    "seconds": 1,
    "thirds": 4,
    "podiums": 5,
-   "points_total": 13860,
+   "points_total": 14580,
    "kills": 1,
    "bh_titles": 0,
    "champion_seasons": [],
    "best_season_rank": 7,
    "first_seen": "2026-04-03",
-   "last_seen": "2026-07-17",
+   "last_seen": "2026-07-24",
    "badges": [
-    "🎯 Завсегдатай (10+ турниров)"
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "dbega": {
@@ -3949,20 +4026,21 @@
    "badges": []
   },
   "dk": {
-   "games": 17,
-   "wins": 0,
+   "games": 18,
+   "wins": 1,
    "seconds": 4,
    "thirds": 4,
-   "podiums": 8,
-   "points_total": 20660,
-   "kills": 15,
+   "podiums": 9,
+   "points_total": 23590,
+   "kills": 17,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 5,
+   "best_season_rank": 4,
    "first_seen": "2026-04-15",
-   "last_seen": "2026-07-22",
+   "last_seen": "2026-07-24",
    "badges": [
-    "🎯 Завсегдатай (10+ турниров)"
+    "🥇 Побед: 1",
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "рамазан": {
@@ -3998,7 +4076,7 @@
    "badges": [
     "🥇 Побед: 2",
     "💀 Bounty Hunter ×1",
-    "🎯 Завсегдатай (10+ турниров)"
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "nadgenda": {
@@ -4035,20 +4113,21 @@
    "badges": []
   },
   "andreyptichies": {
-   "games": 4,
+   "games": 5,
    "wins": 1,
-   "seconds": 0,
+   "seconds": 1,
    "thirds": 0,
-   "podiums": 1,
-   "points_total": 7040,
-   "kills": 4,
-   "bh_titles": 0,
+   "podiums": 2,
+   "points_total": 9710,
+   "kills": 10,
+   "bh_titles": 1,
    "champion_seasons": [],
    "best_season_rank": 9,
    "first_seen": "2026-04-22",
-   "last_seen": "2026-07-17",
+   "last_seen": "2026-07-24",
    "badges": [
-    "🥇 Побед: 1"
+    "🥇 Побед: 1",
+    "💀 Bounty Hunter ×1"
    ]
   },
   "los": {
@@ -4095,7 +4174,7 @@
    "kills": 6,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 10,
+   "best_season_rank": 12,
    "first_seen": "2026-05-20",
    "last_seen": "2026-05-23",
    "badges": [
@@ -4116,25 +4195,25 @@
    "first_seen": "2026-05-20",
    "last_seen": "2026-07-22",
    "badges": [
+    "📈 №1 сезона",
     "🥇 Побед: 3",
     "💀 Bounty Hunter ×2",
-    "🎯 Завсегдатай (10+ турниров)",
-    "📈 №1 лидерборда сезона"
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "leo": {
-   "games": 5,
+   "games": 6,
    "wins": 0,
    "seconds": 0,
-   "thirds": 1,
-   "podiums": 1,
-   "points_total": 3940,
-   "kills": 4,
+   "thirds": 2,
+   "podiums": 2,
+   "points_total": 5910,
+   "kills": 8,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 12,
+   "best_season_rank": 10,
    "first_seen": "2026-05-23",
-   "last_seen": "2026-07-17",
+   "last_seen": "2026-07-24",
    "badges": []
   },
   "вероничка:3": {
@@ -4147,7 +4226,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 34,
+   "best_season_rank": 35,
    "first_seen": "2026-05-23",
    "last_seen": "2026-05-23",
    "badges": []
@@ -4162,7 +4241,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 37,
+   "best_season_rank": 38,
    "first_seen": "2026-05-23",
    "last_seen": "2026-05-23",
    "badges": []
@@ -4177,7 +4256,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 18,
+   "best_season_rank": 20,
    "first_seen": "2026-05-31",
    "last_seen": "2026-07-19",
    "badges": [
@@ -4194,7 +4273,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 26,
+   "best_season_rank": 27,
    "first_seen": "2026-05-31",
    "last_seen": "2026-05-31",
    "badges": []
@@ -4209,7 +4288,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 23,
+   "best_season_rank": 24,
    "first_seen": "2026-05-31",
    "last_seen": "2026-07-19",
    "badges": []
@@ -4224,7 +4303,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 31,
+   "best_season_rank": 32,
    "first_seen": "2026-05-31",
    "last_seen": "2026-05-31",
    "badges": []
@@ -4239,24 +4318,24 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 27,
+   "best_season_rank": 28,
    "first_seen": "2026-05-31",
    "last_seen": "2026-07-19",
    "badges": []
   },
   "ladiesman_217": {
-   "games": 3,
+   "games": 4,
    "wins": 0,
    "seconds": 0,
    "thirds": 1,
    "podiums": 1,
-   "points_total": 2160,
-   "kills": 0,
+   "points_total": 2910,
+   "kills": 2,
    "bh_titles": 0,
    "champion_seasons": [],
    "best_season_rank": 19,
    "first_seen": "2026-06-10",
-   "last_seen": "2026-07-12",
+   "last_seen": "2026-07-24",
    "badges": []
   },
   "ильяк": {
@@ -4284,7 +4363,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 30,
+   "best_season_rank": 31,
    "first_seen": "2026-06-12",
    "last_seen": "2026-06-21",
    "badges": []
@@ -4299,7 +4378,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 22,
+   "best_season_rank": 23,
    "first_seen": "2026-06-14",
    "last_seen": "2026-06-14",
    "badges": []
@@ -4314,7 +4393,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 28,
+   "best_season_rank": 29,
    "first_seen": "2026-06-14",
    "last_seen": "2026-06-14",
    "badges": []
@@ -4329,7 +4408,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 32,
+   "best_season_rank": 33,
    "first_seen": "2026-06-14",
    "last_seen": "2026-06-14",
    "badges": []
@@ -4359,7 +4438,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 38,
+   "best_season_rank": 39,
    "first_seen": "2026-06-17",
    "last_seen": "2026-06-17",
    "badges": []
@@ -4389,7 +4468,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 35,
+   "best_season_rank": 36,
    "first_seen": "2026-06-21",
    "last_seen": "2026-06-21",
    "badges": []
@@ -4404,7 +4483,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 36,
+   "best_season_rank": 37,
    "first_seen": "2026-06-26",
    "last_seen": "2026-06-26",
    "badges": []
@@ -4419,7 +4498,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 39,
+   "best_season_rank": 40,
    "first_seen": "2026-06-26",
    "last_seen": "2026-06-26",
    "badges": []
@@ -4442,33 +4521,33 @@
    ]
   },
   "туз": {
-   "games": 3,
+   "games": 4,
    "wins": 0,
    "seconds": 0,
    "thirds": 1,
    "podiums": 1,
-   "points_total": 1850,
-   "kills": 0,
+   "points_total": 3260,
+   "kills": 2,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 20,
+   "best_season_rank": 15,
    "first_seen": "2026-07-17",
-   "last_seen": "2026-07-22",
+   "last_seen": "2026-07-24",
    "badges": []
   },
   "дама": {
-   "games": 1,
+   "games": 2,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
    "podiums": 0,
-   "points_total": 230,
+   "points_total": 1150,
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 40,
+   "best_season_rank": 26,
    "first_seen": "2026-07-17",
-   "last_seen": "2026-07-17",
+   "last_seen": "2026-07-24",
    "badges": []
   },
   "wride": {
@@ -4487,18 +4566,18 @@
    "badges": []
   },
   "kobra": {
-   "games": 1,
+   "games": 2,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
    "podiums": 0,
-   "points_total": 1380,
-   "kills": 0,
+   "points_total": 1740,
+   "kills": 1,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 24,
+   "best_season_rank": 22,
    "first_seen": "2026-07-22",
-   "last_seen": "2026-07-22",
+   "last_seen": "2026-07-24",
    "badges": []
   },
   "laposjr": {
@@ -4511,7 +4590,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 29,
+   "best_season_rank": 30,
    "first_seen": "2026-07-22",
    "last_seen": "2026-07-22",
    "badges": []
@@ -4526,7 +4605,7 @@
    "kills": 0,
    "bh_titles": 0,
    "champion_seasons": [],
-   "best_season_rank": 33,
+   "best_season_rank": 34,
    "first_seen": "2026-07-22",
    "last_seen": "2026-07-22",
    "badges": []
