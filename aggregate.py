@@ -168,6 +168,8 @@ def main() -> None:
         out = []
         for sid in p["champion_seasons"]:
             out.append(f"🏆 Чемпион сезона {sid}")
+        if p["best_season_rank"] == 1:
+            out.append("📈 №1 сезона")
         if p["wins"] >= 5:
             out.append(f"👑 {p['wins']} побед")
         elif p["wins"] >= 1:
@@ -177,9 +179,7 @@ def main() -> None:
         if p["games"] >= 25:
             out.append("🎖 Ветеран клуба (25+ турниров)")
         elif p["games"] >= 10:
-            out.append("🎯 Завсегдатай (10+ турниров)")
-        if p["best_season_rank"] == 1:
-            out.append("📈 №1 лидерборда сезона")
+            out.append("🎯 Частый гость (10+ турниров)")
         return out
 
     for p in players.values():
