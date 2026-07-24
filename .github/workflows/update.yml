@@ -1,6 +1,4 @@
 # Автообновление статистики: скрейпинг -> парсинг -> data.json -> GitHub Pages.
-# Внимание: папка .github должна лежать в корне репозитория. Если проект frpoker/
-# сам является корнем репозитория — всё уже на месте.
 name: update-stats
 
 on:
@@ -9,12 +7,17 @@ on:
     - cron: "0 21 * * *"   # 00:00 МСК
     - cron: "0 22 * * *"   # 01:00 МСК
     - cron: "0 23 * * *"   # 02:00 МСК
-  workflow_dispatch: {}      # ручной запуск из интерфейса GitHub
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Полная перезагрузка всей истории канала (медленнее)"
+        type: boolean
+        default: false
   push:
     branches: [main]         # передеплой сайта при изменениях кода
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -33,13 +36,27 @@ jobs:
       - run: pip install requests beautifulsoup4
 
       - name: Scrape, parse, aggregate
+        env:
+          FULL: ${{ github.event_name == 'workflow_dispatch' && inputs.full }}
         run: |
-          python scraper.py
+          if [ "$FULL" = "true" ]; then
+            python scraper.py --full
+          else
+            python scraper.py
+          fi
           python parser.py
           python aggregate.py
 
-      # данные не коммитим: сайт собирается заново при каждом запуске,
-      # а коммиты бота создавали конфликты с локальной копией
+      # после полного прогона сохраняем БД в репозиторий,
+      # иначе следующий инкрементальный запуск снова потеряет «дыры» в истории
+      - name: Commit database after full scrape
+        if: github.event_name == 'workflow_dispatch' && inputs.full
+        run: |
+          git config user.name "stats-bot"
+          git config user.email "actions@github.com"
+          git add frpoker.db
+          git diff --cached --quiet || git commit -m "auto: full scrape refresh $(date -u +%F)"
+          git push
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
