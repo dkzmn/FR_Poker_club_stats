@@ -93,12 +93,51 @@
     #playersTable th:nth-child(8), #playersTable td:nth-child(8) { width: 16%; }
     #playersTable th:last-child, #playersTable td:last-child { width: auto; overflow: hidden; }
   }
+  #spadeUnlock { cursor: default; user-select: none; }
+  .tabs button.calc-tab { display: none; }
+  .tabs button.calc-tab.visible { display: inline-block; }
+  .calc-row { display: grid; grid-template-columns: 52px 1fr 72px 88px; gap: 8px; align-items: center;
+              margin-bottom: 8px; position: relative; }
+  .calc-row.no-kills { grid-template-columns: 52px 1fr 88px; }
+  .calc-row label { color: var(--muted); font-size: 13px; }
+  .calc-controls { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-bottom: 18px; align-items: end; }
+  .calc-field { display: flex; flex-direction: column; gap: 5px; }
+  .calc-field > span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .calc-field select, .calc-field input, .calc-row input, #calcOut {
+    background: var(--card2); color: var(--text); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 10px; font-size: 14px; font-family: inherit; }
+  .calc-row input { width: 100%; min-width: 0; }
+  .calc-suggest {
+    position: absolute; left: 52px; right: 88px; top: 100%; z-index: 20; margin-top: 2px;
+    background: var(--card2); border: 1px solid var(--line); border-radius: 8px; max-height: 180px;
+    overflow-y: auto; display: none; box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  }
+  .calc-row.no-kills .calc-suggest { right: 88px; }
+  .calc-row.has-kills .calc-suggest { right: 168px; }
+  .calc-suggest button {
+    display: block; width: 100%; text-align: left; background: none; border: 0; color: var(--text);
+    padding: 8px 12px; cursor: pointer; font-size: 14px; font-family: inherit;
+  }
+  .calc-suggest button:hover, .calc-suggest button.active { background: rgba(224, 179, 76, .18); }
+  #calcOut { width: 100%; min-height: 320px; resize: vertical; line-height: 1.45; white-space: pre-wrap; }
+  .calc-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .calc-actions button {
+    background: var(--accent); color: #14181f; border: 0; border-radius: 8px; padding: 9px 16px;
+    font-weight: 700; cursor: pointer; font-size: 14px;
+  }
+  .calc-actions button.secondary { background: var(--card2); color: var(--text); border: 1px solid var(--line); font-weight: 600; }
+  .calc-pts { text-align: right; color: var(--accent); font-variant-numeric: tabular-nums; font-size: 13px; }
+  @media (max-width: 600px) {
+    .calc-row, .calc-row.no-kills { grid-template-columns: 40px 1fr; }
+    .calc-row input[data-role=kills], .calc-row .calc-pts { grid-column: 2; }
+    .calc-suggest, .calc-row.no-kills .calc-suggest, .calc-row.has-kills .calc-suggest { left: 40px; right: 0; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>♠️ FR <span>Poker Club</span> — статистика</h1>
+    <h1><span id="spadeUnlock" title="">♠️</span> FR <span>Poker Club</span> — статистика</h1>
     <p id="meta"></p>
   </header>
   <div class="tabs" id="tabs"></div>
@@ -129,34 +168,295 @@
       <div class="table-wrap no-max"><table id="playersTable"></table></div>
     </div>
   </div>
+
+  <div class="grid" id="calcView" style="display:none">
+    <div class="card full">
+      <h2>Калькулятор очков → текст для Telegram</h2>
+      <p class="muted" style="margin:-6px 0 16px;font-size:13px">Только генерация текста поста. Данные никуда не сохраняются.</p>
+      <div class="calc-controls">
+        <label class="calc-field">
+          <span>Тип турнира</span>
+          <select id="calcType"></select>
+        </label>
+        <label class="calc-field">
+          <span>Игроков</span>
+          <select id="calcN"></select>
+        </label>
+      </div>
+      <div id="calcPlaces"></div>
+      <h2 style="margin-top:22px">Текст для публикации</h2>
+      <textarea id="calcOut" readonly spellcheck="false"></textarea>
+      <div class="calc-actions">
+        <button type="button" id="calcCopy">Скопировать</button>
+        <button type="button" class="secondary" id="calcClear">Очистить имена</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
 const PALETTE = ["#e0b34c","#4c9be0","#3fb96a","#e05c4c","#b46ce0","#4ce0d2","#e08d4c","#8ea3c7"];
-let DATA, activeTab; // id сезона или "players"
+let DATA, activeTab; // id сезона | "players" | "calc"
+let calcUnlocked = sessionStorage.getItem("frCalcUnlock") === "1";
+
+const SHARE_TABLE = {"4":[0.38,0.275,0.2,0.146],"5":[0.34,0.247,0.181,0.133,0.099],"6":[0.313,0.23,0.169,0.125,0.093,0.07],"7":[0.294,0.217,0.161,0.12,0.09,0.067,0.051],"8":[0.279,0.208,0.155,0.116,0.087,0.066,0.05,0.039],"9":[0.267,0.2,0.15,0.113,0.086,0.065,0.05,0.039,0.03],"10":[0.257,0.194,0.147,0.111,0.085,0.065,0.05,0.039,0.03,0.024],"11":[0.248,0.188,0.143,0.11,0.084,0.065,0.05,0.039,0.03,0.024,0.019],"12":[0.239,0.183,0.141,0.108,0.083,0.065,0.05,0.039,0.031,0.025,0.02,0.016],"13":[0.232,0.179,0.138,0.107,0.083,0.065,0.051,0.04,0.031,0.025,0.02,0.016,0.013],"14":[0.224,0.174,0.136,0.106,0.083,0.065,0.051,0.04,0.032,0.026,0.021,0.017,0.014,0.011],"15":[0.217,0.17,0.134,0.105,0.083,0.065,0.052,0.041,0.033,0.026,0.021,0.017,0.014,0.012,0.01],"16":[0.211,0.166,0.131,0.104,0.082,0.065,0.052,0.042,0.033,0.027,0.022,0.018,0.015,0.012,0.01,0.009],"17":[0.204,0.162,0.129,0.103,0.082,0.066,0.053,0.042,0.034,0.028,0.023,0.018,0.015,0.013,0.011,0.009,0.008],"18":[0.198,0.159,0.127,0.102,0.082,0.066,0.053,0.043,0.035,0.028,0.023,0.019,0.016,0.013,0.011,0.009,0.008,0.007],"19":[0.192,0.155,0.125,0.101,0.082,0.066,0.054,0.044,0.036,0.029,0.024,0.02,0.016,0.014,0.012,0.01,0.008,0.007,0.006],"20":[0.186,0.151,0.123,0.1,0.081,0.066,0.054,0.044,0.036,0.03,0.025,0.021,0.017,0.014,0.012,0.01,0.009,0.008,0.007,0.006]};
+
+const TOURNAMENT_TYPES = [
+  { id: "CLASSIC", label: "CLASSIC", title: "CLASSIC", m: 1, bounty: false },
+  { id: "BOUNTY", label: "BOUNTY", title: "BOUNTY", m: 1, bounty: true },
+  { id: "DEEPSTACK", label: "DEEPSTACK (×1.5)", title: "DEEPSTACK", m: 1.5, bounty: false },
+  { id: "JOKER", label: "JOKER (×0.5)", title: "JOKER", m: 0.5, bounty: false },
+  { id: "DOUBLE ROLL", label: "DOUBLE ROLL", title: "DOUBLE ROLL", m: 1, bounty: false },
+  { id: "DOUBLE ROLL & VIEW CARD", label: "DOUBLE ROLL & VIEW CARD", title: "DOUBLE ROLL & VIEW CARD", m: 1, bounty: false },
+  { id: "DOUBLE LIFE", label: "DOUBLE LIFE", title: "DOUBLE LIFE", m: 1, bounty: false },
+  { id: "MAFIA", label: "MAFIA", title: "MAFIA", m: 1, bounty: false },
+  { id: "ОБУЧЕНИЕ", label: "ОБУЧЕНИЕ", title: "ОБУЧЕНИЕ", m: 1, bounty: false },
+];
+
+const PLACE_MEDAL = { 1: "🥇", 2: "🥈", 3: "🥉" };
 
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const name = k => DATA.player_names[k] || k;
 const fmtDate = d => { const [y, m, dd] = d.split("-"); return `${dd}.${m}.${y.slice(2)}`; };
+
+const round10 = x => Math.floor(x / 10 + 0.5) * 10;
+function placePoints(n, place, m) {
+  const share = SHARE_TABLE[String(n)][place - 1];
+  return round10(round10(n * 1000 * share) * m);
+}
+
+function playerNameList() {
+  return Object.values(DATA.player_names).sort((a, b) => a.localeCompare(b, "ru", { sensitivity: "base" }));
+}
+
+function filterPlayers(q) {
+  const s = q.trim().toLowerCase();
+  if (!s) return [];
+  const all = playerNameList();
+  const prefix = all.filter(n => n.toLowerCase().startsWith(s));
+  const rest = all.filter(n => !n.toLowerCase().startsWith(s) && n.toLowerCase().includes(s));
+  return [...prefix, ...rest].slice(0, 8);
+}
 
 fetch("data.json").then(r => r.json()).then(d => {
   DATA = d;
   document.getElementById("meta").innerHTML =
     `Источник: <a href="https://t.me/${esc(d.channel)}" target="_blank" rel="noopener">${esc("t.me/" + d.channel)}</a> · обновлено ${new Date(d.generated_at).toLocaleString("ru-RU")}`;
   const tabs = document.getElementById("tabs");
-  const addTab = (label, id) => {
+  const addTab = (label, id, extraClass) => {
     const b = document.createElement("button");
     b.textContent = label;
     b.onclick = () => { activeTab = id; render(); };
     b.dataset.tab = id;
+    if (extraClass) b.className = extraClass;
     tabs.appendChild(b);
   };
   d.seasons.forEach(s => addTab(s.name, s.id));
   addTab("Игроки и достижения", "players");
+  addTab("Калькулятор", "calc", "calc-tab" + (calcUnlocked ? " visible" : ""));
   activeTab = d.seasons[d.seasons.length - 1].id;
+  setupSpadeUnlock();
+  setupCalculator();
   renderPlayers();
   render();
 });
+
+function setupSpadeUnlock() {
+  const el = document.getElementById("spadeUnlock");
+  let clicks = 0;
+  let timer = null;
+  el.addEventListener("click", () => {
+    if (calcUnlocked) return;
+    clicks += 1;
+    clearTimeout(timer);
+    timer = setTimeout(() => { clicks = 0; }, 2500);
+    if (clicks >= 7) {
+      calcUnlocked = true;
+      sessionStorage.setItem("frCalcUnlock", "1");
+      document.querySelector(".tabs button.calc-tab")?.classList.add("visible");
+      activeTab = "calc";
+      render();
+    }
+  });
+}
+
+function currentType() {
+  return TOURNAMENT_TYPES.find(t => t.id === document.getElementById("calcType").value) || TOURNAMENT_TYPES[0];
+}
+
+function setupCalculator() {
+  const typeSel = document.getElementById("calcType");
+  const nSel = document.getElementById("calcN");
+  TOURNAMENT_TYPES.forEach(t => {
+    const o = document.createElement("option");
+    o.value = t.id; o.textContent = t.label;
+    typeSel.appendChild(o);
+  });
+  for (let n = 4; n <= 20; n++) {
+    const o = document.createElement("option");
+    o.value = n; o.textContent = String(n);
+    if (n === 8) o.selected = true;
+    nSel.appendChild(o);
+  }
+  typeSel.onchange = rebuildCalcPlaces;
+  nSel.onchange = rebuildCalcPlaces;
+  document.getElementById("calcCopy").onclick = async () => {
+    const text = document.getElementById("calcOut").value;
+    try {
+      await navigator.clipboard.writeText(text);
+      const btn = document.getElementById("calcCopy");
+      const prev = btn.textContent;
+      btn.textContent = "Скопировано";
+      setTimeout(() => { btn.textContent = prev; }, 1200);
+    } catch {
+      document.getElementById("calcOut").select();
+      document.execCommand("copy");
+    }
+  };
+  document.getElementById("calcClear").onclick = () => {
+    document.querySelectorAll("#calcPlaces input[data-role=name]").forEach(i => { i.value = ""; });
+    document.querySelectorAll("#calcPlaces input[data-role=kills]").forEach(i => { i.value = "0"; });
+    updateCalcPreview();
+  };
+  rebuildCalcPlaces();
+}
+
+function rebuildCalcPlaces() {
+  const n = +document.getElementById("calcN").value;
+  const bounty = currentType().bounty;
+  const box = document.getElementById("calcPlaces");
+  const prev = {};
+  box.querySelectorAll(".calc-row").forEach(row => {
+    const p = row.dataset.place;
+    prev[p] = {
+      name: row.querySelector("input[data-role=name]")?.value || "",
+      kills: row.querySelector("input[data-role=kills]")?.value || "0",
+    };
+  });
+  box.innerHTML =
+    `<div class="calc-row ${bounty ? "has-kills" : "no-kills"}" style="margin-bottom:4px">
+       <label></label><label class="muted" style="font-size:11px;text-transform:uppercase">Игрок</label>
+       ${bounty ? `<label class="muted" style="font-size:11px;text-transform:uppercase;text-align:center">☠️</label>` : ""}
+       <label class="muted" style="font-size:11px;text-transform:uppercase;text-align:right">Очки</label>
+     </div>` +
+    Array.from({ length: n }, (_, i) => {
+      const place = i + 1;
+      const medal = PLACE_MEDAL[place] || String(place);
+      const saved = prev[place] || {};
+      return `<div class="calc-row ${bounty ? "has-kills" : "no-kills"}" data-place="${place}">
+        <label>${medal}</label>
+        <input data-role="name" type="text" autocomplete="off" spellcheck="false"
+               placeholder="ник" value="${esc(saved.name || "")}">
+        ${bounty ? `<input data-role="kills" type="number" min="0" max="${n}" value="${esc(saved.kills || "0")}">` : ""}
+        <div class="calc-pts" data-role="pts">—</div>
+        <div class="calc-suggest" hidden></div>
+      </div>`;
+    }).join("");
+
+  box.querySelectorAll(".calc-row[data-place]").forEach(row => bindPlayerSuggest(row));
+  box.querySelectorAll("input").forEach(inp => {
+    inp.addEventListener("input", updateCalcPreview);
+    inp.addEventListener("change", updateCalcPreview);
+  });
+  updateCalcPreview();
+}
+
+function bindPlayerSuggest(row) {
+  const input = row.querySelector("input[data-role=name]");
+  const suggest = row.querySelector(".calc-suggest");
+  let active = -1;
+
+  const hide = () => { suggest.style.display = "none"; suggest.innerHTML = ""; active = -1; };
+  const show = items => {
+    if (!items.length) { hide(); return; }
+    suggest.innerHTML = items.map((n, i) =>
+      `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
+    suggest.style.display = "block";
+    suggest.removeAttribute("hidden");
+    active = 0;
+    [...suggest.children].forEach((b, i) => b.classList.toggle("active", i === active));
+    suggest.querySelectorAll("button").forEach(btn => {
+      btn.onmousedown = e => { e.preventDefault(); input.value = btn.textContent; hide(); updateCalcPreview(); };
+    });
+  };
+
+  input.addEventListener("input", () => show(filterPlayers(input.value)));
+  input.addEventListener("focus", () => { if (input.value.trim()) show(filterPlayers(input.value)); });
+  input.addEventListener("blur", () => setTimeout(hide, 150));
+  input.addEventListener("keydown", e => {
+    const buttons = [...suggest.querySelectorAll("button")];
+    if (!buttons.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      active = (active + 1) % buttons.length;
+      buttons.forEach((b, i) => b.classList.toggle("active", i === active));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      active = (active - 1 + buttons.length) % buttons.length;
+      buttons.forEach((b, i) => b.classList.toggle("active", i === active));
+    } else if (e.key === "Enter" && active >= 0) {
+      e.preventDefault();
+      input.value = buttons[active].textContent;
+      hide();
+      updateCalcPreview();
+    } else if (e.key === "Escape") hide();
+  });
+}
+
+function readCalcEntries() {
+  const n = +document.getElementById("calcN").value;
+  const type = currentType();
+  const entries = [];
+  document.querySelectorAll("#calcPlaces .calc-row[data-place]").forEach(row => {
+    const place = +row.dataset.place;
+    const pname = row.querySelector("input[data-role=name]")?.value.trim() || "";
+    const kills = type.bounty
+      ? Math.max(0, parseInt(row.querySelector("input[data-role=kills]")?.value, 10) || 0)
+      : 0;
+    const base = placePoints(n, place, type.m);
+    const points = base + (type.bounty ? 100 * kills : 0);
+    row.querySelector("[data-role=pts]").textContent = points;
+    entries.push({ place, name: pname, kills, points, base });
+  });
+  return { n, type, entries };
+}
+
+function buildPostText({ type, entries }) {
+  const lines = [`👑 ПОБЕДИТЕЛИ ТУРНИРА ${type.title}`, ""];
+  entries.forEach(e => {
+    const medal = PLACE_MEDAL[e.place] || String(e.place);
+    const nick = e.name || "…";
+    let line;
+    if (type.bounty) {
+      line = `${medal} ${nick}: ${e.kills} ☠️ - ${e.points}`;
+    } else {
+      line = `${medal} ${nick} - ${e.points}`;
+      if (e.place === 1 && type.m === 1.5) line += " 💥";
+    }
+    lines.push(line);
+  });
+  if (type.bounty) {
+    let hunter = null;
+    entries.forEach(e => {
+      if (!e.name) return;
+      if (!hunter || e.kills > hunter.kills) hunter = e;
+    });
+    if (hunter && hunter.kills > 0) {
+      lines.push("");
+      lines.push(`🥊 Bounty Hunter турнира - ${hunter.name}: ${hunter.kills} 💀`);
+    }
+  }
+  lines.push("");
+  lines.push("📊 Лидерборд");
+  lines.push("");
+  lines.push("Спасибо большое всем участникам за игру, ждем вас на следующих турнирах 🔥");
+  return lines.join("\n");
+}
+
+function updateCalcPreview() {
+  const data = readCalcEntries();
+  document.getElementById("calcOut").value = buildPostText(data);
+}
 
 let lbChart, raceChart;
 
@@ -164,9 +464,11 @@ function render() {
   document.querySelectorAll(".tabs button").forEach(b =>
     b.classList.toggle("active", b.dataset.tab === String(activeTab)));
   const isPlayers = activeTab === "players";
-  document.getElementById("seasonView").style.display = isPlayers ? "none" : "";
+  const isCalc = activeTab === "calc";
+  document.getElementById("seasonView").style.display = (!isPlayers && !isCalc) ? "" : "none";
   document.getElementById("playersView").style.display = isPlayers ? "" : "none";
-  if (isPlayers) return;
+  document.getElementById("calcView").style.display = isCalc ? "" : "none";
+  if (isPlayers || isCalc) return;
 
   const s = DATA.seasons.find(x => x.id === activeTab);
   const lb = s.leaderboard;
