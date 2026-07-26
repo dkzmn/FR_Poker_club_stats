@@ -103,7 +103,7 @@
   .calc-controls { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-bottom: 18px; align-items: end; }
   .calc-field { display: flex; flex-direction: column; gap: 5px; }
   .calc-field > span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
-  .calc-field select, .calc-field input, .calc-row input {
+  .calc-field select, .calc-field input, .calc-row input, #calcOut {
     background: var(--card2); color: var(--text); border: 1px solid var(--line); border-radius: 8px;
     padding: 8px 10px; font-size: 14px; font-family: inherit; }
   .calc-row input { width: 100%; min-width: 0; }
@@ -119,10 +119,7 @@
     padding: 8px 12px; cursor: pointer; font-size: 14px; font-family: inherit;
   }
   .calc-suggest button:hover, .calc-suggest button.active { background: rgba(224, 179, 76, .18); }
-  #calcOut { width: 100%; min-height: 320px; resize: vertical; line-height: 1.45; white-space: pre-wrap;
-             background: var(--card2); color: var(--text); border: 1px solid var(--line); border-radius: 8px;
-             padding: 8px 10px; font-size: 14px; font-family: inherit; overflow-y: auto; }
-  #calcOut a { color: var(--accent); }
+  #calcOut { width: 100%; min-height: 320px; resize: vertical; line-height: 1.45; white-space: pre-wrap; }
   .calc-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
   .calc-actions button {
     background: var(--accent); color: #14181f; border: 0; border-radius: 8px; padding: 9px 16px;
@@ -195,8 +192,7 @@
       </div>
       <div id="calcPlaces"></div>
       <h2 style="margin-top:22px">Текст для публикации</h2>
-      <p class="muted" style="margin:-4px 0 10px;font-size:12px">Копируйте кнопкой ниже — так «Лидерборд» вставится в Telegram как ссылка.</p>
-      <div id="calcOut" contenteditable="false" spellcheck="false"></div>
+      <textarea id="calcOut" readonly spellcheck="false"></textarea>
       <div class="calc-actions">
         <button type="button" id="calcCopy">Скопировать</button>
         <button type="button" class="secondary" id="calcClear">Очистить имена</button>
@@ -312,29 +308,16 @@ function setupCalculator() {
   typeSel.onchange = rebuildCalcPlaces;
   nSel.onchange = rebuildCalcPlaces;
   document.getElementById("calcCopy").onclick = async () => {
-    const out = document.getElementById("calcOut");
-    const plain = out.innerText;
-    const html = out.innerHTML;
+    const text = document.getElementById("calcOut").value;
     const btn = document.getElementById("calcCopy");
     const prev = btn.textContent;
     try {
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          "text/plain": new Blob([plain], { type: "text/plain" }),
-          "text/html": new Blob([html], { type: "text/html" }),
-        }),
-      ]);
-      btn.textContent = "Скопировано";
+      await navigator.clipboard.writeText(text);
     } catch {
-      const range = document.createRange();
-      range.selectNodeContents(out);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
+      document.getElementById("calcOut").select();
       document.execCommand("copy");
-      sel.removeAllRanges();
-      btn.textContent = "Скопировано";
     }
+    btn.textContent = "Скопировано";
     setTimeout(() => { btn.textContent = prev; }, 1200);
   };
   document.getElementById("calcClear").onclick = () => {
@@ -473,18 +456,14 @@ function buildPostText({ type, entries }) {
     }
   }
   lines.push("");
-  lines.push("📊 Лидерборд");
+  lines.push(`📊 [Лидерборд](${LB_URL})`);
   lines.push("");
   lines.push("Спасибо большое всем участникам за игру, ждем вас на следующих турнирах 🔥");
   return lines.join("\n");
 }
 
 function updateCalcPreview() {
-  const lines = buildPostText(readCalcEntries()).split("\n");
-  document.getElementById("calcOut").innerHTML = lines.map(line => {
-    if (line === "📊 Лидерборд") return `📊 <a href="${LB_URL}">Лидерборд</a>`;
-    return esc(line);
-  }).join("<br>\n");
+  document.getElementById("calcOut").value = buildPostText(readCalcEntries());
 }
 
 let lbChart, raceChart;
