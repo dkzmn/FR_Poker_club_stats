@@ -67,6 +67,8 @@
   .badge { display: inline-block; background: var(--card2); border: 1px solid var(--line); border-radius: 12px;
            padding: 2px 9px; margin: 2px 3px 2px 0; font-size: 12.5px; white-space: nowrap; }
   .muted { color: var(--muted); }
+  a.tg-post { color: var(--accent); text-decoration: none; font-size: 13px; margin-left: 4px; flex-shrink: 0; }
+  a.tg-post:hover { text-decoration: underline; }
   details { border-bottom: 1px solid var(--line); }
   details summary { cursor: pointer; padding: 9px 4px; font-size: 14.5px; list-style: none; display: flex;
                     gap: 10px; flex-wrap: wrap; align-items: baseline; }
@@ -240,7 +242,9 @@ function render() {
   document.getElementById("tournaments").innerHTML = [...ts, ...finals].reverse().map(t => `
     <details>
       <summary><b>${fmtDate(t.date)}</b> ${esc(t.name || "Турнир")}${t.is_final ? " 🏆" : ""}
-        <span class="muted">· ${t.results.length} игроков</span></summary>
+        <span class="muted">· ${t.results.length} игроков</span>
+        <a class="tg-post" href="https://t.me/${esc(DATA.channel)}/${t.msg_id}" target="_blank" rel="noopener"
+           onclick="event.stopPropagation()">пост</a></summary>
       <table>${t.results.map(r =>
         `<tr><td>${r.place}</td><td>${esc(name(r.player_key))}</td>
          <td class="num">${r.points ?? ""}</td><td class="num">${r.kills != null ? r.kills + " 💀" : ""}</td></tr>`).join("")}
