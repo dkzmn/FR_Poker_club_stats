@@ -205,7 +205,7 @@ def main() -> None:
         if p["kills"] >= 100:
             out.append("☠️ Палач (100+ киллов)")
         elif p["kills"] >= 50:
-            out.append("☠️ Жнец (50+ киллов)")
+            out.append("☠️ Головорез (50+ киллов)")
         elif p["kills"] >= 25:
             out.append("☠️ Охотник (25+ киллов)")
         if p["max_points"] >= 3500:
