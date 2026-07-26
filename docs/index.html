@@ -93,8 +93,9 @@
     #playersTable th:first-child, #playersTable td:first-child { width: 8%; white-space: nowrap; }
     #playersTable th:nth-child(2), #playersTable td:nth-child(2) { width: 22%; white-space: normal; word-break: break-word; }
     #playersTable th:nth-child(3), #playersTable td:nth-child(3),
-    #playersTable th:nth-child(4), #playersTable td:nth-child(4) { width: 10%; }
-    #playersTable th:nth-child(9), #playersTable td:nth-child(9) { width: 14%; }
+    #playersTable th:nth-child(4), #playersTable td:nth-child(4),
+    #playersTable th:nth-child(5), #playersTable td:nth-child(5) { width: 9%; }
+    #playersTable th:nth-child(10), #playersTable td:nth-child(10) { width: 12%; }
     #playersTable th:last-child, #playersTable td:last-child { width: auto; overflow: hidden; }
     #badgesLegend td:first-child { white-space: normal; }
   }
@@ -598,12 +599,14 @@ function renderPlayers() {
     .sort((a, b) => b[1].points_total - a[1].points_total || b[1].games - a[1].games);
   document.getElementById("playersTable").innerHTML =
     `<tr><th class="num">#</th><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th>
+     <th class="num">💀</th>
      <th class="num m-hide">🥈</th><th class="num m-hide">🥉</th>
      <th class="num m-hide">побед</th><th class="num m-hide">топ-3</th>
      <th class="num">Очки</th><th>Достижения</th></tr>` +
     rows.map(([k, p], i) =>
       `<tr><td class="num">${i + 1}</td><td>${esc(name(k))}</td><td class="num">${p.games}</td>
        <td class="num">${p.wins}</td>
+       <td class="num">${p.kills || 0}</td>
        <td class="num m-hide">${p.seconds}</td><td class="num m-hide">${p.thirds}</td>
        <td class="num m-hide">${p.games ? Math.round(p.wins / p.games * 100) : 0}%</td>
        <td class="num m-hide">${p.games ? Math.round(p.podiums / p.games * 100) : 0}%</td>
