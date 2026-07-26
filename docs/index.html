@@ -126,11 +126,18 @@
     font-weight: 700; cursor: pointer; font-size: 14px;
   }
   .calc-actions button.secondary { background: var(--card2); color: var(--text); border: 1px solid var(--line); font-weight: 600; }
-  .calc-pts { text-align: right; color: var(--accent); font-variant-numeric: tabular-nums; font-size: 13px; }
+  .calc-pts { text-align: right; color: var(--accent); font-variant-numeric: tabular-nums; font-size: 13px;
+              white-space: nowrap; }
+  .calc-row input[data-role=kills] { text-align: center; padding-left: 4px; padding-right: 4px; }
   @media (max-width: 600px) {
-    .calc-row, .calc-row.no-kills { grid-template-columns: 40px 1fr; }
-    .calc-row input[data-role=kills], .calc-row .calc-pts { grid-column: 2; }
-    .calc-suggest, .calc-row.no-kills .calc-suggest, .calc-row.has-kills .calc-suggest { left: 40px; right: 0; }
+    .calc-row { grid-template-columns: 32px minmax(0, 1fr) 48px 56px; gap: 6px; }
+    .calc-row.no-kills { grid-template-columns: 32px minmax(0, 1fr) 56px; }
+    .calc-row input { padding: 7px 8px; font-size: 13px; }
+    .calc-row input[data-role=kills] { padding: 7px 2px; font-size: 13px; }
+    .calc-pts { font-size: 12px; }
+    .calc-suggest { left: 32px; right: 56px; }
+    .calc-row.no-kills .calc-suggest { right: 56px; }
+    .calc-row.has-kills .calc-suggest { right: 110px; }
   }
 </style>
 </head>
