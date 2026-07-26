@@ -135,22 +135,38 @@ def main() -> None:
     # --- карьерные достижения ---
     players: dict[str, dict] = defaultdict(
         lambda: {
-            "games": 0, "wins": 0, "seconds": 0, "thirds": 0, "podiums": 0,
-            "points_total": 0, "kills": 0, "bh_titles": 0, "champion_seasons": [],
+            "games": 0, "wins": 0, "seconds": 0, "thirds": 0, "fourths": 0, "podiums": 0,
+            "points_total": 0, "max_points": 0, "kills": 0, "bh_titles": 0,
+            "deep_wins": 0, "joker_wins": 0, "mafia_wins": 0, "bounty_wins": 0,
+            "champion_seasons": [],
             "best_season_rank": None, "first_seen": None, "last_seen": None,
         }
     )
     for t in tournaments:
+        tname = (t["name"] or "").upper()
         for r in t["results"]:
             p = players[r["player_key"]]
             if not t["is_final"]:
                 p["games"] += 1
-                p["points_total"] += r["points"] or 0
+                pts = r["points"] or 0
+                p["points_total"] += pts
+                if pts > p["max_points"]:
+                    p["max_points"] = pts
                 p["kills"] += r["kills"] or 0
                 p["wins"] += r["place"] == 1
                 p["seconds"] += r["place"] == 2
                 p["thirds"] += r["place"] == 3
+                p["fourths"] += r["place"] == 4
                 p["podiums"] += r["place"] <= 3
+                if r["place"] == 1:
+                    if "DEEP" in tname:
+                        p["deep_wins"] += 1
+                    if "JOK" in tname:
+                        p["joker_wins"] += 1
+                    if "MAFIA" in tname:
+                        p["mafia_wins"] += 1
+                    if "BOUNTY" in tname:
+                        p["bounty_wins"] += 1
             p["first_seen"] = min(p["first_seen"] or t["date"], t["date"])
             p["last_seen"] = max(p["last_seen"] or t["date"], t["date"])
         if t["bounty_hunter_key"]:
@@ -170,12 +186,40 @@ def main() -> None:
             out.append(f"🏆 Чемпион сезона {sid}")
         if p["best_season_rank"] == 1:
             out.append("📈 №1 сезона")
+        elif p["best_season_rank"] is not None and p["best_season_rank"] <= 3:
+            out.append("📈 Топ-3 сезона")
         if p["wins"] >= 5:
             out.append(f"👑 {p['wins']} побед")
         elif p["wins"] >= 1:
             out.append(f"🥇 Побед: {p['wins']}")
+        if p["podiums"] >= 10:
+            out.append("🏅 Подиумный монстр (10+)")
+        if p["seconds"] >= 5:
+            out.append(f"🥈 Серебряный запас ({p['seconds']})")
+        if p["thirds"] >= 5:
+            out.append(f"🥉 Бронзовый фонд ({p['thirds']})")
+        if p["fourths"] >= 5:
+            out.append(f"🫧 Бабл-бой ({p['fourths']}× 4-е)")
         if p["bh_titles"] >= 1:
             out.append(f"💀 Bounty Hunter ×{p['bh_titles']}")
+        if p["kills"] >= 100:
+            out.append("☠️ Палач (100+ киллов)")
+        elif p["kills"] >= 50:
+            out.append("☠️ Жнец (50+ киллов)")
+        elif p["kills"] >= 25:
+            out.append("☠️ Охотник (25+ киллов)")
+        if p["max_points"] >= 3500:
+            out.append("💎 Большой улов (3500+ за турнир)")
+        if p["deep_wins"] >= 1:
+            out.append("💥 Deepstack-победитель")
+        if p["joker_wins"] >= 1:
+            out.append("🃏 Joker-победитель")
+        if p["mafia_wins"] >= 1:
+            out.append("🕵️ Mafia-победитель")
+        if p["bounty_wins"] >= 1:
+            out.append("🥊 Bounty-победитель")
+        if p["games"] >= 10 and p["wins"] / p["games"] >= 0.3:
+            out.append("📊 Стабильность (30%+ побед)")
         if p["games"] >= 25:
             out.append("🎖 Ветеран клуба (25+ турниров)")
         elif p["games"] >= 10:

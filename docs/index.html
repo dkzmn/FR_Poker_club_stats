@@ -49,13 +49,16 @@
   #playersTable { width: 100%; }
   #playersTable td.badges-cell { white-space: normal; line-height: 1.5; }
   #playersTable td.badges-cell .badge { margin: 2px 3px 2px 0; }
+  #badgesLegend td:first-child { white-space: nowrap; vertical-align: top; }
+  #badgesLegend td:last-child { color: var(--muted); }
   /* обе полосы с фоном — иначе «пустые» строки визуально кажутся уже/ниже */
-  #lbTable td, #playersTable td {
+  #lbTable td, #playersTable td, #badgesLegend td {
     line-height: 1.35;
     background: rgba(255, 255, 255, 0.015);
   }
   #lbTable tbody tr:nth-child(even) td,
-  #playersTable tbody tr:nth-child(even) td {
+  #playersTable tbody tr:nth-child(even) td,
+  #badgesLegend tbody tr:nth-child(even) td {
     background: rgba(255, 255, 255, 0.055);
   }
   tr.top1 td:first-child::before { content: "🥇 "; }
@@ -87,11 +90,13 @@
     .m-hide { display: none; }
     .badge { font-size: 11px; padding: 2px 7px; white-space: normal; max-width: 100%; }
     #playersTable { table-layout: fixed; width: 100%; }
-    #playersTable th:first-child, #playersTable td:first-child { width: 26%; white-space: normal; word-break: break-word; }
-    #playersTable th:nth-child(2), #playersTable td:nth-child(2),
-    #playersTable th:nth-child(3), #playersTable td:nth-child(3) { width: 11%; }
-    #playersTable th:nth-child(8), #playersTable td:nth-child(8) { width: 16%; }
+    #playersTable th:first-child, #playersTable td:first-child { width: 8%; white-space: nowrap; }
+    #playersTable th:nth-child(2), #playersTable td:nth-child(2) { width: 22%; white-space: normal; word-break: break-word; }
+    #playersTable th:nth-child(3), #playersTable td:nth-child(3),
+    #playersTable th:nth-child(4), #playersTable td:nth-child(4) { width: 10%; }
+    #playersTable th:nth-child(9), #playersTable td:nth-child(9) { width: 14%; }
     #playersTable th:last-child, #playersTable td:last-child { width: auto; overflow: hidden; }
+    #badgesLegend td:first-child { white-space: normal; }
   }
   #spadeUnlock { cursor: default; user-select: none; }
   .tabs button.calc-tab { display: none; }
@@ -173,6 +178,31 @@
     <div class="card full">
       <h2>Игроки и достижения (за всё время)</h2>
       <div class="table-wrap no-max"><table id="playersTable"></table></div>
+    </div>
+    <div class="card full">
+      <h2>Расшифровка достижений</h2>
+      <div class="table-wrap no-max"><table id="badgesLegend">
+        <tr><th>Достижение</th><th>Как получить</th></tr>
+        <tr><td><span class="badge">🏆 Чемпион сезона N</span></td><td>Победа в финале сезона</td></tr>
+        <tr><td><span class="badge">📈 №1 сезона</span></td><td>Лучший рейтинг сезона по очкам (не финал)</td></tr>
+        <tr><td><span class="badge">📈 Топ-3 сезона</span></td><td>2–3 место в рейтинге сезона</td></tr>
+        <tr><td><span class="badge">👑 N побед</span></td><td>5 и более побед в турнирах</td></tr>
+        <tr><td><span class="badge">🥇 Побед: N</span></td><td>От 1 до 4 побед</td></tr>
+        <tr><td><span class="badge">🏅 Подиумный монстр (10+)</span></td><td>10+ попаданий в топ-3</td></tr>
+        <tr><td><span class="badge">🥈 Серебряный запас</span></td><td>5+ вторых мест</td></tr>
+        <tr><td><span class="badge">🥉 Бронзовый фонд</span></td><td>5+ третьих мест</td></tr>
+        <tr><td><span class="badge">🫧 Бабл-бой</span></td><td>5+ четвёртых мест</td></tr>
+        <tr><td><span class="badge">💀 Bounty Hunter ×N</span></td><td>Титул охотника за головами в bounty-турнире</td></tr>
+        <tr><td><span class="badge">☠️ Охотник / Жнец / Палач</span></td><td>25+ / 50+ / 100+ киллов за карьеру</td></tr>
+        <tr><td><span class="badge">💎 Большой улов</span></td><td>3500+ очков за один турнир</td></tr>
+        <tr><td><span class="badge">💥 Deepstack-победитель</span></td><td>Победа в DEEPSTACK</td></tr>
+        <tr><td><span class="badge">🃏 Joker-победитель</span></td><td>Победа в JOKER</td></tr>
+        <tr><td><span class="badge">🕵️ Mafia-победитель</span></td><td>Победа в MAFIA</td></tr>
+        <tr><td><span class="badge">🥊 Bounty-победитель</span></td><td>Победа (1 место) в BOUNTY</td></tr>
+        <tr><td><span class="badge">📊 Стабильность (30%+ побед)</span></td><td>≥10 игр и доля побед ≥30%</td></tr>
+        <tr><td><span class="badge">🎯 Частый гость (10+)</span></td><td>10–24 турнира</td></tr>
+        <tr><td><span class="badge">🎖 Ветеран клуба (25+)</span></td><td>25 и более турниров</td></tr>
+      </table></div>
     </div>
   </div>
 
@@ -567,16 +597,18 @@ function renderPlayers() {
   const rows = Object.entries(DATA.players)
     .sort((a, b) => b[1].points_total - a[1].points_total || b[1].games - a[1].games);
   document.getElementById("playersTable").innerHTML =
-    `<tr><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th><th class="num m-hide">🥈</th>
-     <th class="num m-hide">🥉</th><th class="num m-hide">побед</th><th class="num m-hide">топ-3</th>
+    `<tr><th class="num">#</th><th>Игрок</th><th class="num">Игр</th><th class="num">🥇</th>
+     <th class="num m-hide">🥈</th><th class="num m-hide">🥉</th>
+     <th class="num m-hide">побед</th><th class="num m-hide">топ-3</th>
      <th class="num">Очки</th><th>Достижения</th></tr>` +
-    rows.map(([k, p]) =>
-      `<tr><td>${esc(name(k))}</td><td class="num">${p.games}</td><td class="num">${p.wins}</td>
+    rows.map(([k, p], i) =>
+      `<tr><td class="num">${i + 1}</td><td>${esc(name(k))}</td><td class="num">${p.games}</td>
+       <td class="num">${p.wins}</td>
        <td class="num m-hide">${p.seconds}</td><td class="num m-hide">${p.thirds}</td>
        <td class="num m-hide">${p.games ? Math.round(p.wins / p.games * 100) : 0}%</td>
        <td class="num m-hide">${p.games ? Math.round(p.podiums / p.games * 100) : 0}%</td>
        <td class="num">${p.points_total}</td>
-       <td class="badges-cell">${p.badges.map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
+       <td class="badges-cell">${(p.badges || []).map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
 }
 </script>
   
