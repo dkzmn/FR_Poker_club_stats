@@ -22,7 +22,17 @@ def norm_key(name: str) -> str:
     return "".join(s.split())
 
 
-ALIASES = {norm_key(k): v for k, v in ALIASES_RAW.items() if not k.startswith("_")}
+# "Старое": "Канон" — склейка; "Игрок": null — исключить из статистики.
+ALIASES: dict[str, str] = {}
+EXCLUDED: set[str] = set()
+for _k, _v in ALIASES_RAW.items():
+    if _k.startswith("_"):
+        continue
+    nk = norm_key(_k)
+    if _v is None:
+        EXCLUDED.add(nk)
+    else:
+        ALIASES[nk] = _v
 
 
 class PlayerRegistry:
@@ -31,13 +41,19 @@ class PlayerRegistry:
     def __init__(self) -> None:
         self.spellings: dict[str, defaultdict[str, int]] = {}
 
-    def canon_key(self, raw: str) -> str:
+    def canon_key(self, raw: str) -> str | None:
+        """Канонический ключ или None, если игрок исключён через aliases.json."""
         raw = raw.strip()
-        if norm_key(raw) in ALIASES:
-            raw = ALIASES[norm_key(raw)]
-        key = norm_key(raw)
-        self.spellings.setdefault(key, defaultdict(int))[raw] += 1
-        return key
+        nk = norm_key(raw)
+        if nk in EXCLUDED:
+            return None
+        if nk in ALIASES:
+            raw = ALIASES[nk]
+            nk = norm_key(raw)
+            if nk in EXCLUDED:
+                return None
+        self.spellings.setdefault(nk, defaultdict(int))[raw] += 1
+        return nk
 
     def display(self, key: str) -> str:
         return max(self.spellings[key].items(), key=lambda kv: kv[1])[0]
@@ -63,18 +79,22 @@ def main() -> None:
         "SELECT msg_id, date_utc, name, is_final, bounty_hunter, bounty_hunter_kills "
         "FROM tournaments ORDER BY date_utc"
     ):
-        results = [
-            {
-                "place": place,
-                "player_key": reg.canon_key(raw_name),
-                "kills": kills,
-                "points": points,
-            }
-            for place, raw_name, kills, points in conn.execute(
-                "SELECT place, raw_name, kills, points FROM results WHERE msg_id=? ORDER BY place",
-                (msg_id,),
+        results = []
+        for place, raw_name, kills, points in conn.execute(
+            "SELECT place, raw_name, kills, points FROM results WHERE msg_id=? ORDER BY place",
+            (msg_id,),
+        ):
+            key = reg.canon_key(raw_name)
+            if key is None:
+                continue
+            results.append(
+                {
+                    "place": place,
+                    "player_key": key,
+                    "kills": kills,
+                    "points": points,
+                }
             )
-        ]
         season = season_for(date_utc)
         tournaments.append(
             {

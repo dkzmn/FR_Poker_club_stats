@@ -1,31 +1,17 @@
 {
- "generated_at": "2026-07-26T12:56:34+00:00",
+ "generated_at": "2026-07-27T20:23:42+00:00",
  "channel": "FRPokerClub",
  "player_names": {
-  "резниковфедор": "Резников Фёдор",
-  "максимовсергей": "Максимов Сергей",
-  "швецовартем": "Швецов Артём",
-  "щипановданиил": "Щипанов Даниил",
-  "субботиналександр": "Субботин Александр",
-  "семистеновроман": "Семистенов Роман",
-  "корчажниковданиил": "Корчажников Даниил",
-  "гурагригорий": "Гура Григорий",
-  "екатерина": "Екатерина",
-  "резниковаолеся": "Резникова Олеся",
-  "глеб": "Глеб",
-  "дарья": "Дарья",
-  "муравейниккирилл": "Муравейник Кирилл",
-  "алексей": "Алексей",
-  "дмитрий": "Дмитрий",
+  "soulknight": "SoulKnight",
+  "скрф": "СК РФ",
+  "головадвауха": "Голова два уха",
   "гурупокера": "Гуру Покера",
-  "глеббэт": "ГлебБэт",
+  "ladiesman_217": "Ladiesman_217",
   "параллелепипед": "Параллелепипед",
   "meekaterin": "MeeKaterin",
-  "soulknight": "SoulKnight",
-  "головадвауха": "Голова два уха",
   "antonio_ludomanio": "Antonio_ludomanio",
   "nev": "Nev",
-  "pupok17": "Pupok17",
+  "фанатгурупокера67": "Фанат Гуру Покера 67",
   "радист": "Радист",
   "опер_228": "Опер_228",
   "lo": "Lo",
@@ -39,7 +25,7 @@
   "dbega": "DBega",
   "barberita": "Barberita",
   "dk": "DK",
-  "рамазан": "Рамазан",
+  "папавздании": "Папа в здании",
   "pannda": "PannDa",
   "nadgenda": "NadGenda",
   "vitalymetelev": "VitalyMetelev",
@@ -47,16 +33,13 @@
   "los": "Los",
   "ягодка": "Ягодка",
   "тяпа": "Тяпа",
-  "папавздании": "Папа в здании",
   "leo": "LEO",
   "вероничка:3": "Вероничка :3",
   "машуля": "Машуля",
-  "скрф": "СК РФ",
   "mercedessila": "Mercedes Sila",
   "kudri": "KUDRI",
   "химоза": "Химоза",
   "фсб": "ФСБ",
-  "ladiesman_217": "Ladiesman_217",
   "ильяк": "Илья К",
   "mumimama": "Mumimama",
   "семенсергеевич": "Семён Сергеевич",
@@ -65,7 +48,6 @@
   "жабазина": "Жаба Зина",
   "nikolayyary777": "NikolayYary777",
   "ивананисимов": "Иван Анисимов",
-  "фанатгурупокера67": "Фанат Гуру Покера 67",
   "демсонидрис": "Демсон Идрис",
   "уолтеруайт": "Уолтер Уайт",
   "hamp1xxx": "Hamp1xxx",
@@ -87,33 +69,33 @@
     {
      "player_key": "гурупокера",
      "points": 25360,
-     "games": 12,
-     "wins": 5,
-     "seconds": 3,
+     "games": 15,
+     "wins": 7,
+     "seconds": 4,
      "thirds": 1,
-     "podiums": 9,
+     "podiums": 12,
      "kills": 32,
      "bh_titles": 0
     },
     {
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "points": 16375,
-     "games": 13,
-     "wins": 1,
-     "seconds": 5,
+     "games": 15,
+     "wins": 2,
+     "seconds": 6,
      "thirds": 3,
-     "podiums": 9,
+     "podiums": 11,
      "kills": 6,
      "bh_titles": 0
     },
     {
      "player_key": "soulknight",
      "points": 14930,
-     "games": 17,
-     "wins": 2,
+     "games": 18,
+     "wins": 3,
      "seconds": 0,
      "thirds": 3,
-     "podiums": 5,
+     "podiums": 6,
      "kills": 14,
      "bh_titles": 0
     },
@@ -129,7 +111,7 @@
      "bh_titles": 0
     },
     {
-     "player_key": "рамазан",
+     "player_key": "папавздании",
      "points": 9640,
      "games": 4,
      "wins": 1,
@@ -206,7 +188,7 @@
      "bh_titles": 0
     },
     {
-     "player_key": "pupok17",
+     "player_key": "фанатгурупокера67",
      "points": 3400,
      "games": 2,
      "wins": 1,
@@ -318,11 +300,11 @@
     {
      "player_key": "головадвауха",
      "points": 940,
-     "games": 3,
-     "wins": 0,
+     "games": 5,
+     "wins": 1,
      "seconds": 0,
-     "thirds": 0,
-     "podiums": 0,
+     "thirds": 1,
+     "podiums": 2,
      "kills": 0,
      "bh_titles": 0
     },
@@ -404,167 +386,13 @@
      "bh_titles": 0
     },
     {
-     "player_key": "гурагригорий",
-     "points": 0,
-     "games": 3,
-     "wins": 2,
-     "seconds": 1,
-     "thirds": 0,
-     "podiums": 3,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "максимовсергей",
+     "player_key": "скрф",
      "points": 0,
      "games": 3,
      "wins": 1,
      "seconds": 2,
      "thirds": 0,
      "podiums": 3,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "семистеновроман",
-     "points": 0,
-     "games": 2,
-     "wins": 1,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 2,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "глеб",
-     "points": 0,
-     "games": 2,
-     "wins": 1,
-     "seconds": 1,
-     "thirds": 0,
-     "podiums": 2,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "резниковфедор",
-     "points": 0,
-     "games": 1,
-     "wins": 1,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "алексей",
-     "points": 0,
-     "games": 1,
-     "wins": 1,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "швецовартем",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "щипановданиил",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 1,
-     "thirds": 0,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "субботиналександр",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "корчажниковданиил",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "екатерина",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 1,
-     "thirds": 0,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "резниковаолеся",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "дарья",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "муравейниккирилл",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 1,
-     "thirds": 0,
-     "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "дмитрий",
-     "points": 0,
-     "games": 1,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 1,
-     "podiums": 1,
      "kills": 0,
      "bh_titles": 0
     }
@@ -1047,19 +875,13 @@
    "results": [
     {
      "place": 1,
-     "player_key": "резниковфедор",
+     "player_key": "soulknight",
      "kills": null,
      "points": null
     },
     {
      "place": 2,
-     "player_key": "максимовсергей",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 3,
-     "player_key": "швецовартем",
+     "player_key": "скрф",
      "kills": null,
      "points": null
     }
@@ -1076,19 +898,7 @@
    "results": [
     {
      "place": 1,
-     "player_key": "максимовсергей",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 2,
-     "player_key": "щипановданиил",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 3,
-     "player_key": "субботиналександр",
+     "player_key": "скрф",
      "kills": null,
      "points": null
     }
@@ -1105,19 +915,13 @@
    "results": [
     {
      "place": 1,
-     "player_key": "семистеновроман",
+     "player_key": "головадвауха",
      "kills": null,
      "points": null
     },
     {
      "place": 2,
-     "player_key": "максимовсергей",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 3,
-     "player_key": "корчажниковданиил",
+     "player_key": "скрф",
      "kills": null,
      "points": null
     }
@@ -1134,19 +938,7 @@
    "results": [
     {
      "place": 1,
-     "player_key": "гурагригорий",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 2,
-     "player_key": "екатерина",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 3,
-     "player_key": "резниковаолеся",
+     "player_key": "гурупокера",
      "kills": null,
      "points": null
     }
@@ -1163,19 +955,13 @@
    "results": [
     {
      "place": 1,
-     "player_key": "глеб",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": null
     },
     {
      "place": 2,
-     "player_key": "гурагригорий",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 3,
-     "player_key": "дарья",
+     "player_key": "гурупокера",
      "kills": null,
      "points": null
     }
@@ -1192,19 +978,13 @@
    "results": [
     {
      "place": 1,
-     "player_key": "гурагригорий",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 2,
-     "player_key": "муравейниккирилл",
+     "player_key": "гурупокера",
      "kills": null,
      "points": null
     },
     {
      "place": 3,
-     "player_key": "семистеновроман",
+     "player_key": "головадвауха",
      "kills": null,
      "points": null
     }
@@ -1220,20 +1000,8 @@
    "bounty_hunter_kills": null,
    "results": [
     {
-     "place": 1,
-     "player_key": "алексей",
-     "kills": null,
-     "points": null
-    },
-    {
      "place": 2,
-     "player_key": "глеб",
-     "kills": null,
-     "points": null
-    },
-    {
-     "place": 3,
-     "player_key": "дмитрий",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": null
     }
@@ -1256,7 +1024,7 @@
     },
     {
      "place": 2,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": 1440
     },
@@ -1303,7 +1071,7 @@
     },
     {
      "place": 2,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": 2810
     },
@@ -1321,7 +1089,7 @@
     },
     {
      "place": 5,
-     "player_key": "pupok17",
+     "player_key": "фанатгурупокера67",
      "kills": null,
      "points": 560
     },
@@ -1362,7 +1130,7 @@
     },
     {
      "place": 3,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 0,
      "points": 720
     },
@@ -1403,7 +1171,7 @@
     },
     {
      "place": 4,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": 225
     },
@@ -1438,7 +1206,7 @@
     },
     {
      "place": 3,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 0,
      "points": 720
     },
@@ -1514,7 +1282,7 @@
    "results": [
     {
      "place": 1,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": 1680
     },
@@ -1555,7 +1323,7 @@
     },
     {
      "place": 2,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 0,
      "points": 1120
     },
@@ -1584,7 +1352,7 @@
    "results": [
     {
      "place": 1,
-     "player_key": "pupok17",
+     "player_key": "фанатгурупокера67",
      "kills": null,
      "points": 2840
     },
@@ -1602,7 +1370,7 @@
     },
     {
      "place": 4,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": 840
     },
@@ -1661,13 +1429,13 @@
     },
     {
      "place": 5,
-     "player_key": "рамазан",
+     "player_key": "папавздании",
      "kills": 3,
      "points": 1550
     },
     {
      "place": 6,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 1,
      "points": 650
     },
@@ -1737,13 +1505,13 @@
    "results": [
     {
      "place": 1,
-     "player_key": "рамазан",
+     "player_key": "папавздании",
      "kills": 11,
      "points": 5820
     },
     {
      "place": 2,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 2,
      "points": 2400
     },
@@ -1867,7 +1635,7 @@
     },
     {
      "place": 3,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 0,
      "points": 1190
     },
@@ -1885,7 +1653,7 @@
     },
     {
      "place": 6,
-     "player_key": "рамазан",
+     "player_key": "папавздании",
      "kills": 5,
      "points": 1850
     },
@@ -1926,7 +1694,7 @@
     },
     {
      "place": 4,
-     "player_key": "рамазан",
+     "player_key": "папавздании",
      "kills": null,
      "points": 420
     },
@@ -1991,7 +1759,7 @@
     },
     {
      "place": 6,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 0,
      "points": 240
     }
@@ -2014,7 +1782,7 @@
     },
     {
      "place": 2,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": 3,
      "points": 2340
     },
@@ -2097,7 +1865,7 @@
     },
     {
      "place": 8,
-     "player_key": "глеббэт",
+     "player_key": "ladiesman_217",
      "kills": null,
      "points": null
     }
@@ -3438,38 +3206,47 @@
   }
  ],
  "players": {
-  "резниковфедор": {
-   "games": 1,
-   "wins": 1,
-   "seconds": 0,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
+  "soulknight": {
+   "games": 41,
+   "wins": 6,
+   "seconds": 1,
+   "thirds": 4,
+   "fourths": 6,
+   "podiums": 11,
+   "points_total": 36140,
+   "max_points": 3340,
+   "kills": 42,
+   "bh_titles": 1,
+   "deep_wins": 1,
+   "joker_wins": 1,
    "mafia_wins": 0,
-   "bounty_wins": 0,
+   "bounty_wins": 1,
    "champion_seasons": [],
-   "best_season_rank": 34,
+   "best_season_rank": 3,
    "first_seen": "2026-01-22",
-   "last_seen": "2026-01-22",
+   "last_seen": "2026-07-24",
    "badges": [
-    "🥇 Побед: 1"
+    "📈 Топ-3 сезона",
+    "👑 6 побед",
+    "🏅 Подиумный монстр (10+)",
+    "🫧 Бабл-бой (6× 4-е)",
+    "💀 Bounty Hunter ×1",
+    "☠️ Охотник (25+ киллов)",
+    "💥 Deepstack-победитель",
+    "🃏 Joker-победитель",
+    "🥊 Bounty-победитель",
+    "🎖 Ветеран клуба (25+ турниров)"
    ]
   },
-  "максимовсергей": {
-   "games": 3,
-   "wins": 1,
+  "скрф": {
+   "games": 6,
+   "wins": 2,
    "seconds": 2,
    "thirds": 0,
    "fourths": 0,
-   "podiums": 3,
-   "points_total": 0,
-   "max_points": 0,
+   "podiums": 4,
+   "points_total": 2380,
+   "max_points": 2060,
    "kills": 0,
    "bh_titles": 0,
    "deep_wins": 0,
@@ -3477,301 +3254,44 @@
    "mafia_wins": 0,
    "bounty_wins": 0,
    "champion_seasons": [],
-   "best_season_rank": 31,
+   "best_season_rank": 20,
    "first_seen": "2026-01-22",
-   "last_seen": "2026-02-12",
-   "badges": [
-    "🥇 Побед: 1"
-   ]
-  },
-  "швецовартем": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 36,
-   "first_seen": "2026-01-22",
-   "last_seen": "2026-01-22",
-   "badges": []
-  },
-  "щипановданиил": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 1,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 37,
-   "first_seen": "2026-01-29",
-   "last_seen": "2026-01-29",
-   "badges": []
-  },
-  "субботиналександр": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 38,
-   "first_seen": "2026-01-29",
-   "last_seen": "2026-01-29",
-   "badges": []
-  },
-  "семистеновроман": {
-   "games": 2,
-   "wins": 1,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 2,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 32,
-   "first_seen": "2026-02-12",
-   "last_seen": "2026-03-04",
-   "badges": [
-    "🥇 Побед: 1"
-   ]
-  },
-  "корчажниковданиил": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 39,
-   "first_seen": "2026-02-12",
-   "last_seen": "2026-02-12",
-   "badges": []
-  },
-  "гурагригорий": {
-   "games": 3,
-   "wins": 2,
-   "seconds": 1,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 3,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 30,
-   "first_seen": "2026-02-20",
-   "last_seen": "2026-03-04",
+   "last_seen": "2026-07-19",
    "badges": [
     "🥇 Побед: 2"
    ]
   },
-  "екатерина": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 1,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 40,
-   "first_seen": "2026-02-20",
-   "last_seen": "2026-02-20",
-   "badges": []
-  },
-  "резниковаолеся": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 41,
-   "first_seen": "2026-02-20",
-   "last_seen": "2026-02-20",
-   "badges": []
-  },
-  "глеб": {
-   "games": 2,
-   "wins": 1,
-   "seconds": 1,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 2,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 33,
-   "first_seen": "2026-02-27",
-   "last_seen": "2026-03-06",
-   "badges": [
-    "🥇 Побед: 1"
-   ]
-  },
-  "дарья": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 42,
-   "first_seen": "2026-02-27",
-   "last_seen": "2026-02-27",
-   "badges": []
-  },
-  "муравейниккирилл": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 1,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 43,
-   "first_seen": "2026-03-04",
-   "last_seen": "2026-03-04",
-   "badges": []
-  },
-  "алексей": {
-   "games": 1,
+  "головадвауха": {
+   "games": 7,
    "wins": 1,
    "seconds": 0,
-   "thirds": 0,
+   "thirds": 2,
    "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
+   "podiums": 3,
+   "points_total": 3900,
+   "max_points": 2540,
+   "kills": 13,
+   "bh_titles": 1,
    "deep_wins": 0,
    "joker_wins": 0,
    "mafia_wins": 0,
    "bounty_wins": 0,
    "champion_seasons": [],
-   "best_season_rank": 35,
-   "first_seen": "2026-03-06",
-   "last_seen": "2026-03-06",
+   "best_season_rank": 18,
+   "first_seen": "2026-02-12",
+   "last_seen": "2026-07-12",
    "badges": [
-    "🥇 Побед: 1"
+    "🥇 Побед: 1",
+    "💀 Bounty Hunter ×1"
    ]
-  },
-  "дмитрий": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 0,
-   "max_points": 0,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 44,
-   "first_seen": "2026-03-06",
-   "last_seen": "2026-03-06",
-   "badges": []
   },
   "гурупокера": {
-   "games": 27,
-   "wins": 7,
-   "seconds": 3,
+   "games": 30,
+   "wins": 9,
+   "seconds": 4,
    "thirds": 2,
    "fourths": 6,
-   "podiums": 12,
+   "podiums": 15,
    "points_total": 42950,
    "max_points": 4010,
    "kills": 52,
@@ -3784,31 +3304,32 @@
     1
    ],
    "best_season_rank": 1,
-   "first_seen": "2026-03-11",
+   "first_seen": "2026-02-20",
    "last_seen": "2026-07-24",
    "badges": [
     "🏆 Чемпион сезона 1",
     "📈 №1 сезона",
-    "👑 7 побед",
+    "👑 9 побед",
     "🏅 Подиумный монстр (10+)",
     "🫧 Бабл-бой (6× 4-е)",
     "💀 Bounty Hunter ×1",
     "☠️ Головорез (50+ киллов)",
     "💎 Большой улов (3500+ за турнир)",
     "🥊 Bounty-победитель",
+    "📊 Стабильность (30%+ побед)",
     "🎖 Ветеран клуба (25+ турниров)"
    ]
   },
-  "глеббэт": {
-   "games": 13,
-   "wins": 1,
-   "seconds": 5,
-   "thirds": 3,
+  "ladiesman_217": {
+   "games": 19,
+   "wins": 2,
+   "seconds": 6,
+   "thirds": 4,
    "fourths": 2,
-   "podiums": 9,
-   "points_total": 16375,
+   "podiums": 12,
+   "points_total": 19285,
    "max_points": 2810,
-   "kills": 6,
+   "kills": 8,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -3816,12 +3337,13 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "best_season_rank": 2,
-   "first_seen": "2026-03-11",
-   "last_seen": "2026-05-16",
+   "first_seen": "2026-02-27",
+   "last_seen": "2026-07-24",
    "badges": [
     "📈 Топ-3 сезона",
-    "🥇 Побед: 1",
-    "🥈 Серебряный запас (5)",
+    "🥇 Побед: 2",
+    "🏅 Подиумный монстр (10+)",
+    "🥈 Серебряный запас (6)",
     "🎯 Частый гость (10+ турниров)"
    ]
   },
@@ -3881,61 +3403,6 @@
     "🎯 Частый гость (10+ турниров)"
    ]
   },
-  "soulknight": {
-   "games": 40,
-   "wins": 5,
-   "seconds": 1,
-   "thirds": 4,
-   "fourths": 6,
-   "podiums": 10,
-   "points_total": 36140,
-   "max_points": 3340,
-   "kills": 42,
-   "bh_titles": 1,
-   "deep_wins": 1,
-   "joker_wins": 1,
-   "mafia_wins": 0,
-   "bounty_wins": 1,
-   "champion_seasons": [],
-   "best_season_rank": 3,
-   "first_seen": "2026-03-11",
-   "last_seen": "2026-07-24",
-   "badges": [
-    "📈 Топ-3 сезона",
-    "👑 5 побед",
-    "🏅 Подиумный монстр (10+)",
-    "🫧 Бабл-бой (6× 4-е)",
-    "💀 Bounty Hunter ×1",
-    "☠️ Охотник (25+ киллов)",
-    "💥 Deepstack-победитель",
-    "🃏 Joker-победитель",
-    "🥊 Bounty-победитель",
-    "🎖 Ветеран клуба (25+ турниров)"
-   ]
-  },
-  "головадвауха": {
-   "games": 5,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 3900,
-   "max_points": 2540,
-   "kills": 13,
-   "bh_titles": 1,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 18,
-   "first_seen": "2026-03-11",
-   "last_seen": "2026-07-12",
-   "badges": [
-    "💀 Bounty Hunter ×1"
-   ]
-  },
   "antonio_ludomanio": {
    "games": 2,
    "wins": 1,
@@ -3980,14 +3447,14 @@
    "last_seen": "2026-03-13",
    "badges": []
   },
-  "pupok17": {
-   "games": 2,
+  "фанатгурупокера67": {
+   "games": 3,
    "wins": 1,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 1,
-   "points_total": 3400,
+   "points_total": 3750,
    "max_points": 2840,
    "kills": 0,
    "bh_titles": 0,
@@ -3998,7 +3465,7 @@
    "champion_seasons": [],
    "best_season_rank": 12,
    "first_seen": "2026-03-13",
-   "last_seen": "2026-04-10",
+   "last_seen": "2026-06-21",
    "badges": [
     "🥇 Побед: 1",
     "🕵️ Mafia-победитель"
@@ -4291,28 +3758,36 @@
     "🎯 Частый гость (10+ турниров)"
    ]
   },
-  "рамазан": {
-   "games": 4,
-   "wins": 1,
-   "seconds": 0,
-   "thirds": 0,
+  "папавздании": {
+   "games": 22,
+   "wins": 4,
+   "seconds": 7,
+   "thirds": 3,
    "fourths": 1,
-   "podiums": 1,
-   "points_total": 9640,
+   "podiums": 14,
+   "points_total": 37420,
    "max_points": 5820,
-   "kills": 19,
-   "bh_titles": 0,
+   "kills": 58,
+   "bh_titles": 2,
    "deep_wins": 0,
    "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
+   "mafia_wins": 1,
+   "bounty_wins": 1,
    "champion_seasons": [],
-   "best_season_rank": 5,
+   "best_season_rank": 1,
    "first_seen": "2026-04-15",
-   "last_seen": "2026-05-03",
+   "last_seen": "2026-07-22",
    "badges": [
-    "🥇 Побед: 1",
-    "💎 Большой улов (3500+ за турнир)"
+    "📈 №1 сезона",
+    "🥇 Побед: 4",
+    "🏅 Подиумный монстр (10+)",
+    "🥈 Серебряный запас (7)",
+    "💀 Bounty Hunter ×2",
+    "☠️ Головорез (50+ киллов)",
+    "💎 Большой улов (3500+ за турнир)",
+    "🕵️ Mafia-победитель",
+    "🥊 Bounty-победитель",
+    "🎯 Частый гость (10+ турниров)"
    ]
   },
   "pannda": {
@@ -4482,37 +3957,6 @@
     "🕵️ Mafia-победитель"
    ]
   },
-  "папавздании": {
-   "games": 18,
-   "wins": 3,
-   "seconds": 7,
-   "thirds": 3,
-   "fourths": 0,
-   "podiums": 13,
-   "points_total": 27780,
-   "max_points": 2880,
-   "kills": 39,
-   "bh_titles": 2,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 1,
-   "bounty_wins": 1,
-   "champion_seasons": [],
-   "best_season_rank": 1,
-   "first_seen": "2026-05-20",
-   "last_seen": "2026-07-22",
-   "badges": [
-    "📈 №1 сезона",
-    "🥇 Побед: 3",
-    "🏅 Подиумный монстр (10+)",
-    "🥈 Серебряный запас (7)",
-    "💀 Bounty Hunter ×2",
-    "☠️ Охотник (25+ киллов)",
-    "🕵️ Mafia-победитель",
-    "🥊 Bounty-победитель",
-    "🎯 Частый гость (10+ турниров)"
-   ]
-  },
   "leo": {
    "games": 6,
    "wins": 0,
@@ -4575,29 +4019,6 @@
    "first_seen": "2026-05-23",
    "last_seen": "2026-05-23",
    "badges": []
-  },
-  "скрф": {
-   "games": 3,
-   "wins": 1,
-   "seconds": 0,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 2380,
-   "max_points": 2060,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 20,
-   "first_seen": "2026-05-31",
-   "last_seen": "2026-07-19",
-   "badges": [
-    "🥇 Побед: 1"
-   ]
   },
   "mercedessila": {
    "games": 1,
@@ -4681,27 +4102,6 @@
    "best_season_rank": 28,
    "first_seen": "2026-05-31",
    "last_seen": "2026-07-19",
-   "badges": []
-  },
-  "ladiesman_217": {
-   "games": 4,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 1,
-   "fourths": 0,
-   "podiums": 1,
-   "points_total": 2910,
-   "max_points": 1130,
-   "kills": 2,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 19,
-   "first_seen": "2026-06-10",
-   "last_seen": "2026-07-24",
    "badges": []
   },
   "ильяк": {
@@ -4870,27 +4270,6 @@
    "best_season_rank": 21,
    "first_seen": "2026-06-21",
    "last_seen": "2026-07-03",
-   "badges": []
-  },
-  "фанатгурупокера67": {
-   "games": 1,
-   "wins": 0,
-   "seconds": 0,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 0,
-   "points_total": 350,
-   "max_points": 350,
-   "kills": 0,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "best_season_rank": 36,
-   "first_seen": "2026-06-21",
-   "last_seen": "2026-06-21",
    "badges": []
   },
   "демсонидрис": {
