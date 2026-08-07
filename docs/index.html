@@ -288,7 +288,7 @@
     <div class="card full">
       <h2>Выдать достижение</h2>
       <p class="muted" style="margin:-6px 0 16px;font-size:13px">
-        Эмодзи появится в таблице сезона справа от ника (хинт — текст).
+        Эмодзи появится в таблице сезона справа от ника; описание видно при наведении или клике.
         Чтобы достижение видели все на сайте — скачайте <code>awards.json</code> и закоммитьте в репозиторий.
       </p>
       <input type="hidden" id="awardEditId" value="">
@@ -310,7 +310,7 @@
           <input id="awardEmoji" type="text" maxlength="16" placeholder="своё или выберите выше" autocomplete="off">
         </div>
         <label class="calc-field grow">
-          <span>Текст (хинт)</span>
+          <span>Описание</span>
           <input id="awardText" type="text" maxlength="120" placeholder="Описание достижения" autocomplete="off">
         </label>
       </div>
@@ -352,7 +352,10 @@ const TOURNAMENT_TYPES = [
 ];
 
 const PLACE_MEDAL = { 1: "🥇", 2: "🥈", 3: "🥉" };
-const AWARD_EMOJI_PRESETS = ["🏆", "👑", "🥇", "🔥", "💎", "⭐", "🎯", "💀", "🥊", "🃏", "🕵️", "💥", "♠️", "🎲", "❤️", "👁️"];
+const AWARD_EMOJI_PRESETS = [
+  "🏆", "👑", "🥇", "🔥", "💎", "⭐", "🎯", "💀", "🥊", "🃏", "🕵️", "💥",
+  "♠️", "♥️", "♦️", "♣️", "🎲", "❤️", "👁️", "⚡", "🍀", "🌙",
+];
 
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const name = k => DATA.player_names[k] || k;
