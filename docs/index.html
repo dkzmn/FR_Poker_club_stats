@@ -100,8 +100,26 @@
     #badgesLegend td:first-child { white-space: normal; }
   }
   #spadeUnlock { cursor: default; user-select: none; }
-  .tabs button.calc-tab { display: none; }
-  .tabs button.calc-tab.visible { display: inline-block; }
+  .tabs button.admin-tab { display: none; }
+  .tabs button.admin-tab.visible { display: inline-block; }
+  .award-icon { margin-left: 5px; cursor: help; font-size: 15px; }
+  .award-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px 14px;
+                margin-bottom: 16px; align-items: end; }
+  .award-form .calc-field.grow { grid-column: span 2; }
+  .award-form .emoji-field { max-width: 100px; }
+  .award-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .award-actions button, #awardsTable button {
+    background: var(--accent); color: #14181f; border: 0; border-radius: 8px; padding: 8px 14px;
+    font-weight: 700; cursor: pointer; font-size: 13px; font-family: inherit;
+  }
+  .award-actions button.secondary, #awardsTable button.secondary {
+    background: var(--card2); color: var(--text); border: 1px solid var(--line); font-weight: 600;
+  }
+  #awardsTable button { padding: 5px 10px; margin-right: 4px; }
+  #awardsTable td.emoji-cell { font-size: 18px; text-align: center; width: 1%; }
+  @media (max-width: 600px) {
+    .award-form .calc-field.grow { grid-column: span 1; }
+  }
   .calc-row { display: grid; grid-template-columns: 52px 1fr 72px 88px; gap: 8px; align-items: center;
               margin-bottom: 8px; position: relative; }
   .calc-row.no-kills { grid-template-columns: 52px 1fr 88px; }
@@ -230,12 +248,55 @@
       </div>
     </div>
   </div>
+
+  <div class="grid" id="awardsView" style="display:none">
+    <div class="card full">
+      <h2>Выдать достижение</h2>
+      <p class="muted" style="margin:-6px 0 16px;font-size:13px">
+        Эмодзи появится в таблице сезона справа от ника (хинт — текст).
+        Чтобы достижение видели все на сайте — скачайте <code>awards.json</code> и закоммитьте в репозиторий.
+      </p>
+      <input type="hidden" id="awardEditId" value="">
+      <div class="award-form">
+        <label class="calc-field">
+          <span>Сезон</span>
+          <select id="awardSeason"></select>
+        </label>
+        <label class="calc-field grow">
+          <span>Игрок</span>
+          <select id="awardPlayer"></select>
+        </label>
+        <label class="calc-field emoji-field">
+          <span>Эмодзи</span>
+          <input id="awardEmoji" type="text" maxlength="16" placeholder="🏆" autocomplete="off">
+        </label>
+        <label class="calc-field grow">
+          <span>Текст (хинт)</span>
+          <input id="awardText" type="text" maxlength="120" placeholder="Описание достижения" autocomplete="off">
+        </label>
+      </div>
+      <div class="award-actions">
+        <button type="button" id="awardSave">Выдать</button>
+        <button type="button" class="secondary" id="awardCancel" style="display:none">Отмена</button>
+        <button type="button" class="secondary" id="awardDownload">Скачать awards.json</button>
+        <button type="button" class="secondary" id="awardResetLocal">Сбросить локальные правки</button>
+      </div>
+      <p class="muted" id="awardStatus" style="margin:12px 0 0;font-size:13px"></p>
+    </div>
+    <div class="card full">
+      <h2>Все достижения</h2>
+      <div class="table-wrap no-max"><table id="awardsTable"></table></div>
+    </div>
+  </div>
 </div>
 
 <script>
 const PALETTE = ["#e0b34c","#4c9be0","#3fb96a","#e05c4c","#b46ce0","#4ce0d2","#e08d4c","#8ea3c7"];
-let DATA, activeTab; // id сезона | "players" | "calc"
+let DATA, activeTab; // id сезона | "players" | "calc" | "awards"
 let calcUnlocked = sessionStorage.getItem("frCalcUnlock") === "1";
+let SERVER_AWARDS = [];
+let AWARDS = [];
+const AWARDS_LS_KEY = "frAwards";
 
 const SHARE_TABLE = {"4":[0.38,0.275,0.2,0.146],"5":[0.34,0.247,0.181,0.133,0.099],"6":[0.313,0.23,0.169,0.125,0.093,0.07],"7":[0.294,0.217,0.161,0.12,0.09,0.067,0.051],"8":[0.279,0.208,0.155,0.116,0.087,0.066,0.05,0.039],"9":[0.267,0.2,0.15,0.113,0.086,0.065,0.05,0.039,0.03],"10":[0.257,0.194,0.147,0.111,0.085,0.065,0.05,0.039,0.03,0.024],"11":[0.248,0.188,0.143,0.11,0.084,0.065,0.05,0.039,0.03,0.024,0.019],"12":[0.239,0.183,0.141,0.108,0.083,0.065,0.05,0.039,0.031,0.025,0.02,0.016],"13":[0.232,0.179,0.138,0.107,0.083,0.065,0.051,0.04,0.031,0.025,0.02,0.016,0.013],"14":[0.224,0.174,0.136,0.106,0.083,0.065,0.051,0.04,0.032,0.026,0.021,0.017,0.014,0.011],"15":[0.217,0.17,0.134,0.105,0.083,0.065,0.052,0.041,0.033,0.026,0.021,0.017,0.014,0.012,0.01],"16":[0.211,0.166,0.131,0.104,0.082,0.065,0.052,0.042,0.033,0.027,0.022,0.018,0.015,0.012,0.01,0.009],"17":[0.204,0.162,0.129,0.103,0.082,0.066,0.053,0.042,0.034,0.028,0.023,0.018,0.015,0.013,0.011,0.009,0.008],"18":[0.198,0.159,0.127,0.102,0.082,0.066,0.053,0.043,0.035,0.028,0.023,0.019,0.016,0.013,0.011,0.009,0.008,0.007],"19":[0.192,0.155,0.125,0.101,0.082,0.066,0.054,0.044,0.036,0.029,0.024,0.02,0.016,0.014,0.012,0.01,0.008,0.007,0.006],"20":[0.186,0.151,0.123,0.1,0.081,0.066,0.054,0.044,0.036,0.03,0.025,0.021,0.017,0.014,0.012,0.01,0.009,0.008,0.007,0.006]};
 
@@ -276,8 +337,16 @@ function filterPlayers(q) {
   return [...prefix, ...rest].slice(0, 8);
 }
 
-fetch("data.json").then(r => r.json()).then(d => {
+fetch("data.json").then(r => r.json()).then(async d => {
   DATA = d;
+  try {
+    SERVER_AWARDS = await fetch("awards.json").then(r => r.ok ? r.json() : []);
+    if (!Array.isArray(SERVER_AWARDS)) SERVER_AWARDS = [];
+  } catch {
+    SERVER_AWARDS = [];
+  }
+  AWARDS = loadAwardsWorkingCopy();
+
   document.getElementById("meta").innerHTML =
     `Источник: <a href="https://t.me/${esc(d.channel)}" target="_blank" rel="noopener">${esc("t.me/" + d.channel)}</a> · обновлено ${new Date(d.generated_at).toLocaleString("ru-RU")}`;
   const tabs = document.getElementById("tabs");
@@ -291,13 +360,51 @@ fetch("data.json").then(r => r.json()).then(d => {
   };
   d.seasons.forEach(s => addTab(s.name, s.id));
   addTab("Игроки и достижения", "players");
-  addTab("Калькулятор", "calc", "calc-tab" + (calcUnlocked ? " visible" : ""));
+  const adminClass = "admin-tab" + (calcUnlocked ? " visible" : "");
+  addTab("Калькулятор", "calc", adminClass);
+  addTab("Достижения", "awards", adminClass);
   activeTab = d.seasons[d.seasons.length - 1].id;
   setupSpadeUnlock();
   setupCalculator();
+  setupAwardsAdmin();
   renderPlayers();
   render();
 });
+
+function loadAwardsWorkingCopy() {
+  if (!calcUnlocked) return SERVER_AWARDS.slice();
+  try {
+    const raw = localStorage.getItem(AWARDS_LS_KEY);
+    if (raw != null) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) return parsed;
+    }
+  } catch {}
+  return SERVER_AWARDS.slice();
+}
+
+function persistAwards() {
+  localStorage.setItem(AWARDS_LS_KEY, JSON.stringify(AWARDS));
+}
+
+function awardsFor(playerKey, seasonId) {
+  return AWARDS.filter(a => a.player_key === playerKey && Number(a.season_id) === Number(seasonId));
+}
+
+function awardsHtml(playerKey, seasonId) {
+  return awardsFor(playerKey, seasonId).map(a =>
+    `<span class="award-icon" title="${esc(a.text)}">${esc(a.emoji)}</span>`
+  ).join("");
+}
+
+function seasonName(id) {
+  return DATA.seasons.find(s => s.id === Number(id))?.name || String(id);
+}
+
+function newAwardId() {
+  return (crypto.randomUUID && crypto.randomUUID()) ||
+    `a-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
 
 function setupSpadeUnlock() {
   const el = document.getElementById("spadeUnlock");
@@ -311,8 +418,9 @@ function setupSpadeUnlock() {
     if (clicks >= 7) {
       calcUnlocked = true;
       sessionStorage.setItem("frCalcUnlock", "1");
-      document.querySelector(".tabs button.calc-tab")?.classList.add("visible");
-      activeTab = "calc";
+      document.querySelectorAll(".tabs button.admin-tab").forEach(b => b.classList.add("visible"));
+      AWARDS = loadAwardsWorkingCopy();
+      activeTab = "awards";
       render();
     }
   });
@@ -357,6 +465,145 @@ function setupCalculator() {
     updateCalcPreview();
   };
   rebuildCalcPlaces();
+}
+
+function setupAwardsAdmin() {
+  const seasonSel = document.getElementById("awardSeason");
+  const playerSel = document.getElementById("awardPlayer");
+  DATA.seasons.forEach(s => {
+    const o = document.createElement("option");
+    o.value = s.id;
+    o.textContent = s.name;
+    seasonSel.appendChild(o);
+  });
+  seasonSel.value = String(DATA.seasons[DATA.seasons.length - 1].id);
+
+  Object.entries(DATA.player_names)
+    .sort((a, b) => a[1].localeCompare(b[1], "ru", { sensitivity: "base" }))
+    .forEach(([key, display]) => {
+      const o = document.createElement("option");
+      o.value = key;
+      o.textContent = display;
+      playerSel.appendChild(o);
+    });
+
+  document.getElementById("awardSave").onclick = saveAwardFromForm;
+  document.getElementById("awardCancel").onclick = resetAwardForm;
+  document.getElementById("awardDownload").onclick = downloadAwardsJson;
+  document.getElementById("awardResetLocal").onclick = () => {
+    localStorage.removeItem(AWARDS_LS_KEY);
+    AWARDS = SERVER_AWARDS.slice();
+    resetAwardForm();
+    renderAwardsAdmin();
+    setAwardStatus("Локальные правки сброшены — показан awards.json с сервера.");
+  };
+}
+
+function setAwardStatus(msg) {
+  document.getElementById("awardStatus").textContent = msg || "";
+}
+
+function resetAwardForm() {
+  document.getElementById("awardEditId").value = "";
+  document.getElementById("awardEmoji").value = "";
+  document.getElementById("awardText").value = "";
+  document.getElementById("awardSeason").value = String(DATA.seasons[DATA.seasons.length - 1].id);
+  document.getElementById("awardSave").textContent = "Выдать";
+  document.getElementById("awardCancel").style.display = "none";
+}
+
+function saveAwardFromForm() {
+  const id = document.getElementById("awardEditId").value;
+  const season_id = Number(document.getElementById("awardSeason").value);
+  const player_key = document.getElementById("awardPlayer").value;
+  const emoji = document.getElementById("awardEmoji").value.trim();
+  const text = document.getElementById("awardText").value.trim();
+  if (!player_key) {
+    setAwardStatus("Выберите игрока.");
+    return;
+  }
+  if (!emoji) {
+    setAwardStatus("Введите эмодзи.");
+    return;
+  }
+  if (!text) {
+    setAwardStatus("Введите текст подсказки.");
+    return;
+  }
+  if (id) {
+    const idx = AWARDS.findIndex(a => a.id === id);
+    if (idx >= 0) AWARDS[idx] = { id, season_id, player_key, emoji, text };
+    setAwardStatus("Достижение обновлено (локально). Скачайте awards.json, чтобы опубликовать.");
+  } else {
+    AWARDS.push({ id: newAwardId(), season_id, player_key, emoji, text });
+    setAwardStatus("Достижение выдано (локально). Скачайте awards.json, чтобы опубликовать.");
+  }
+  persistAwards();
+  resetAwardForm();
+  renderAwardsAdmin();
+}
+
+function editAward(id) {
+  const a = AWARDS.find(x => x.id === id);
+  if (!a) return;
+  document.getElementById("awardEditId").value = a.id;
+  document.getElementById("awardSeason").value = String(a.season_id);
+  document.getElementById("awardPlayer").value = a.player_key;
+  document.getElementById("awardEmoji").value = a.emoji;
+  document.getElementById("awardText").value = a.text;
+  document.getElementById("awardSave").textContent = "Сохранить";
+  document.getElementById("awardCancel").style.display = "";
+  setAwardStatus("Редактирование — измените поля и нажмите «Сохранить».");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function deleteAward(id) {
+  if (!confirm("Удалить это достижение?")) return;
+  AWARDS = AWARDS.filter(a => a.id !== id);
+  persistAwards();
+  if (document.getElementById("awardEditId").value === id) resetAwardForm();
+  renderAwardsAdmin();
+  setAwardStatus("Достижение удалено (локально). Скачайте awards.json, чтобы опубликовать.");
+}
+
+function downloadAwardsJson() {
+  const blob = new Blob([JSON.stringify(AWARDS, null, 2) + "\n"], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "awards.json";
+  a.click();
+  URL.revokeObjectURL(url);
+  setAwardStatus("Файл скачан — положите его в docs/awards.json и закоммитьте.");
+}
+
+function renderAwardsAdmin() {
+  const rows = AWARDS.slice().sort((a, b) =>
+    b.season_id - a.season_id ||
+    name(a.player_key).localeCompare(name(b.player_key), "ru", { sensitivity: "base" }) ||
+    a.text.localeCompare(b.text, "ru")
+  );
+  document.getElementById("awardsTable").innerHTML =
+    `<tr><th>Сезон</th><th>Игрок</th><th>Эмодзи</th><th>Текст</th><th></th></tr>` +
+    (rows.length ? rows.map(a =>
+      `<tr>
+        <td>${esc(seasonName(a.season_id))}</td>
+        <td>${esc(name(a.player_key))}</td>
+        <td class="emoji-cell">${esc(a.emoji)}</td>
+        <td>${esc(a.text)}</td>
+        <td>
+          <button type="button" class="secondary" data-edit="${esc(a.id)}">Изменить</button>
+          <button type="button" class="secondary" data-del="${esc(a.id)}">Удалить</button>
+        </td>
+      </tr>`
+    ).join("") : `<tr><td colspan="5" class="muted">Пока нет выданных достижений</td></tr>`);
+
+  document.querySelectorAll("#awardsTable [data-edit]").forEach(btn => {
+    btn.onclick = () => editAward(btn.getAttribute("data-edit"));
+  });
+  document.querySelectorAll("#awardsTable [data-del]").forEach(btn => {
+    btn.onclick = () => deleteAward(btn.getAttribute("data-del"));
+  });
 }
 
 function rebuildCalcPlaces() {
@@ -504,9 +751,15 @@ function render() {
     b.classList.toggle("active", b.dataset.tab === String(activeTab)));
   const isPlayers = activeTab === "players";
   const isCalc = activeTab === "calc";
-  document.getElementById("seasonView").style.display = (!isPlayers && !isCalc) ? "" : "none";
+  const isAwards = activeTab === "awards";
+  document.getElementById("seasonView").style.display = (!isPlayers && !isCalc && !isAwards) ? "" : "none";
   document.getElementById("playersView").style.display = isPlayers ? "" : "none";
   document.getElementById("calcView").style.display = isCalc ? "" : "none";
+  document.getElementById("awardsView").style.display = isAwards ? "" : "none";
+  if (isAwards) {
+    renderAwardsAdmin();
+    return;
+  }
   if (isPlayers || isCalc) return;
 
   const s = DATA.seasons.find(x => x.id === activeTab);
@@ -571,7 +824,8 @@ function render() {
      <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th><th class="num">💀</th>
      <th class="num m-hide">побед</th><th class="num m-hide">топ-3</th></tr>` +
     lb.map((r, i) =>
-      `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td><td>${esc(name(r.player_key))}</td>
+      `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td>
+       <td>${esc(name(r.player_key))}${awardsHtml(r.player_key, activeTab)}</td>
        <td class="num">${r.points}</td><td class="num">${r.games}</td><td class="num">${r.wins}</td>
        <td class="num">${r.seconds}</td><td class="num">${r.thirds}</td>
        <td class="num">${r.kills}</td>
