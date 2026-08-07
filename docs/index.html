@@ -133,7 +133,7 @@
   .calc-row input { width: 100%; min-width: 0; }
   .calc-suggest {
     position: absolute; left: 52px; right: 88px; top: 100%; z-index: 20; margin-top: 2px;
-    background: var(--card2); border: 1px solid var(--line); border-radius: 8px; max-height: 180px;
+    background: var(--card2); border: 1px solid var(--line); border-radius: 8px; max-height: 260px;
     overflow-y: auto; display: none; box-shadow: 0 8px 24px rgba(0,0,0,.35);
   }
   .calc-row.no-kills .calc-suggest { right: 88px; }
@@ -324,17 +324,26 @@ function placePoints(n, place, m) {
   return round10(round10(n * 1000 * share) * m);
 }
 
-function playerNameList() {
-  return Object.values(DATA.player_names).sort((a, b) => a.localeCompare(b, "ru", { sensitivity: "base" }));
+function playersByGames() {
+  return Object.entries(DATA.player_names)
+    .map(([key, display]) => ({
+      display,
+      games: DATA.players[key]?.games || 0,
+    }))
+    .sort((a, b) =>
+      b.games - a.games ||
+      a.display.localeCompare(b.display, "ru", { sensitivity: "base" })
+    );
 }
 
 function filterPlayers(q) {
   const s = q.trim().toLowerCase();
-  if (!s) return [];
-  const all = playerNameList();
-  const prefix = all.filter(n => n.toLowerCase().startsWith(s));
-  const rest = all.filter(n => !n.toLowerCase().startsWith(s) && n.toLowerCase().includes(s));
-  return [...prefix, ...rest].slice(0, 8);
+  const all = playersByGames();
+  if (!s) return all.map(p => p.display).slice(0, 20);
+  const matched = all.filter(p => p.display.toLowerCase().includes(s));
+  const prefix = matched.filter(p => p.display.toLowerCase().startsWith(s));
+  const rest = matched.filter(p => !p.display.toLowerCase().startsWith(s));
+  return [...prefix, ...rest].map(p => p.display).slice(0, 20);
 }
 
 fetch("data.json").then(r => r.json()).then(async d => {
@@ -666,7 +675,8 @@ function bindPlayerSuggest(row) {
   };
 
   input.addEventListener("input", () => show(filterPlayers(input.value)));
-  input.addEventListener("focus", () => { if (input.value.trim()) show(filterPlayers(input.value)); });
+  input.addEventListener("focus", () => show(filterPlayers(input.value)));
+  input.addEventListener("click", () => show(filterPlayers(input.value)));
   input.addEventListener("blur", () => setTimeout(hide, 150));
   input.addEventListener("keydown", e => {
     const buttons = [...suggest.querySelectorAll("button")];
