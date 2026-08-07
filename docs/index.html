@@ -114,8 +114,12 @@
     background: var(--card2); border: 1px solid var(--line); border-radius: 8px;
     width: 40px; height: 40px; font-size: 20px; cursor: pointer; padding: 0; line-height: 1;
   }
-  .emoji-picks button:hover, .emoji-picks button.active {
+  .emoji-picks button:hover, .emoji-picks button.is-selected {
     border-color: var(--accent); background: rgba(224, 179, 76, .18);
+  }
+  .emoji-picks button:focus { outline: none; }
+  .emoji-picks button:focus-visible {
+    border-color: var(--accent); box-shadow: 0 0 0 2px rgba(224, 179, 76, .35);
   }
   .award-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
   .award-actions button, #awardsTable button {
@@ -279,11 +283,11 @@
             <div class="calc-suggest" id="awardPlayerSuggest" hidden></div>
           </div>
         </label>
-        <label class="calc-field emoji-field">
+        <div class="calc-field emoji-field">
           <span>Эмодзи</span>
           <div class="emoji-picks" id="awardEmojiPicks"></div>
           <input id="awardEmoji" type="text" maxlength="16" placeholder="своё или выберите выше" autocomplete="off">
-        </label>
+        </div>
         <label class="calc-field grow">
           <span>Текст (хинт)</span>
           <input id="awardText" type="text" maxlength="120" placeholder="Описание достижения" autocomplete="off">
@@ -569,13 +573,14 @@ function setupAwardsAdmin() {
   const syncEmojiActive = () => {
     const cur = emojiInput.value.trim();
     picks.querySelectorAll("button").forEach(b =>
-      b.classList.toggle("active", b.getAttribute("data-emoji") === cur)
+      b.classList.toggle("is-selected", b.getAttribute("data-emoji") === cur)
     );
   };
   picks.querySelectorAll("button").forEach(btn => {
     btn.onclick = () => {
       emojiInput.value = btn.getAttribute("data-emoji");
       syncEmojiActive();
+      btn.blur();
     };
   });
   emojiInput.addEventListener("input", syncEmojiActive);
@@ -604,7 +609,7 @@ function resetAwardForm() {
   document.getElementById("awardSeason").value = String(DATA.seasons[DATA.seasons.length - 1].id);
   document.getElementById("awardSave").textContent = "Выдать";
   document.getElementById("awardCancel").style.display = "none";
-  document.querySelectorAll("#awardEmojiPicks button").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll("#awardEmojiPicks button").forEach(b => b.classList.remove("is-selected"));
 }
 
 function saveAwardFromForm() {
@@ -649,7 +654,7 @@ function editAward(id) {
   document.getElementById("awardSave").textContent = "Сохранить";
   document.getElementById("awardCancel").style.display = "";
   document.querySelectorAll("#awardEmojiPicks button").forEach(b =>
-    b.classList.toggle("active", b.getAttribute("data-emoji") === a.emoji)
+    b.classList.toggle("is-selected", b.getAttribute("data-emoji") === a.emoji)
   );
   setAwardStatus("Редактирование — измените поля и нажмите «Сохранить».");
   window.scrollTo({ top: 0, behavior: "smooth" });
