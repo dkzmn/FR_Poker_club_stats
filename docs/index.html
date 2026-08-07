@@ -106,7 +106,17 @@
   .award-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px 14px;
                 margin-bottom: 16px; align-items: end; }
   .award-form .calc-field.grow { grid-column: span 2; }
-  .award-form .emoji-field { max-width: 100px; }
+  .award-form .emoji-field { max-width: none; grid-column: 1 / -1; }
+  .award-player-wrap { position: relative; }
+  .award-player-wrap .calc-suggest { left: 0; right: 0; }
+  .emoji-picks { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .emoji-picks button {
+    background: var(--card2); border: 1px solid var(--line); border-radius: 8px;
+    width: 40px; height: 40px; font-size: 20px; cursor: pointer; padding: 0; line-height: 1;
+  }
+  .emoji-picks button:hover, .emoji-picks button.active {
+    border-color: var(--accent); background: rgba(224, 179, 76, .18);
+  }
   .award-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
   .award-actions button, #awardsTable button {
     background: var(--accent); color: #14181f; border: 0; border-radius: 8px; padding: 8px 14px;
@@ -264,11 +274,15 @@
         </label>
         <label class="calc-field grow">
           <span>Игрок</span>
-          <select id="awardPlayer"></select>
+          <div class="award-player-wrap">
+            <input id="awardPlayer" type="text" autocomplete="off" spellcheck="false" placeholder="ник">
+            <div class="calc-suggest" id="awardPlayerSuggest" hidden></div>
+          </div>
         </label>
         <label class="calc-field emoji-field">
           <span>Эмодзи</span>
-          <input id="awardEmoji" type="text" maxlength="16" placeholder="🏆" autocomplete="off">
+          <div class="emoji-picks" id="awardEmojiPicks"></div>
+          <input id="awardEmoji" type="text" maxlength="16" placeholder="своё или выберите выше" autocomplete="off">
         </label>
         <label class="calc-field grow">
           <span>Текст (хинт)</span>
@@ -313,6 +327,7 @@ const TOURNAMENT_TYPES = [
 ];
 
 const PLACE_MEDAL = { 1: "🥇", 2: "🥈", 3: "🥉" };
+const AWARD_EMOJI_PRESETS = ["🏆", "👑", "🥇", "🔥", "💎", "⭐", "🎯", "💀", "🥊", "🃏", "🕵️", "💥", "♠️", "🎲", "❤️", "👁️"];
 
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const name = k => DATA.player_names[k] || k;
@@ -327,6 +342,7 @@ function placePoints(n, place, m) {
 function playersByGames() {
   return Object.entries(DATA.player_names)
     .map(([key, display]) => ({
+      key,
       display,
       games: DATA.players[key]?.games || 0,
     }))
@@ -344,6 +360,60 @@ function filterPlayers(q) {
   const prefix = matched.filter(p => p.display.toLowerCase().startsWith(s));
   const rest = matched.filter(p => !p.display.toLowerCase().startsWith(s));
   return [...prefix, ...rest].map(p => p.display).slice(0, 20);
+}
+
+function keyForDisplayName(display) {
+  const s = display.trim().toLowerCase();
+  if (!s) return null;
+  const exact = Object.entries(DATA.player_names).find(([, n]) => n === display.trim());
+  if (exact) return exact[0];
+  const ci = Object.entries(DATA.player_names).find(([, n]) => n.toLowerCase() === s);
+  return ci ? ci[0] : null;
+}
+
+function bindNameSuggest(input, suggest, onPick) {
+  let active = -1;
+  const hide = () => { suggest.style.display = "none"; suggest.innerHTML = ""; active = -1; };
+  const show = items => {
+    if (!items.length) { hide(); return; }
+    suggest.innerHTML = items.map((n, i) =>
+      `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
+    suggest.style.display = "block";
+    suggest.removeAttribute("hidden");
+    active = 0;
+    [...suggest.children].forEach((b, i) => b.classList.toggle("active", i === active));
+    suggest.querySelectorAll("button").forEach(btn => {
+      btn.onmousedown = e => {
+        e.preventDefault();
+        input.value = btn.textContent;
+        hide();
+        onPick?.(btn.textContent);
+      };
+    });
+  };
+
+  input.addEventListener("input", () => show(filterPlayers(input.value)));
+  input.addEventListener("focus", () => show(filterPlayers(input.value)));
+  input.addEventListener("click", () => show(filterPlayers(input.value)));
+  input.addEventListener("blur", () => setTimeout(hide, 150));
+  input.addEventListener("keydown", e => {
+    const buttons = [...suggest.querySelectorAll("button")];
+    if (!buttons.length) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      active = (active + 1) % buttons.length;
+      buttons.forEach((b, i) => b.classList.toggle("active", i === active));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      active = (active - 1 + buttons.length) % buttons.length;
+      buttons.forEach((b, i) => b.classList.toggle("active", i === active));
+    } else if (e.key === "Enter" && active >= 0) {
+      e.preventDefault();
+      input.value = buttons[active].textContent;
+      hide();
+      onPick?.(buttons[active].textContent);
+    } else if (e.key === "Escape") hide();
+  });
 }
 
 fetch("data.json").then(r => r.json()).then(async d => {
@@ -478,7 +548,6 @@ function setupCalculator() {
 
 function setupAwardsAdmin() {
   const seasonSel = document.getElementById("awardSeason");
-  const playerSel = document.getElementById("awardPlayer");
   DATA.seasons.forEach(s => {
     const o = document.createElement("option");
     o.value = s.id;
@@ -487,14 +556,29 @@ function setupAwardsAdmin() {
   });
   seasonSel.value = String(DATA.seasons[DATA.seasons.length - 1].id);
 
-  Object.entries(DATA.player_names)
-    .sort((a, b) => a[1].localeCompare(b[1], "ru", { sensitivity: "base" }))
-    .forEach(([key, display]) => {
-      const o = document.createElement("option");
-      o.value = key;
-      o.textContent = display;
-      playerSel.appendChild(o);
-    });
+  bindNameSuggest(
+    document.getElementById("awardPlayer"),
+    document.getElementById("awardPlayerSuggest")
+  );
+
+  const picks = document.getElementById("awardEmojiPicks");
+  const emojiInput = document.getElementById("awardEmoji");
+  picks.innerHTML = AWARD_EMOJI_PRESETS.map(e =>
+    `<button type="button" data-emoji="${esc(e)}" title="${esc(e)}">${e}</button>`
+  ).join("");
+  const syncEmojiActive = () => {
+    const cur = emojiInput.value.trim();
+    picks.querySelectorAll("button").forEach(b =>
+      b.classList.toggle("active", b.getAttribute("data-emoji") === cur)
+    );
+  };
+  picks.querySelectorAll("button").forEach(btn => {
+    btn.onclick = () => {
+      emojiInput.value = btn.getAttribute("data-emoji");
+      syncEmojiActive();
+    };
+  });
+  emojiInput.addEventListener("input", syncEmojiActive);
 
   document.getElementById("awardSave").onclick = saveAwardFromForm;
   document.getElementById("awardCancel").onclick = resetAwardForm;
@@ -514,25 +598,27 @@ function setAwardStatus(msg) {
 
 function resetAwardForm() {
   document.getElementById("awardEditId").value = "";
+  document.getElementById("awardPlayer").value = "";
   document.getElementById("awardEmoji").value = "";
   document.getElementById("awardText").value = "";
   document.getElementById("awardSeason").value = String(DATA.seasons[DATA.seasons.length - 1].id);
   document.getElementById("awardSave").textContent = "Выдать";
   document.getElementById("awardCancel").style.display = "none";
+  document.querySelectorAll("#awardEmojiPicks button").forEach(b => b.classList.remove("active"));
 }
 
 function saveAwardFromForm() {
   const id = document.getElementById("awardEditId").value;
   const season_id = Number(document.getElementById("awardSeason").value);
-  const player_key = document.getElementById("awardPlayer").value;
+  const player_key = keyForDisplayName(document.getElementById("awardPlayer").value);
   const emoji = document.getElementById("awardEmoji").value.trim();
   const text = document.getElementById("awardText").value.trim();
   if (!player_key) {
-    setAwardStatus("Выберите игрока.");
+    setAwardStatus("Выберите игрока из списка (или введите ник точно).");
     return;
   }
   if (!emoji) {
-    setAwardStatus("Введите эмодзи.");
+    setAwardStatus("Выберите или введите эмодзи.");
     return;
   }
   if (!text) {
@@ -557,11 +643,14 @@ function editAward(id) {
   if (!a) return;
   document.getElementById("awardEditId").value = a.id;
   document.getElementById("awardSeason").value = String(a.season_id);
-  document.getElementById("awardPlayer").value = a.player_key;
+  document.getElementById("awardPlayer").value = name(a.player_key);
   document.getElementById("awardEmoji").value = a.emoji;
   document.getElementById("awardText").value = a.text;
   document.getElementById("awardSave").textContent = "Сохранить";
   document.getElementById("awardCancel").style.display = "";
+  document.querySelectorAll("#awardEmojiPicks button").forEach(b =>
+    b.classList.toggle("active", b.getAttribute("data-emoji") === a.emoji)
+  );
   setAwardStatus("Редактирование — измените поля и нажмите «Сохранить».");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -647,55 +736,16 @@ function rebuildCalcPlaces() {
       </div>`;
     }).join("");
 
-  box.querySelectorAll(".calc-row[data-place]").forEach(row => bindPlayerSuggest(row));
+  box.querySelectorAll(".calc-row[data-place]").forEach(row => {
+    const input = row.querySelector("input[data-role=name]");
+    const suggest = row.querySelector(".calc-suggest");
+    bindNameSuggest(input, suggest, () => updateCalcPreview());
+  });
   box.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("input", updateCalcPreview);
     inp.addEventListener("change", updateCalcPreview);
   });
   updateCalcPreview();
-}
-
-function bindPlayerSuggest(row) {
-  const input = row.querySelector("input[data-role=name]");
-  const suggest = row.querySelector(".calc-suggest");
-  let active = -1;
-
-  const hide = () => { suggest.style.display = "none"; suggest.innerHTML = ""; active = -1; };
-  const show = items => {
-    if (!items.length) { hide(); return; }
-    suggest.innerHTML = items.map((n, i) =>
-      `<button type="button" data-i="${i}">${esc(n)}</button>`).join("");
-    suggest.style.display = "block";
-    suggest.removeAttribute("hidden");
-    active = 0;
-    [...suggest.children].forEach((b, i) => b.classList.toggle("active", i === active));
-    suggest.querySelectorAll("button").forEach(btn => {
-      btn.onmousedown = e => { e.preventDefault(); input.value = btn.textContent; hide(); updateCalcPreview(); };
-    });
-  };
-
-  input.addEventListener("input", () => show(filterPlayers(input.value)));
-  input.addEventListener("focus", () => show(filterPlayers(input.value)));
-  input.addEventListener("click", () => show(filterPlayers(input.value)));
-  input.addEventListener("blur", () => setTimeout(hide, 150));
-  input.addEventListener("keydown", e => {
-    const buttons = [...suggest.querySelectorAll("button")];
-    if (!buttons.length) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      active = (active + 1) % buttons.length;
-      buttons.forEach((b, i) => b.classList.toggle("active", i === active));
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      active = (active - 1 + buttons.length) % buttons.length;
-      buttons.forEach((b, i) => b.classList.toggle("active", i === active));
-    } else if (e.key === "Enter" && active >= 0) {
-      e.preventDefault();
-      input.value = buttons[active].textContent;
-      hide();
-      updateCalcPreview();
-    } else if (e.key === "Escape") hide();
-  });
 }
 
 function readCalcEntries() {
