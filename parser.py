@@ -18,20 +18,25 @@ HEADER_RE = re.compile(
     r"^[👑🏆]?\s*ПОБЕДИТЕ(?:ЛИ)?(?:\s+ТУРНИРА)?:?\s*(?P<name>.*?)\s*$", re.IGNORECASE
 )
 # строка результата: медаль / номер места / 🌟 / 🩸, затем имя, опционально "(роль)",
-# опционально ": N ☠" (иногда ☠️ с variation selector U+FE0F), опционально "- очки"
+# опционально ": N ☠" (иногда ☠️ с variation selector U+FE0F), опционально "- очки";
+# в финале места бывают "1. Ник 👑" / "2. Ник 🥈"
 RESULT_RE = re.compile(
     r"^(?P<place>🥇|🥈|🥉|🌟|🩸|\d{1,2})[\s.]*"
     r"(?P<name>.+?)"
     r"(?:\s*\([^)]*\))?"       # роль в скобках, напр. "(Дон Эладио🔥)" — отбрасываем
     r"(?:\s*:\s*(?P<kills>\d+)\s*☠\uFE0F?)?"
     r"(?:\s*[-–—]\s*(?P<points>\d+))?"
-    r"\s*[🔥💥⚡️]*\s*$"
+    r"\s*[🔥💥⚡️👑🥇🥈🥉🌟]*\s*$"
 )
 MEDAL_PLACE = {"🥇": 1, "🥈": 2, "🥉": 3}
 BOUNTY_HUNTER_RE = re.compile(r"Bounty Hunter турнира\s*[-–—]\s*(?P<name>.+?)\s*:\s*(?P<kills>\d+)")
 NAME_FROM_TEXT_RE = re.compile(r"Турнир\s+(?P<name>\S+)\s+завершен", re.IGNORECASE)
-# пост финала сезона: "ФИНАЛ СЕЗОНА - ЗАВЕРШЕН", далее "Победители:" и строки с медалями
+# пост финала: "ФИНАЛ СЕЗОНА - ЗАВЕРШЕН" / "финал второго сезона - ЗАВЕРШЕН",
+# далее блок "Победители:" (сезон 1) или "Итоги турнира:" (сезон 2+)
 FINAL_HEADER_RE = re.compile(r"ФИНАЛ\s+(?:\S+\s+)?СЕЗОНА\s*[-–—]?\s*ЗАВЕРШЕН", re.IGNORECASE)
+FINAL_RESULTS_START_RE = re.compile(
+    r"^(?:[^\wа-яё]*\s*)?(?:Победители|Итоги\s+турнира)\b", re.IGNORECASE
+)
 # строки, завершающие блок результатов
 TERMINATOR_RE = re.compile(r"^(📊|Спасибо|Всем большое спасибо|Друзья)")
 
@@ -125,7 +130,7 @@ def parse_final(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | 
     lines = text.split("\n")
     start = None
     for i, line in enumerate(lines):
-        if line.strip().startswith("Победители"):
+        if FINAL_RESULTS_START_RE.match(line.strip()):
             start = i + 1
             break
     if start is None:
