@@ -271,8 +271,10 @@ def main() -> None:
         typed_win("🕵️", "Mafia-победитель", p["mafia_wins"])
         typed_win("🥊", "Bounty-победитель", p["bounty_wins"])
 
-        if p["games"] >= 10 and p["wins"] / p["games"] >= 0.3:
-            out.append(badge("📊", "Стабильность (30%+ побед при ≥10 играх)"))
+        if p["games"] >= 10 and p["podiums"] / p["games"] >= 0.5:
+            pct = round(p["podiums"] / p["games"] * 100)
+            out.append(badge("🔝", f"Подиум 50%+ ({pct}% топ-3 при {p['games']} играх)"))
+
         if p["games"] >= 50:
             out.append(badge("🌟", "Легенда клуба (50+ турниров)"))
         elif p["games"] >= 25:

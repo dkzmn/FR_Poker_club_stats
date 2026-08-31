@@ -47,7 +47,7 @@
   #lbTable th:nth-child(2), #lbTable td:nth-child(2) { padding-right: 10px; }
   /* игроки: таблица на ширину карточки, бейджи — компактные эмодзи */
   #playersTable { width: 100%; }
-  #playersTable td.badges-cell { white-space: normal; line-height: 1.6; }
+  #playersTable td.badges-cell { white-space: normal; line-height: 1.6; overflow: visible; }
   #playersTable td.badges-cell .award-icon { margin: 1px 5px 1px 0; }
   #badgesLegend td:first-child { white-space: nowrap; vertical-align: top; }
   #badgesLegend td:last-child { color: var(--muted); }
@@ -99,7 +99,7 @@
     #playersTable th:nth-child(4), #playersTable td:nth-child(4),
     #playersTable th:nth-child(8), #playersTable td:nth-child(8) { width: 9%; }
     #playersTable th:nth-child(11), #playersTable td:nth-child(11) { width: 12%; }
-    #playersTable th:last-child, #playersTable td:last-child { width: auto; overflow: hidden; }
+    #playersTable th:last-child, #playersTable td:last-child { width: auto; overflow: visible; }
     #badgesLegend td:first-child { white-space: normal; }
   }
   #spadeUnlock { cursor: default; user-select: none; }
@@ -126,6 +126,7 @@
   }
   .award-icon[data-tip]:hover::after, .award-icon[data-tip]:hover::before,
   .award-icon[data-tip]:focus-visible::after, .award-icon[data-tip]:focus-visible::before,
+  .award-icon[data-tip].is-open::after, .award-icon[data-tip].is-open::before { opacity: 1; }
   .award-icon:focus { outline: none; }
   .badge-emoji.crown-gold { filter: saturate(1.35) brightness(1.08); }
   .badge-emoji.crown-silver { filter: grayscale(1) brightness(1.35) contrast(1.05); }
@@ -247,7 +248,7 @@
         <tr><td><span class="award-icon"><span class="badge-emoji crown-gold">👑</span></span>
           <span class="award-icon"><span class="badge-emoji crown-silver">👑</span></span>
           <span class="award-icon"><span class="badge-emoji crown-bronze">👑</span></span></td>
-          <td>№1 / №2 / №3 очкового рейтинга сезона (золото / серебро / бронза)</td></tr>
+          <td>№1 / №2 / №3 рейтинга сезона (золото / серебро / бронза)</td></tr>
         <tr><td><span class="award-icon">🥇<span class="badge-n"> × N</span></span></td><td>N побед в турнирах</td></tr>
         <tr><td><span class="award-icon">💀<span class="badge-n"> × N</span></span></td><td>N раз титул Bounty Hunter</td></tr>
         <tr><td><span class="award-icon">☠️</span></td><td>Охотник / Головорез / Палач — 25+ / 50+ / 100+ баунти</td></tr>
@@ -256,7 +257,7 @@
         <tr><td><span class="award-icon">🃏</span></td><td>Победа в JOKER</td></tr>
         <tr><td><span class="award-icon">🕵️</span></td><td>Победа в MAFIA</td></tr>
         <tr><td><span class="award-icon">🥊</span></td><td>Победа (1 место) в BOUNTY</td></tr>
-        <tr><td><span class="award-icon">📊</span></td><td>Стабильность — ≥10 игр и доля побед ≥30%</td></tr>
+        <tr><td><span class="award-icon">🔝</span></td><td>Подиум 50%+ — доля попаданий в топ-3 ≥50% при ≥10 играх</td></tr>
         <tr><td><span class="award-icon">🎯</span></td><td>Частый гость — 10–24 турнира</td></tr>
         <tr><td><span class="award-icon">🎖</span></td><td>Ветеран клуба — 25–49 турниров</td></tr>
         <tr><td><span class="award-icon">🌟</span></td><td>Легенда клуба — 50 и более турниров</td></tr>
