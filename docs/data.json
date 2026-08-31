@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-31T09:53:10+00:00",
+ "generated_at": "2026-08-31T12:56:46+00:00",
  "channel": "FRPokerClub",
  "player_names": {
   "soulknight": "SoulKnight",
@@ -4804,12 +4804,12 @@
    ]
   },
   "гурупокера": {
-   "games": 42,
-   "wins": 12,
+   "games": 44,
+   "wins": 14,
    "seconds": 5,
    "thirds": 2,
    "fourths": 6,
-   "podiums": 19,
+   "podiums": 21,
    "points_total": 57340,
    "max_points": 4010,
    "kills": 70,
@@ -4849,8 +4849,8 @@
     },
     {
      "emoji": "🥇",
-     "text": "12 побед",
-     "n": 12
+     "text": "14 побед",
+     "n": 14
     },
     {
      "emoji": "💀",
@@ -4877,7 +4877,7 @@
    ]
   },
   "ladiesman_217": {
-   "games": 20,
+   "games": 21,
    "wins": 2,
    "seconds": 6,
    "thirds": 4,
@@ -4914,7 +4914,7 @@
     },
     {
      "emoji": "🔥",
-     "text": "Подиум 50%+ (60% топ-3 при 20 играх)"
+     "text": "Подиум 50%+ (57% топ-3 при 21 играх)"
     },
     {
      "emoji": "🎯",
@@ -4923,7 +4923,7 @@
    ]
   },
   "параллелепипед": {
-   "games": 3,
+   "games": 4,
    "wins": 1,
    "seconds": 0,
    "thirds": 1,
@@ -4951,7 +4951,7 @@
    ]
   },
   "meekaterin": {
-   "games": 27,
+   "games": 29,
    "wins": 8,
    "seconds": 4,
    "thirds": 1,
@@ -5131,7 +5131,7 @@
    "badges": []
   },
   "lo": {
-   "games": 19,
+   "games": 20,
    "wins": 0,
    "seconds": 1,
    "thirds": 5,
@@ -5279,12 +5279,12 @@
    "badges": []
   },
   "royal_pash": {
-   "games": 5,
+   "games": 7,
    "wins": 1,
-   "seconds": 1,
+   "seconds": 2,
    "thirds": 1,
    "fourths": 0,
-   "podiums": 3,
+   "podiums": 4,
    "points_total": 6785,
    "max_points": 2820,
    "kills": 0,
@@ -5311,11 +5311,11 @@
    ]
   },
   "krysyuk": {
-   "games": 17,
+   "games": 19,
    "wins": 1,
    "seconds": 1,
    "thirds": 5,
-   "fourths": 5,
+   "fourths": 6,
    "podiums": 7,
    "points_total": 20050,
    "max_points": 2400,
@@ -5387,11 +5387,11 @@
    "badges": []
   },
   "dk": {
-   "games": 22,
+   "games": 24,
    "wins": 3,
    "seconds": 4,
    "thirds": 5,
-   "fourths": 6,
+   "fourths": 7,
    "podiums": 12,
    "points_total": 34190,
    "max_points": 4310,
@@ -5430,7 +5430,7 @@
     },
     {
      "emoji": "🔥",
-     "text": "Подиум 50%+ (55% топ-3 при 22 играх)"
+     "text": "Подиум 50%+ (50% топ-3 при 24 играх)"
     },
     {
      "emoji": "🎯",
@@ -5506,12 +5506,12 @@
    ]
   },
   "pannda": {
-   "games": 20,
+   "games": 21,
    "wins": 2,
    "seconds": 6,
-   "thirds": 3,
+   "thirds": 4,
    "fourths": 5,
-   "podiums": 11,
+   "podiums": 12,
    "points_total": 27700,
    "max_points": 2930,
    "kills": 17,
@@ -5542,7 +5542,7 @@
     },
     {
      "emoji": "🔥",
-     "text": "Подиум 50%+ (55% топ-3 при 20 играх)"
+     "text": "Подиум 50%+ (57% топ-3 при 21 играх)"
     },
     {
      "emoji": "🎯",
@@ -5606,7 +5606,7 @@
    "badges": []
   },
   "andreyptichies": {
-   "games": 11,
+   "games": 12,
    "wins": 2,
    "seconds": 1,
    "thirds": 0,
@@ -5680,7 +5680,7 @@
    ]
   },
   "ягодка": {
-   "games": 13,
+   "games": 14,
    "wins": 2,
    "seconds": 2,
    "thirds": 2,
@@ -5754,12 +5754,12 @@
    ]
   },
   "leo": {
-   "games": 13,
+   "games": 14,
    "wins": 0,
    "seconds": 1,
-   "thirds": 3,
+   "thirds": 4,
    "fourths": 0,
-   "podiums": 4,
+   "podiums": 5,
    "points_total": 12390,
    "max_points": 1970,
    "kills": 8,
@@ -6077,7 +6077,7 @@
    "badges": []
   },
   "ивананисимов": {
-   "games": 4,
+   "games": 5,
    "wins": 0,
    "seconds": 1,
    "thirds": 2,
@@ -6175,7 +6175,7 @@
    ]
   },
   "туз": {
-   "games": 18,
+   "games": 19,
    "wins": 3,
    "seconds": 2,
    "thirds": 3,
@@ -6301,7 +6301,7 @@
    ]
   },
   "kobra": {
-   "games": 11,
+   "games": 12,
    "wins": 0,
    "seconds": 2,
    "thirds": 2,
@@ -6350,12 +6350,12 @@
    "badges": []
   },
   "lackypeek": {
-   "games": 4,
+   "games": 5,
    "wins": 1,
-   "seconds": 0,
+   "seconds": 1,
    "thirds": 0,
    "fourths": 1,
-   "podiums": 1,
+   "podiums": 2,
    "points_total": 4240,
    "max_points": 2060,
    "kills": 1,
@@ -6378,7 +6378,7 @@
    ]
   },
   "памперс": {
-   "games": 6,
+   "games": 7,
    "wins": 0,
    "seconds": 1,
    "thirds": 0,
@@ -6741,7 +6741,7 @@
    "badges": []
   },
   "idmedvedev": {
-   "games": 4,
+   "games": 5,
    "wins": 0,
    "seconds": 1,
    "thirds": 1,

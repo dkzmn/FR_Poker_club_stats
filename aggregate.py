@@ -165,20 +165,21 @@ def main() -> None:
     )
     for t in tournaments:
         tname = (t["name"] or "").upper()
+        is_final = t["is_final"]
         for r in t["results"]:
             p = players[r["player_key"]]
-            if not t["is_final"]:
-                p["games"] += 1
+            p["games"] += 1
+            p["kills"] += r["kills"] or 0
+            p["wins"] += r["place"] == 1
+            p["seconds"] += r["place"] == 2
+            p["thirds"] += r["place"] == 3
+            p["fourths"] += r["place"] == 4
+            p["podiums"] += r["place"] <= 3
+            if not is_final:
                 pts = r["points"] or 0
                 p["points_total"] += pts
                 if pts > p["max_points"]:
                     p["max_points"] = pts
-                p["kills"] += r["kills"] or 0
-                p["wins"] += r["place"] == 1
-                p["seconds"] += r["place"] == 2
-                p["thirds"] += r["place"] == 3
-                p["fourths"] += r["place"] == 4
-                p["podiums"] += r["place"] <= 3
                 if r["place"] == 1:
                     if "DEEP" in tname:
                         p["deep_wins"] += 1
@@ -190,7 +191,7 @@ def main() -> None:
                         p["bounty_wins"] += 1
             p["first_seen"] = min(p["first_seen"] or t["date"], t["date"])
             p["last_seen"] = max(p["last_seen"] or t["date"], t["date"])
-        if t["bounty_hunter_key"]:
+        if not is_final and t["bounty_hunter_key"]:
             players[t["bounty_hunter_key"]]["bh_titles"] += 1
 
     for s in seasons_out:
