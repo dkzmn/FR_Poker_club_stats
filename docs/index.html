@@ -237,7 +237,7 @@
 
   <div class="grid" id="playersView" style="display:none">
     <div class="card full">
-      <h2>Игроки и достижения (за всё время)</h2>
+      <h2>Игроки (за всё время)</h2>
       <div class="table-wrap no-max"><table id="playersTable"></table></div>
     </div>
     <div class="card full">
@@ -471,7 +471,7 @@ fetch("data.json").then(r => r.json()).then(async d => {
     tabs.appendChild(b);
   };
   d.seasons.forEach(s => addTab(s.name, s.id));
-  addTab("Игроки и достижения", "players");
+  addTab("Игроки", "players");
   const adminClass = "admin-tab" + (calcUnlocked ? " visible" : "");
   addTab("Калькулятор", "calc", adminClass);
   addTab("Достижения", "awards", adminClass);
