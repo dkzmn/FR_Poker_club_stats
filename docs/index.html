@@ -449,10 +449,10 @@ function bindNameSuggest(input, suggest, onPick) {
   });
 }
 
-fetch("data.json").then(r => r.json()).then(async d => {
+fetch("data.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).then(async d => {
   DATA = d;
   try {
-    SERVER_AWARDS = await fetch("awards.json").then(r => r.ok ? r.json() : []);
+    SERVER_AWARDS = await fetch("awards.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.ok ? r.json() : []);
     if (!Array.isArray(SERVER_AWARDS)) SERVER_AWARDS = [];
   } catch {
     SERVER_AWARDS = [];
