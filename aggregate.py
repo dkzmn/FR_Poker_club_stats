@@ -203,48 +203,58 @@ def main() -> None:
         if s["champion_key"]:
             players[s["champion_key"]]["champion_seasons"].append(s["id"])
 
-    def badges(p: dict) -> list[str]:
+    def badge(emoji: str, text: str, n: int | None = None, cls: str | None = None) -> dict:
+        d = {"emoji": emoji, "text": text}
+        if n is not None:
+            d["n"] = n
+        if cls:
+            d["cls"] = cls
+        return d
+
+    def badges(p: dict) -> list[dict]:
         out = []
         for sid in p["champion_seasons"]:
-            out.append(f"🏆 Чемпион сезона {sid}")
+            out.append(badge("🏆", f"Чемпион сезона {sid}"))
         for sid, rank in sorted(p["rating_top3"], key=lambda x: (x[0], x[1])):
-            out.append(f"📈 №{rank} рейтинга сезона {sid}")
-        if p["wins"] >= 5:
-            out.append(f"👑 {p['wins']} побед")
-        elif p["wins"] >= 1:
-            out.append(f"🥇 Побед: {p['wins']}")
+            crown = {1: "gold", 2: "silver", 3: "bronze"}[rank]
+            out.append(badge("👑", f"№{rank} рейтинга сезона {sid}", cls=f"crown-{crown}"))
+        if p["wins"] >= 1:
+            w = p["wins"]
+            if w % 10 == 1 and w % 100 != 11:
+                wins_label = f"{w} победа"
+            elif 2 <= w % 10 <= 4 and not (12 <= w % 100 <= 14):
+                wins_label = f"{w} победы"
+            else:
+                wins_label = f"{w} побед"
+            out.append(badge("🥇", wins_label, w))
         if p["podiums"] >= 10:
-            out.append("🏅 Подиумный монстр (10+)")
-        if p["seconds"] >= 5:
-            out.append(f"🥈 Серебряный запас ({p['seconds']})")
-        if p["thirds"] >= 5:
-            out.append(f"🥉 Бронзовый фонд ({p['thirds']})")
-        if p["fourths"] >= 5:
-            out.append(f"🫧 Бабл-бой ({p['fourths']}× 4-е)")
+            out.append(badge("🏅", "Подиумный монстр (10+ попаданий в топ-3)"))
         if p["bh_titles"] >= 1:
-            out.append(f"💀 Bounty Hunter ×{p['bh_titles']}")
+            out.append(badge("💀", f"Bounty Hunter ×{p['bh_titles']}", p["bh_titles"]))
         if p["kills"] >= 100:
-            out.append("☠️ Палач (100+ киллов)")
+            out.append(badge("☠️", "Палач (100+ баунти)"))
         elif p["kills"] >= 50:
-            out.append("☠️ Головорез (50+ киллов)")
+            out.append(badge("☠️", "Головорез (50+ баунти)"))
         elif p["kills"] >= 25:
-            out.append("☠️ Охотник (25+ киллов)")
+            out.append(badge("☠️", "Охотник (25+ баунти)"))
         if p["max_points"] >= 3500:
-            out.append("💎 Большой улов (3500+ за турнир)")
+            out.append(badge("💎", "Большой улов (3500+ очков за турнир)"))
         if p["deep_wins"] >= 1:
-            out.append("💥 Deepstack-победитель")
+            out.append(badge("💥", "Deepstack-победитель"))
         if p["joker_wins"] >= 1:
-            out.append("🃏 Joker-победитель")
+            out.append(badge("🃏", "Joker-победитель"))
         if p["mafia_wins"] >= 1:
-            out.append("🕵️ Mafia-победитель")
+            out.append(badge("🕵️", "Mafia-победитель"))
         if p["bounty_wins"] >= 1:
-            out.append("🥊 Bounty-победитель")
+            out.append(badge("🥊", "Bounty-победитель"))
         if p["games"] >= 10 and p["wins"] / p["games"] >= 0.3:
-            out.append("📊 Стабильность (30%+ побед)")
-        if p["games"] >= 25:
-            out.append("🎖 Ветеран клуба (25+ турниров)")
+            out.append(badge("📊", "Стабильность (30%+ побед при ≥10 играх)"))
+        if p["games"] >= 50:
+            out.append(badge("🌟", "Легенда клуба (50+ турниров)"))
+        elif p["games"] >= 25:
+            out.append(badge("🎖", "Ветеран клуба (25+ турниров)"))
         elif p["games"] >= 10:
-            out.append("🎯 Частый гость (10+ турниров)")
+            out.append(badge("🎯", "Частый гость (10+ турниров)"))
         return out
 
     for p in players.values():

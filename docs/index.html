@@ -45,12 +45,15 @@
   #lbTable th.num, #lbTable td.num { padding-left: 4px; padding-right: 4px; width: 1%; }
   #lbTable th:first-child, #lbTable td:first-child { width: 1%; white-space: nowrap; padding-right: 4px; }
   #lbTable th:nth-child(2), #lbTable td:nth-child(2) { padding-right: 10px; }
-  /* игроки: таблица на ширину карточки, бейджи переносятся */
+  /* игроки: таблица на ширину карточки, бейджи — компактные эмодзи */
   #playersTable { width: 100%; }
-  #playersTable td.badges-cell { white-space: normal; line-height: 1.5; }
-  #playersTable td.badges-cell .badge { margin: 2px 3px 2px 0; }
+  #playersTable td.badges-cell { white-space: normal; line-height: 1.6; }
+  #playersTable td.badges-cell .award-icon { margin: 1px 5px 1px 0; }
   #badgesLegend td:first-child { white-space: nowrap; vertical-align: top; }
   #badgesLegend td:last-child { color: var(--muted); }
+  #badgesLegend .award-icon { margin-right: 2px; }
+  .badge-n { font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 1px;
+             font-variant-numeric: tabular-nums; }
   /* обе полосы с фоном — иначе «пустые» строки визуально кажутся уже/ниже */
   #lbTable td, #playersTable td, #badgesLegend td {
     line-height: 1.35;
@@ -103,10 +106,11 @@
   .tabs button.admin-tab { display: none; }
   .tabs button.admin-tab.visible { display: inline-block; }
   .award-icon {
-    position: relative; display: inline-block; margin-left: 5px; cursor: pointer;
+    position: relative; display: inline-block; margin-left: 5px; cursor: default;
     font-size: 15px; line-height: 1; vertical-align: -1px;
   }
-  .award-icon::after {
+  .award-icon[data-tip] { cursor: pointer; }
+  .award-icon[data-tip]::after {
     content: attr(data-tip);
     position: absolute; left: 50%; top: calc(100% + 8px); transform: translateX(-50%);
     background: #1c2333; color: var(--text); border: 1px solid var(--line); border-radius: 8px;
@@ -115,15 +119,17 @@
     box-shadow: 0 8px 20px rgba(0,0,0,.35); opacity: 0; pointer-events: none;
     transition: opacity .12s ease; z-index: 40;
   }
-  .award-icon::before {
+  .award-icon[data-tip]::before {
     content: ""; position: absolute; left: 50%; top: calc(100% + 2px); transform: translateX(-50%);
     border: 6px solid transparent; border-bottom-color: var(--line); opacity: 0;
     transition: opacity .12s ease; z-index: 40;
   }
-  .award-icon:hover::after, .award-icon:hover::before,
-  .award-icon:focus-visible::after, .award-icon:focus-visible::before,
-  .award-icon.is-open::after, .award-icon.is-open::before { opacity: 1; }
-  .award-icon:focus { outline: none; }
+  .award-icon[data-tip]:hover::after, .award-icon[data-tip]:hover::before,
+  .award-icon[data-tip]:focus-visible::after, .award-icon[data-tip]:focus-visible::before,
+  .award-icon[data-tip].is-open::after, .award-icon[data-tip].is-open::before { opacity: 1; }
+  .award-icon.crown-gold { filter: saturate(1.35) brightness(1.08); }
+  .award-icon.crown-silver { filter: grayscale(1) brightness(1.35) contrast(1.05); }
+  .award-icon.crown-bronze { filter: sepia(1) saturate(2.8) hue-rotate(-20deg) brightness(0.92); }
   .award-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px 14px;
                 margin-bottom: 16px; align-items: end; }
   .award-form .calc-field.grow { grid-column: span 2; }
@@ -237,24 +243,24 @@
       <h2>Расшифровка достижений</h2>
       <div class="table-wrap no-max"><table id="badgesLegend">
         <tr><th>Достижение</th><th>Как получить</th></tr>
-        <tr><td><span class="badge">🏆 Чемпион сезона N</span></td><td>Победа в финале сезона</td></tr>
-        <tr><td><span class="badge">📈 №1 / №2 / №3 рейтинга сезона N</span></td><td>1–3 место в очковом рейтинге сезона (не финал)</td></tr>
-        <tr><td><span class="badge">👑 N побед</span></td><td>5 и более побед в турнирах</td></tr>
-        <tr><td><span class="badge">🥇 Побед: N</span></td><td>От 1 до 4 побед</td></tr>
-        <tr><td><span class="badge">🏅 Подиумный монстр (10+)</span></td><td>10+ попаданий в топ-3</td></tr>
-        <tr><td><span class="badge">🥈 Серебряный запас</span></td><td>5+ вторых мест</td></tr>
-        <tr><td><span class="badge">🥉 Бронзовый фонд</span></td><td>5+ третьих мест</td></tr>
-        <tr><td><span class="badge">🫧 Бабл-бой</span></td><td>5+ четвёртых мест</td></tr>
-        <tr><td><span class="badge">💀 Bounty Hunter ×N</span></td><td>Титул охотника за головами в bounty-турнире</td></tr>
-        <tr><td><span class="badge">☠️ Охотник / Головорез / Палач</span></td><td>25+ / 50+ / 100+ киллов за карьеру</td></tr>
-        <tr><td><span class="badge">💎 Большой улов</span></td><td>3500+ очков за один турнир</td></tr>
-        <tr><td><span class="badge">💥 Deepstack-победитель</span></td><td>Победа в DEEPSTACK</td></tr>
-        <tr><td><span class="badge">🃏 Joker-победитель</span></td><td>Победа в JOKER</td></tr>
-        <tr><td><span class="badge">🕵️ Mafia-победитель</span></td><td>Победа в MAFIA</td></tr>
-        <tr><td><span class="badge">🥊 Bounty-победитель</span></td><td>Победа (1 место) в BOUNTY</td></tr>
-        <tr><td><span class="badge">📊 Стабильность (30%+ побед)</span></td><td>≥10 игр и доля побед ≥30%</td></tr>
-        <tr><td><span class="badge">🎯 Частый гость (10+)</span></td><td>10–24 турнира</td></tr>
-        <tr><td><span class="badge">🎖 Ветеран клуба (25+)</span></td><td>25 и более турниров</td></tr>
+        <tr><td><span class="award-icon">🏆</span></td><td>Чемпион сезона — победа в финале</td></tr>
+        <tr><td><span class="award-icon crown-gold">👑</span>
+          <span class="award-icon crown-silver">👑</span>
+          <span class="award-icon crown-bronze">👑</span></td>
+          <td>№1 / №2 / №3 очкового рейтинга сезона (золото / серебро / бронза)</td></tr>
+        <tr><td><span class="award-icon">🥇<span class="badge-n">N</span></span></td><td>N побед в турнирах</td></tr>
+        <tr><td><span class="award-icon">🏅</span></td><td>Подиумный монстр — 10+ попаданий в топ-3</td></tr>
+        <tr><td><span class="award-icon">💀<span class="badge-n">N</span></span></td><td>N раз титул Bounty Hunter</td></tr>
+        <tr><td><span class="award-icon">☠️</span></td><td>Охотник / Головорез / Палач — 25+ / 50+ / 100+ баунти</td></tr>
+        <tr><td><span class="award-icon">💎</span></td><td>Большой улов — 3500+ очков за один турнир</td></tr>
+        <tr><td><span class="award-icon">💥</span></td><td>Победа в DEEPSTACK</td></tr>
+        <tr><td><span class="award-icon">🃏</span></td><td>Победа в JOKER</td></tr>
+        <tr><td><span class="award-icon">🕵️</span></td><td>Победа в MAFIA</td></tr>
+        <tr><td><span class="award-icon">🥊</span></td><td>Победа (1 место) в BOUNTY</td></tr>
+        <tr><td><span class="award-icon">📊</span></td><td>Стабильность — ≥10 игр и доля побед ≥30%</td></tr>
+        <tr><td><span class="award-icon">🎯</span></td><td>Частый гость — 10–24 турнира</td></tr>
+        <tr><td><span class="award-icon">🎖</span></td><td>Ветеран клуба — 25–49 турниров</td></tr>
+        <tr><td><span class="award-icon">🌟</span></td><td>Легенда клуба — 50 и более турниров</td></tr>
       </table></div>
     </div>
   </div>
@@ -504,7 +510,9 @@ function awardsHtml(playerKey, seasonId) {
 }
 
 function bindAwardTips(root) {
-  root.querySelectorAll(".award-icon").forEach(el => {
+  root.querySelectorAll(".award-icon[data-tip]").forEach(el => {
+    if (el.dataset.tipBound) return;
+    el.dataset.tipBound = "1";
     el.addEventListener("click", e => {
       e.stopPropagation();
       const willOpen = !el.classList.contains("is-open");
@@ -522,6 +530,15 @@ function bindAwardTips(root) {
 document.addEventListener("click", () => {
   document.querySelectorAll(".award-icon.is-open").forEach(x => x.classList.remove("is-open"));
 });
+
+function badgeHtml(b) {
+  if (typeof b === "string") {
+    return `<span class="award-icon" tabindex="0" role="button" data-tip="${esc(b)}">${esc(b)}</span>`;
+  }
+  const n = b.n != null ? `<span class="badge-n">${esc(String(b.n))}</span>` : "";
+  const cls = b.cls ? ` ${esc(b.cls)}` : "";
+  return `<span class="award-icon${cls}" tabindex="0" role="button" data-tip="${esc(b.text)}">${esc(b.emoji)}${n}</span>`;
+}
 
 function seasonName(id) {
   return DATA.seasons.find(s => s.id === Number(id))?.name || String(id);
@@ -975,7 +992,8 @@ function renderPlayers() {
        <td class="num m-hide">${p.games ? Math.round(p.wins / p.games * 100) : 0}%</td>
        <td class="num m-hide">${p.games ? Math.round(p.podiums / p.games * 100) : 0}%</td>
        <td class="num">${p.points_total}</td>
-       <td class="badges-cell">${(p.badges || []).map(b => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("");
+       <td class="badges-cell">${(p.badges || []).map(badgeHtml).join("")}</td></tr>`).join("");
+  bindAwardTips(document.getElementById("playersTable"));
 }
 </script>
   
