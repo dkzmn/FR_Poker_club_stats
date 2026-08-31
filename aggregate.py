@@ -159,6 +159,7 @@ def main() -> None:
             "points_total": 0, "max_points": 0, "kills": 0, "bh_titles": 0,
             "deep_wins": 0, "joker_wins": 0, "mafia_wins": 0, "bounty_wins": 0,
             "champion_seasons": [],
+            "rating_top3": [],  # (season_id, rank) для мест 1–3 рейтинга сезона
             "best_season_rank": None, "first_seen": None, "last_seen": None,
         }
     )
@@ -197,6 +198,8 @@ def main() -> None:
             p = players[row["player_key"]]
             if p["best_season_rank"] is None or rank < p["best_season_rank"]:
                 p["best_season_rank"] = rank
+            if rank <= 3:
+                p["rating_top3"].append((s["id"], rank))
         if s["champion_key"]:
             players[s["champion_key"]]["champion_seasons"].append(s["id"])
 
@@ -204,10 +207,8 @@ def main() -> None:
         out = []
         for sid in p["champion_seasons"]:
             out.append(f"🏆 Чемпион сезона {sid}")
-        if p["best_season_rank"] == 1:
-            out.append("📈 №1 сезона")
-        elif p["best_season_rank"] is not None and p["best_season_rank"] <= 3:
-            out.append("📈 Топ-3 сезона")
+        for sid, rank in sorted(p["rating_top3"], key=lambda x: (x[0], x[1])):
+            out.append(f"📈 №{rank} рейтинга сезона {sid}")
         if p["wins"] >= 5:
             out.append(f"👑 {p['wins']} побед")
         elif p["wins"] >= 1:
