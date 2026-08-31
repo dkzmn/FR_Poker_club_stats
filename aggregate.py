@@ -247,19 +247,16 @@ def main() -> None:
             else:
                 wins_label = f"{w} побед"
             out.append(badge("🥇", wins_label, w))
-        if p["fourths"] >= (p["wins"] + p["seconds"] + p["thirds"]) and p["fourths"] >= 1:
-            out.append(badge(
-                "🫧",
-                f"Бабл-бой ({p['fourths']}× 4-е ≥ {p['wins']}+{p['seconds']}+{p['thirds']} подиумов)",
-            ))
+        if p["fourths"] > (p["wins"] + p["seconds"] + p["thirds"]) and p["fourths"] >= 1:
+            out.append(badge("🫧", "Бабл-бой"))
         if p["bh_titles"] >= 1:
             out.append(badge("💀", f"Bounty Hunter ×{p['bh_titles']}", p["bh_titles"]))
         if p["kills"] >= 100:
             out.append(badge("☠️", "Палач (100+ баунти)"))
         elif p["kills"] >= 50:
-            out.append(badge("☠️", "Головорез (50+ баунти)"))
+            out.append(badge("🗡️", "Головорез (50+ баунти)"))
         elif p["kills"] >= 25:
-            out.append(badge("☠️", "Охотник (25+ баунти)"))
+            out.append(badge("🏹", "Охотник (25+ баунти)"))
         if p["max_points"] >= 3500:
             out.append(badge("💎", "Большой улов (3500+ очков за турнир)"))
 
