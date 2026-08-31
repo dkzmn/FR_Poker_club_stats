@@ -273,7 +273,7 @@ def main() -> None:
 
         if p["games"] >= 10 and p["podiums"] / p["games"] >= 0.5:
             pct = round(p["podiums"] / p["games"] * 100)
-            out.append(badge("🔝", f"Подиум 50%+ ({pct}% топ-3 при {p['games']} играх)"))
+            out.append(badge("🏅", f"Подиум 50%+ ({pct}% топ-3 при {p['games']} играх)"))
 
         if p["games"] >= 50:
             out.append(badge("🌟", "Легенда клуба (50+ турниров)"))
