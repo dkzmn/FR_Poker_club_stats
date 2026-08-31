@@ -213,11 +213,31 @@ def main() -> None:
 
     def badges(p: dict) -> list[dict]:
         out = []
-        for sid in p["champion_seasons"]:
-            out.append(badge("🏆", f"Чемпион сезона {sid}"))
-        for sid, rank in sorted(p["rating_top3"], key=lambda x: (x[0], x[1])):
+        champs = p["champion_seasons"]
+        if len(champs) == 1:
+            out.append(badge("🏆", f"Чемпион сезона {champs[0]}"))
+        elif len(champs) > 1:
+            out.append(badge(
+                "🏆",
+                "Чемпион сезонов " + ", ".join(str(s) for s in champs),
+                n=len(champs),
+            ))
+
+        crowns: dict[tuple[int, str], list[int]] = {}
+        for sid, rank in sorted(p["rating_top3"], key=lambda x: (x[1], x[0])):
             crown = {1: "gold", 2: "silver", 3: "bronze"}[rank]
-            out.append(badge("👑", f"№{rank} рейтинга сезона {sid}", cls=f"crown-{crown}"))
+            crowns.setdefault((rank, crown), []).append(sid)
+        for (rank, crown), sids in crowns.items():
+            if len(sids) == 1:
+                out.append(badge("👑", f"№{rank} рейтинга сезона {sids[0]}", cls=f"crown-{crown}"))
+            else:
+                out.append(badge(
+                    "👑",
+                    f"№{rank} рейтинга сезонов " + ", ".join(str(s) for s in sids),
+                    n=len(sids),
+                    cls=f"crown-{crown}",
+                ))
+
         if p["wins"] >= 1:
             w = p["wins"]
             if w % 10 == 1 and w % 100 != 11:
@@ -227,8 +247,6 @@ def main() -> None:
             else:
                 wins_label = f"{w} побед"
             out.append(badge("🥇", wins_label, w))
-        if p["podiums"] >= 10:
-            out.append(badge("🏅", "Подиумный монстр (10+ попаданий в топ-3)"))
         if p["bh_titles"] >= 1:
             out.append(badge("💀", f"Bounty Hunter ×{p['bh_titles']}", p["bh_titles"]))
         if p["kills"] >= 100:
@@ -239,14 +257,20 @@ def main() -> None:
             out.append(badge("☠️", "Охотник (25+ баунти)"))
         if p["max_points"] >= 3500:
             out.append(badge("💎", "Большой улов (3500+ очков за турнир)"))
-        if p["deep_wins"] >= 1:
-            out.append(badge("💥", "Deepstack-победитель"))
-        if p["joker_wins"] >= 1:
-            out.append(badge("🃏", "Joker-победитель"))
-        if p["mafia_wins"] >= 1:
-            out.append(badge("🕵️", "Mafia-победитель"))
-        if p["bounty_wins"] >= 1:
-            out.append(badge("🥊", "Bounty-победитель"))
+
+        def typed_win(emoji: str, label: str, count: int) -> None:
+            if count < 1:
+                return
+            if count == 1:
+                out.append(badge(emoji, label))
+            else:
+                out.append(badge(emoji, f"{label} ×{count}", count))
+
+        typed_win("💥", "Deepstack-победитель", p["deep_wins"])
+        typed_win("🃏", "Joker-победитель", p["joker_wins"])
+        typed_win("🕵️", "Mafia-победитель", p["mafia_wins"])
+        typed_win("🥊", "Bounty-победитель", p["bounty_wins"])
+
         if p["games"] >= 10 and p["wins"] / p["games"] >= 0.3:
             out.append(badge("📊", "Стабильность (30%+ побед при ≥10 играх)"))
         if p["games"] >= 50:

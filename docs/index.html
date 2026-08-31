@@ -126,10 +126,10 @@
   }
   .award-icon[data-tip]:hover::after, .award-icon[data-tip]:hover::before,
   .award-icon[data-tip]:focus-visible::after, .award-icon[data-tip]:focus-visible::before,
-  .award-icon[data-tip].is-open::after, .award-icon[data-tip].is-open::before { opacity: 1; }
-  .award-icon.crown-gold { filter: saturate(1.35) brightness(1.08); }
-  .award-icon.crown-silver { filter: grayscale(1) brightness(1.35) contrast(1.05); }
-  .award-icon.crown-bronze { filter: sepia(1) saturate(2.8) hue-rotate(-20deg) brightness(0.92); }
+  .award-icon:focus { outline: none; }
+  .badge-emoji.crown-gold { filter: saturate(1.35) brightness(1.08); }
+  .badge-emoji.crown-silver { filter: grayscale(1) brightness(1.35) contrast(1.05); }
+  .badge-emoji.crown-bronze { filter: sepia(1) saturate(2.8) hue-rotate(-20deg) brightness(0.92); }
   .award-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px 14px;
                 margin-bottom: 16px; align-items: end; }
   .award-form .calc-field.grow { grid-column: span 2; }
@@ -244,13 +244,12 @@
       <div class="table-wrap no-max"><table id="badgesLegend">
         <tr><th>Достижение</th><th>Как получить</th></tr>
         <tr><td><span class="award-icon">🏆</span></td><td>Чемпион сезона — победа в финале</td></tr>
-        <tr><td><span class="award-icon crown-gold">👑</span>
-          <span class="award-icon crown-silver">👑</span>
-          <span class="award-icon crown-bronze">👑</span></td>
+        <tr><td><span class="award-icon"><span class="badge-emoji crown-gold">👑</span></span>
+          <span class="award-icon"><span class="badge-emoji crown-silver">👑</span></span>
+          <span class="award-icon"><span class="badge-emoji crown-bronze">👑</span></span></td>
           <td>№1 / №2 / №3 очкового рейтинга сезона (золото / серебро / бронза)</td></tr>
-        <tr><td><span class="award-icon">🥇<span class="badge-n">N</span></span></td><td>N побед в турнирах</td></tr>
-        <tr><td><span class="award-icon">🏅</span></td><td>Подиумный монстр — 10+ попаданий в топ-3</td></tr>
-        <tr><td><span class="award-icon">💀<span class="badge-n">N</span></span></td><td>N раз титул Bounty Hunter</td></tr>
+        <tr><td><span class="award-icon">🥇<span class="badge-n"> × N</span></span></td><td>N побед в турнирах</td></tr>
+        <tr><td><span class="award-icon">💀<span class="badge-n"> × N</span></span></td><td>N раз титул Bounty Hunter</td></tr>
         <tr><td><span class="award-icon">☠️</span></td><td>Охотник / Головорез / Палач — 25+ / 50+ / 100+ баунти</td></tr>
         <tr><td><span class="award-icon">💎</span></td><td>Большой улов — 3500+ очков за один турнир</td></tr>
         <tr><td><span class="award-icon">💥</span></td><td>Победа в DEEPSTACK</td></tr>
@@ -535,9 +534,12 @@ function badgeHtml(b) {
   if (typeof b === "string") {
     return `<span class="award-icon" tabindex="0" role="button" data-tip="${esc(b)}">${esc(b)}</span>`;
   }
-  const n = b.n != null ? `<span class="badge-n">${esc(String(b.n))}</span>` : "";
-  const cls = b.cls ? ` ${esc(b.cls)}` : "";
-  return `<span class="award-icon${cls}" tabindex="0" role="button" data-tip="${esc(b.text)}">${esc(b.emoji)}${n}</span>`;
+  const n = b.n != null ? `<span class="badge-n"> × ${esc(String(b.n))}</span>` : "";
+  const emojiCls = b.cls ? ` badge-emoji ${esc(b.cls)}` : "";
+  const emoji = emojiCls
+    ? `<span class="${emojiCls.trim()}">${esc(b.emoji)}</span>`
+    : esc(b.emoji);
+  return `<span class="award-icon" tabindex="0" role="button" data-tip="${esc(b.text)}">${emoji}${n}</span>`;
 }
 
 function seasonName(id) {
