@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-31T12:56:46+00:00",
+ "generated_at": "2026-09-02T21:34:03+00:00",
  "channel": "FRPokerClub",
  "player_names": {
   "soulknight": "SoulKnight",
@@ -1135,6 +1135,105 @@
    ],
    "champion_key": "гурупокера",
    "final_msg_id": 453
+  },
+  {
+   "id": 3,
+   "name": "Сезон 3",
+   "start": "2026-08-30",
+   "end": "2026-12-31",
+   "tournaments_count": 1,
+   "leaderboard": [
+    {
+     "player_key": "andreyptichies",
+     "points": 2830,
+     "games": 1,
+     "wins": 1,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 1,
+     "kills": 6,
+     "bh_titles": 1
+    },
+    {
+     "player_key": "dk",
+     "points": 1960,
+     "games": 1,
+     "wins": 0,
+     "seconds": 1,
+     "thirds": 0,
+     "podiums": 1,
+     "kills": 3,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "ягодка",
+     "points": 1240,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
+     "podiums": 1,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "памперс",
+     "points": 1000,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 3,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "idmedvedev",
+     "points": 930,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "гурупокера",
+     "points": 800,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 4,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "kobra",
+     "points": 730,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 2,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "soulknight",
+     "points": 310,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    }
+   ],
+   "champion_key": null,
+   "final_msg_id": null
   }
  ],
  "tournaments": [
@@ -4667,17 +4766,76 @@
      "points": null
     }
    ]
+  },
+  {
+   "msg_id": 467,
+   "date": "2026-09-02",
+   "name": "BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "andreyptichies",
+   "bounty_hunter_kills": 6,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "andreyptichies",
+     "kills": 6,
+     "points": 2830
+    },
+    {
+     "place": 2,
+     "player_key": "dk",
+     "kills": 3,
+     "points": 1960
+    },
+    {
+     "place": 3,
+     "player_key": "ягодка",
+     "kills": 0,
+     "points": 1240
+    },
+    {
+     "place": 4,
+     "player_key": "idmedvedev",
+     "kills": 0,
+     "points": 930
+    },
+    {
+     "place": 5,
+     "player_key": "памперс",
+     "kills": 3,
+     "points": 1000
+    },
+    {
+     "place": 6,
+     "player_key": "kobra",
+     "kills": 2,
+     "points": 730
+    },
+    {
+     "place": 7,
+     "player_key": "гурупокера",
+     "kills": 4,
+     "points": 800
+    },
+    {
+     "place": 8,
+     "player_key": "soulknight",
+     "kills": 0,
+     "points": 310
+    }
+   ]
   }
  ],
  "players": {
   "soulknight": {
-   "games": 54,
+   "games": 55,
    "wins": 6,
    "seconds": 3,
    "thirds": 5,
    "fourths": 6,
    "podiums": 14,
-   "points_total": 46760,
+   "points_total": 47070,
    "max_points": 3340,
    "kills": 48,
    "bh_titles": 1,
@@ -4698,7 +4856,7 @@
    ],
    "best_season_rank": 2,
    "first_seen": "2026-01-22",
-   "last_seen": "2026-08-28",
+   "last_seen": "2026-09-02",
    "badges": [
     {
      "emoji": "👑",
@@ -4804,15 +4962,15 @@
    ]
   },
   "гурупокера": {
-   "games": 44,
+   "games": 45,
    "wins": 14,
    "seconds": 5,
    "thirds": 2,
    "fourths": 6,
    "podiums": 21,
-   "points_total": 57340,
+   "points_total": 58140,
    "max_points": 4010,
-   "kills": 70,
+   "kills": 74,
    "bh_titles": 2,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -4834,7 +4992,7 @@
    ],
    "best_season_rank": 1,
    "first_seen": "2026-02-20",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": [
     {
      "emoji": "🏆",
@@ -5387,30 +5545,44 @@
    "badges": []
   },
   "dk": {
-   "games": 24,
+   "games": 25,
    "wins": 3,
-   "seconds": 4,
+   "seconds": 5,
    "thirds": 5,
    "fourths": 7,
-   "podiums": 12,
-   "points_total": 34190,
+   "podiums": 13,
+   "points_total": 36150,
    "max_points": 4310,
-   "kills": 22,
+   "kills": 25,
    "bh_titles": 0,
    "deep_wins": 1,
    "joker_wins": 0,
    "mafia_wins": 1,
    "bounty_wins": 1,
    "champion_seasons": [],
-   "rating_top3": [],
-   "best_season_rank": 4,
+   "rating_top3": [
+    [
+     3,
+     2
+    ]
+   ],
+   "best_season_rank": 2,
    "first_seen": "2026-04-15",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": [
+    {
+     "emoji": "👑",
+     "text": "№2 рейтинга сезона 3",
+     "cls": "crown-silver"
+    },
     {
      "emoji": "🥇",
      "text": "3 победы",
      "n": 3
+    },
+    {
+     "emoji": "🏹",
+     "text": "Охотник (25+ баунти)"
     },
     {
      "emoji": "💎",
@@ -5430,11 +5602,11 @@
     },
     {
      "emoji": "🔥",
-     "text": "Подиум 50%+ (50% топ-3 при 24 играх)"
+     "text": "Подиум 50%+ (52% топ-3 при 25 играх)"
     },
     {
-     "emoji": "🎯",
-     "text": "Частый гость (10+ турниров)"
+     "emoji": "🎖",
+     "text": "Ветеран клуба (25+ турниров)"
     }
    ]
   },
@@ -5606,35 +5778,45 @@
    "badges": []
   },
   "andreyptichies": {
-   "games": 12,
-   "wins": 2,
+   "games": 13,
+   "wins": 3,
    "seconds": 1,
    "thirds": 0,
    "fourths": 2,
-   "podiums": 3,
-   "points_total": 17460,
+   "podiums": 4,
+   "points_total": 20290,
    "max_points": 3630,
-   "kills": 14,
-   "bh_titles": 1,
+   "kills": 20,
+   "bh_titles": 2,
    "deep_wins": 0,
    "joker_wins": 0,
    "mafia_wins": 2,
-   "bounty_wins": 0,
+   "bounty_wins": 1,
    "champion_seasons": [],
-   "rating_top3": [],
-   "best_season_rank": 8,
+   "rating_top3": [
+    [
+     3,
+     1
+    ]
+   ],
+   "best_season_rank": 1,
    "first_seen": "2026-04-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": [
     {
+     "emoji": "👑",
+     "text": "№1 рейтинга сезона 3",
+     "cls": "crown-gold"
+    },
+    {
      "emoji": "🥇",
-     "text": "2 победы",
-     "n": 2
+     "text": "3 победы",
+     "n": 3
     },
     {
      "emoji": "💀",
-     "text": "Bounty Hunter ×1",
-     "n": 1
+     "text": "Bounty Hunter ×2",
+     "n": 2
     },
     {
      "emoji": "💎",
@@ -5644,6 +5826,10 @@
      "emoji": "🕵️",
      "text": "Mafia-победитель ×2",
      "n": 2
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
     },
     {
      "emoji": "🎯",
@@ -5680,13 +5866,13 @@
    ]
   },
   "ягодка": {
-   "games": 14,
+   "games": 15,
    "wins": 2,
    "seconds": 2,
-   "thirds": 2,
+   "thirds": 3,
    "fourths": 1,
-   "podiums": 6,
-   "points_total": 16440,
+   "podiums": 7,
+   "points_total": 17680,
    "max_points": 3230,
    "kills": 10,
    "bh_titles": 1,
@@ -5695,11 +5881,21 @@
    "mafia_wins": 0,
    "bounty_wins": 2,
    "champion_seasons": [],
-   "rating_top3": [],
-   "best_season_rank": 10,
+   "rating_top3": [
+    [
+     3,
+     3
+    ]
+   ],
+   "best_season_rank": 3,
    "first_seen": "2026-05-06",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": [
+    {
+     "emoji": "👑",
+     "text": "№3 рейтинга сезона 3",
+     "cls": "crown-bronze"
+    },
     {
      "emoji": "🥇",
      "text": "2 победы",
@@ -6301,15 +6497,15 @@
    ]
   },
   "kobra": {
-   "games": 12,
+   "games": 13,
    "wins": 0,
    "seconds": 2,
    "thirds": 2,
    "fourths": 0,
    "podiums": 4,
-   "points_total": 11590,
+   "points_total": 12320,
    "max_points": 2070,
-   "kills": 10,
+   "kills": 12,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -6317,9 +6513,9 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 13,
+   "best_season_rank": 7,
    "first_seen": "2026-07-22",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": [
     {
      "emoji": "🎯",
@@ -6378,15 +6574,15 @@
    ]
   },
   "памперс": {
-   "games": 7,
+   "games": 8,
    "wins": 0,
    "seconds": 1,
    "thirds": 0,
    "fourths": 0,
    "podiums": 1,
-   "points_total": 6610,
+   "points_total": 7610,
    "max_points": 2210,
-   "kills": 13,
+   "kills": 16,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -6394,9 +6590,9 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 17,
+   "best_season_rank": 4,
    "first_seen": "2026-07-26",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": []
   },
   "назаршишка": {
@@ -6741,13 +6937,13 @@
    "badges": []
   },
   "idmedvedev": {
-   "games": 5,
+   "games": 6,
    "wins": 0,
    "seconds": 1,
    "thirds": 1,
-   "fourths": 0,
+   "fourths": 1,
    "podiums": 2,
-   "points_total": 5050,
+   "points_total": 5980,
    "max_points": 2540,
    "kills": 6,
    "bh_titles": 0,
@@ -6757,9 +6953,9 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 18,
+   "best_season_rank": 5,
    "first_seen": "2026-08-21",
-   "last_seen": "2026-08-29",
+   "last_seen": "2026-09-02",
    "badges": []
   },
   "locharik": {
