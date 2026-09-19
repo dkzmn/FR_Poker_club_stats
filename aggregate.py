@@ -109,6 +109,61 @@ def main() -> None:
             }
         )
 
+    # --- кэш-игры (отдельный рейтинг по фишкам) ---
+    cash_sessions = []
+    for msg_id, date_utc, name in conn.execute(
+        "SELECT msg_id, date_utc, name FROM cash_games ORDER BY date_utc"
+    ):
+        results = []
+        for place, raw_name, chips in conn.execute(
+            "SELECT place, raw_name, chips FROM cash_results WHERE msg_id=? ORDER BY place",
+            (msg_id,),
+        ):
+            key = reg.canon_key(raw_name)
+            if key is None:
+                continue
+            results.append({"place": place, "player_key": key, "chips": chips})
+        season = season_for(date_utc)
+        cash_sessions.append(
+            {
+                "msg_id": msg_id,
+                "date": date_utc[:10],
+                "name": name,
+                "season_id": season["id"] if season else None,
+                "results": results,
+            }
+        )
+
+    cash_stats: dict[str, dict] = defaultdict(
+        lambda: {
+            "chips": 0, "sessions": 0, "wins": 0, "seconds": 0, "thirds": 0,
+            "podiums": 0, "best_chips": 0,
+        }
+    )
+    for session in cash_sessions:
+        for r in session["results"]:
+            p = cash_stats[r["player_key"]]
+            chips = r["chips"] or 0
+            p["sessions"] += 1
+            p["chips"] += chips
+            if chips > p["best_chips"]:
+                p["best_chips"] = chips
+            p["wins"] += r["place"] == 1
+            p["seconds"] += r["place"] == 2
+            p["thirds"] += r["place"] == 3
+            p["podiums"] += r["place"] <= 3
+
+    cash_leaderboard = sorted(
+        ({"player_key": k, **v} for k, v in cash_stats.items()),
+        key=lambda p: (-p["chips"], -p["wins"], -p["podiums"], -p["sessions"]),
+    )
+    cash_out = {
+        "name": "NO-MONEY-CASH",
+        "sessions_count": len(cash_sessions),
+        "leaderboard": cash_leaderboard,
+        "sessions": cash_sessions,
+    }
+
     # --- сезонные агрегаты ---
     seasons_out = []
     for s in SEASONS:
@@ -295,13 +350,14 @@ def main() -> None:
         "player_names": {k: reg.display(k) for k in reg.spellings},
         "seasons": seasons_out,
         "tournaments": tournaments,
+        "cash": cash_out,
         "players": dict(players),
     }
     OUT_PATH.parent.mkdir(exist_ok=True)
     OUT_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=1))
     print(
         f"сезонов: {len(seasons_out)}, турниров: {len(tournaments)}, "
-        f"игроков: {len(players)} -> {OUT_PATH.relative_to(ROOT)}"
+        f"кэш-игр: {len(cash_sessions)}, игроков: {len(players)} -> {OUT_PATH.relative_to(ROOT)}"
     )
 
 

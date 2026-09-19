@@ -1,6 +1,7 @@
-"""Парсер постов канала: результаты турниров и финалы сезонов.
+"""Парсер постов канала: результаты турниров, финалов и кэш-игр.
 
-Читает raw_messages из SQLite, наполняет таблицы tournaments и results.
+Читает raw_messages из SQLite, наполняет таблицы tournaments/results
+и отдельно cash_games/cash_results.
 Все нераспознанные строки внутри блока результатов печатает в stderr,
 чтобы изменение формата не прошло незамеченным.
 """
@@ -11,6 +12,12 @@ import sys
 from pathlib import Path
 
 DB_PATH = Path(__file__).parent / "frpoker.db"
+
+# кэш: "Результаты NO-MONEY-CASH:" — отдельный рейтинг по фишкам, не турнир
+CASH_HEADER_RE = re.compile(
+    r"^[👑🏆]?\s*Результаты\s+(?P<name>[^:\n]*CASH[^:\n]*)\s*:?\s*$",
+    re.IGNORECASE,
+)
 
 # заголовок: "ПОБЕДИТЕЛИ ТУРНИРА <имя>", встречались опечатка "ПОБЕДИТЕ ТУРНИРА"
 # и вариант "🏆 Победители:" без слова ТУРНИРА (пост 77)
@@ -46,6 +53,8 @@ def init_db(conn: sqlite3.Connection) -> None:
         """
         DROP TABLE IF EXISTS tournaments;
         DROP TABLE IF EXISTS results;
+        DROP TABLE IF EXISTS cash_games;
+        DROP TABLE IF EXISTS cash_results;
         CREATE TABLE tournaments (
             msg_id INTEGER PRIMARY KEY,
             date_utc TEXT NOT NULL,
@@ -60,6 +69,18 @@ def init_db(conn: sqlite3.Connection) -> None:
             raw_name TEXT NOT NULL,    -- имя как в посте, нормализация — в агрегаторе
             kills INTEGER,             -- выбитые игроки (bounty)
             points INTEGER,            -- очки рейтинга; NULL у ранних постов и финалов
+            PRIMARY KEY (msg_id, place)
+        );
+        CREATE TABLE cash_games (
+            msg_id INTEGER PRIMARY KEY,
+            date_utc TEXT NOT NULL,
+            name TEXT                  -- NO-MONEY-CASH и т.п.
+        );
+        CREATE TABLE cash_results (
+            msg_id INTEGER NOT NULL REFERENCES cash_games(msg_id),
+            place INTEGER NOT NULL,
+            raw_name TEXT NOT NULL,
+            chips INTEGER,             -- чистый выигрыш в фишках (может быть 0 / NULL)
             PRIMARY KEY (msg_id, place)
         );
         """
@@ -98,6 +119,30 @@ def parse_result_lines(lines: list[str], start: int) -> tuple[list[dict], list[s
     return results, unparsed
 
 
+def parse_cash(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | None:
+    """NO-MONEY-CASH и подобные: места + фишки, не очки турнира."""
+    lines = text.split("\n")
+    header_idx, name = None, None
+    for i, line in enumerate(lines):
+        m = CASH_HEADER_RE.match(line.strip())
+        if m:
+            header_idx, name = i, (m.group("name") or "").strip() or "NO-MONEY-CASH"
+            break
+    if header_idx is None:
+        return None
+    results, unparsed = parse_result_lines(lines, header_idx + 1)
+    # в кэше поле points regex'а — это фишки
+    cash_results = [
+        {
+            "place": r["place"],
+            "raw_name": r["raw_name"],
+            "chips": r["points"],
+        }
+        for r in results
+    ]
+    return {"name": name}, cash_results, unparsed
+
+
 def parse_tournament(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | None:
     lines = text.split("\n")
     header_idx, name = None, None
@@ -107,6 +152,9 @@ def parse_tournament(msg_id: int, text: str) -> tuple[dict, list[dict], list[str
             header_idx, name = i, m.group("name").strip() or None
             break
     if header_idx is None:
+        return None
+    # кэш-результаты не должны попадать в турнирный рейтинг
+    if name and re.search(r"CASH", name, re.IGNORECASE):
         return None
     if not name:
         m = NAME_FROM_TEXT_RE.search(text)
@@ -145,8 +193,28 @@ def main() -> None:
     init_db(conn)
 
     rows = conn.execute("SELECT msg_id, date_utc, text FROM raw_messages ORDER BY msg_id").fetchall()
-    n_tournaments = n_results = 0
+    n_tournaments = n_results = n_cash = n_cash_rows = 0
     for msg_id, date_utc, text in rows:
+        cash = parse_cash(msg_id, text)
+        if cash:
+            meta, results, unparsed = cash
+            if not results:
+                print(f"[warn] пост {msg_id}: кэш-заголовок есть, результаты не распознаны", file=sys.stderr)
+                continue
+            for line in unparsed:
+                print(f"[warn] пост {msg_id}: нераспознанная строка: {line!r}", file=sys.stderr)
+            conn.execute(
+                "INSERT INTO cash_games VALUES (?, ?, ?)",
+                (msg_id, date_utc, meta["name"]),
+            )
+            conn.executemany(
+                "INSERT INTO cash_results VALUES (?, ?, ?, ?)",
+                [(msg_id, r["place"], r["raw_name"], r["chips"]) for r in results],
+            )
+            n_cash += 1
+            n_cash_rows += len(results)
+            continue
+
         # сначала финал: его пост тоже содержит строку "Победители:"
         parsed = parse_final(msg_id, text) or parse_tournament(msg_id, text)
         if not parsed:
@@ -170,7 +238,10 @@ def main() -> None:
         n_results += len(results)
 
     conn.commit()
-    print(f"турниров: {n_tournaments}, строк результатов: {n_results}")
+    print(
+        f"турниров: {n_tournaments}, строк результатов: {n_results}; "
+        f"кэш-игр: {n_cash}, строк: {n_cash_rows}"
+    )
     conn.close()
 
 

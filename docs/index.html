@@ -45,6 +45,10 @@
   #lbTable th.num, #lbTable td.num { padding-left: 4px; padding-right: 4px; width: 1%; }
   #lbTable th:first-child, #lbTable td:first-child { width: 1%; white-space: nowrap; padding-right: 4px; }
   #lbTable th:nth-child(2), #lbTable td:nth-child(2) { padding-right: 10px; }
+  #cashLbTable { width: auto; max-width: 100%; }
+  #cashLbTable th.num, #cashLbTable td.num { padding-left: 4px; padding-right: 4px; width: 1%; }
+  #cashLbTable th:first-child, #cashLbTable td:first-child { width: 1%; white-space: nowrap; padding-right: 4px; }
+  #cashLbTable th:nth-child(2), #cashLbTable td:nth-child(2) { padding-right: 10px; }
   /* игроки: таблица на ширину карточки, бейджи — компактные эмодзи */
   #playersTable { width: 100%; }
   #playersTable td.badges-cell { white-space: normal; line-height: 1.6; overflow: visible; }
@@ -55,13 +59,14 @@
   .badge-n { font-size: 12px; font-weight: 700; color: var(--accent); margin-left: 1px;
              font-variant-numeric: tabular-nums; }
   /* обе полосы с фоном — иначе «пустые» строки визуально кажутся уже/ниже */
-  #lbTable td, #playersTable td, #badgesLegend td {
+  #lbTable td, #playersTable td, #badgesLegend td, #cashLbTable td {
     line-height: 1.35;
     background: rgba(255, 255, 255, 0.015);
   }
   #lbTable tbody tr:nth-child(even) td,
   #playersTable tbody tr:nth-child(even) td,
-  #badgesLegend tbody tr:nth-child(even) td {
+  #badgesLegend tbody tr:nth-child(even) td,
+  #cashLbTable tbody tr:nth-child(even) td {
     background: rgba(255, 255, 255, 0.055);
   }
   tr.top1 td:first-child::before { content: "🥇 "; }
@@ -267,6 +272,24 @@
     </div>
   </div>
 
+  <div class="grid" id="cashView" style="display:none">
+    <div class="card full">
+      <h2 id="cashLbTitle">NO-MONEY-CASH — рейтинг</h2>
+      <p class="muted" style="margin:-6px 0 14px;font-size:13px">
+        Отдельный рейтинг: сумма чистых фишек за вечер (стек на выходе минус входы и ребаи). Не входит в турнирный сезон.
+      </p>
+      <div class="chartbox" id="cashLbBox"><canvas id="cashLbChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Таблица рейтинга</h2>
+      <div class="table-wrap"><table id="cashLbTable"></table></div>
+    </div>
+    <div class="card">
+      <h2>Кэш-сессии</h2>
+      <div class="table-wrap" id="cashSessions"></div>
+    </div>
+  </div>
+
   <div class="grid" id="calcView" style="display:none">
     <div class="card full">
       <h2>Калькулятор очков → текст для Telegram</h2>
@@ -338,7 +361,7 @@
 
 <script>
 const PALETTE = ["#e0b34c","#4c9be0","#3fb96a","#e05c4c","#b46ce0","#4ce0d2","#e08d4c","#8ea3c7"];
-let DATA, activeTab; // id сезона | "players" | "calc" | "awards"
+let DATA, activeTab; // id сезона | "players" | "cash" | "calc" | "awards"
 let calcUnlocked = sessionStorage.getItem("frCalcUnlock") === "1";
 let SERVER_AWARDS = [];
 let AWARDS = [];
@@ -473,6 +496,7 @@ fetch("data.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).th
     tabs.appendChild(b);
   };
   d.seasons.forEach(s => addTab(s.name, s.id));
+  addTab("Cash", "cash");
   addTab("Игроки", "players");
   const adminClass = "admin-tab" + (calcUnlocked ? " visible" : "");
   addTab("Калькулятор", "calc", adminClass);
@@ -874,20 +898,26 @@ function updateCalcPreview() {
   document.getElementById("calcOut").value = buildPostText(readCalcEntries());
 }
 
-let lbChart, raceChart;
+let lbChart, raceChart, cashLbChart;
 
 function render() {
   document.querySelectorAll(".tabs button").forEach(b =>
     b.classList.toggle("active", b.dataset.tab === String(activeTab)));
   const isPlayers = activeTab === "players";
+  const isCash = activeTab === "cash";
   const isCalc = activeTab === "calc";
   const isAwards = activeTab === "awards";
-  document.getElementById("seasonView").style.display = (!isPlayers && !isCalc && !isAwards) ? "" : "none";
+  document.getElementById("seasonView").style.display = (!isPlayers && !isCash && !isCalc && !isAwards) ? "" : "none";
   document.getElementById("playersView").style.display = isPlayers ? "" : "none";
+  document.getElementById("cashView").style.display = isCash ? "" : "none";
   document.getElementById("calcView").style.display = isCalc ? "" : "none";
   document.getElementById("awardsView").style.display = isAwards ? "" : "none";
   if (isAwards) {
     renderAwardsAdmin();
+    return;
+  }
+  if (isCash) {
+    renderCash();
     return;
   }
   if (isPlayers || isCalc) return;
@@ -999,6 +1029,89 @@ function renderPlayers() {
        <td class="num">${p.points_total}</td>
        <td class="badges-cell">${(p.badges || []).map(badgeHtml).join("")}</td></tr>`).join("");
   bindAwardTips(document.getElementById("playersTable"));
+}
+
+function fmtChips(n) {
+  return (n ?? 0).toLocaleString("ru-RU");
+}
+
+function renderCash() {
+  const cash = DATA.cash || { leaderboard: [], sessions: [], sessions_count: 0, name: "NO-MONEY-CASH" };
+  const lb = cash.leaderboard || [];
+  const mobile = window.innerWidth < 600;
+  const top = lb.slice(0, 18);
+
+  document.getElementById("cashLbTitle").textContent =
+    `${cash.name || "NO-MONEY-CASH"} — рейтинг` +
+    (cash.sessions_count ? ` · ${cash.sessions_count} ${cash.sessions_count === 1 ? "сессия" : "сессий"}` : "");
+
+  document.getElementById("cashLbBox").style.height =
+    Math.max(120, top.length * (mobile ? 24 : 28) + 50) + "px";
+  cashLbChart?.destroy();
+  if (top.length) {
+    cashLbChart = new Chart(document.getElementById("cashLbChart"), {
+      type: "bar",
+      plugins: [ChartDataLabels],
+      data: {
+        labels: top.map(r => name(r.player_key)),
+        datasets: [{
+          data: top.map(r => r.chips),
+          backgroundColor: top.map((_, i) =>
+            i === 0 ? "#e0b34c" : i < 3 ? "#c7cbd6" : "#4c9be0"),
+          borderRadius: 5,
+        }],
+      },
+      options: {
+        indexAxis: "y",
+        maintainAspectRatio: false,
+        layout: { padding: { right: mobile ? 52 : 72 } },
+        plugins: {
+          legend: { display: false },
+          datalabels: {
+            anchor: "end", align: "right", offset: 4, color: "#e6e8ee",
+            font: { size: mobile ? 10 : 12, weight: 600 },
+            formatter: v => fmtChips(v),
+          },
+        },
+        scales: {
+          x: { grid: { color: "#2a3142" }, ticks: { color: "#8b93a7" } },
+          y: { grid: { display: false }, ticks: { color: "#e6e8ee", font: { size: mobile ? 11 : 13 } } },
+        },
+      },
+    });
+  }
+
+  document.getElementById("cashLbTable").innerHTML =
+    `<tr><th>#</th><th>Игрок</th><th class="num">Фишки</th><th class="num">Сессий</th>
+     <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th>
+     <th class="num m-hide">лучший</th></tr>` +
+    (lb.length
+      ? lb.map((r, i) =>
+          `<tr class="top${i < 3 ? i + 1 : ""}"><td>${i + 1}</td>
+           <td>${esc(name(r.player_key))}</td>
+           <td class="num">${fmtChips(r.chips)}</td>
+           <td class="num">${r.sessions}</td>
+           <td class="num">${r.wins}</td>
+           <td class="num">${r.seconds}</td>
+           <td class="num">${r.thirds}</td>
+           <td class="num m-hide">${fmtChips(r.best_chips)}</td></tr>`
+        ).join("")
+      : `<tr><td colspan="8" class="muted">Пока нет кэш-сессий</td></tr>`);
+
+  const sessions = [...(cash.sessions || [])].reverse();
+  document.getElementById("cashSessions").innerHTML = sessions.length
+    ? sessions.map(t => `
+      <details>
+        <summary><b>${fmtDate(t.date)}</b> ${esc(t.name || "Cash")}
+          <span class="muted">· ${t.results.length} игроков</span>
+          <a class="tg-post" href="https://t.me/${esc(DATA.channel)}/${t.msg_id}" target="_blank" rel="noopener"
+             onclick="event.stopPropagation()">пост</a></summary>
+        <table>${t.results.map(r =>
+          `<tr><td>${r.place}</td><td>${esc(name(r.player_key))}</td>
+           <td class="num">${r.chips != null ? fmtChips(r.chips) : ""}</td></tr>`).join("")}
+        </table>
+      </details>`).join("")
+    : `<p class="muted">Сессий пока нет</p>`;
 }
 </script>
   
