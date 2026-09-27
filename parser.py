@@ -111,7 +111,7 @@ def parse_result_lines(lines: list[str], start: int) -> tuple[list[dict], list[s
         results.append(
             {
                 "place": place,
-                "raw_name": m.group("name").strip(),
+                "raw_name": m.group("name").strip().rstrip(".,;:"),
                 "kills": int(m.group("kills")) if m.group("kills") else None,
                 "points": int(m.group("points")) if m.group("points") else None,
             }
