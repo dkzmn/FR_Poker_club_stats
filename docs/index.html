@@ -1005,7 +1005,7 @@ function render() {
         `<tr><td>${r.place}</td><td>${esc(name(r.player_key))}</td>
          <td class="num">${r.points ?? ""}</td><td class="num">${r.kills != null ? r.kills + " 💀" : ""}</td></tr>`).join("")}
       </table>
-      ${t.bounty_hunter_key ? `<p class="muted" style="margin:0 0 10px">🥊 Bounty Hunter: ${esc(name(t.bounty_hunter_key))} (${t.bounty_hunter_kills} 💀)</p>` : ""}
+      ${t.bounty_hunter_key ? `<p class="muted" style="margin:0 0 10px">🥊 ${(t.name || "").toUpperCase().includes("DEALER") ? "Dealer Hunter" : "Bounty Hunter"}: ${esc(name(t.bounty_hunter_key))} (${t.bounty_hunter_kills} 💀)</p>` : ""}
     </details>`).join("");
 }
 

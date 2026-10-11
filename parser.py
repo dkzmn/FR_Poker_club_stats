@@ -36,7 +36,11 @@ RESULT_RE = re.compile(
     r"\s*[🔥💥⚡️👑🥇🥈🥉🌟]*\s*$"
 )
 MEDAL_PLACE = {"🥇": 1, "🥈": 2, "🥉": 3}
-BOUNTY_HUNTER_RE = re.compile(r"Bounty Hunter турнира\s*[-–—]\s*(?P<name>.+?)\s*:\s*(?P<kills>\d+)")
+# "Bounty Hunter турнира" / "Dealer Hunter турнира" и т.п.
+HUNTER_RE = re.compile(
+    r"(?P<title>\w+)\s+Hunter турнира\s*[-–—]\s*(?P<name>.+?)\s*:\s*(?P<kills>\d+)",
+    re.IGNORECASE,
+)
 NAME_FROM_TEXT_RE = re.compile(r"Турнир\s+(?P<name>\S+)\s+завершен", re.IGNORECASE)
 # пост финала: "ФИНАЛ СЕЗОНА - ЗАВЕРШЕН" / "финал второго сезона - ЗАВЕРШЕН",
 # далее блок "Победители:" (сезон 1) или "Итоги турнира:" (сезон 2+)
@@ -98,7 +102,7 @@ def parse_result_lines(lines: list[str], start: int) -> tuple[list[dict], list[s
         line = line.strip()
         if not line:
             continue
-        if TERMINATOR_RE.match(line) or BOUNTY_HUNTER_RE.search(line):
+        if TERMINATOR_RE.match(line) or HUNTER_RE.search(line):
             break
         m = RESULT_RE.match(line)
         if not m:
@@ -162,7 +166,7 @@ def parse_tournament(msg_id: int, text: str) -> tuple[dict, list[dict], list[str
 
     results, unparsed = parse_result_lines(lines, header_idx + 1)
 
-    bh = BOUNTY_HUNTER_RE.search(text)
+    bh = HUNTER_RE.search(text)
     meta = {
         "name": name,
         "is_final": 0,
