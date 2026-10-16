@@ -34,6 +34,12 @@ for _k, _v in ALIASES_RAW.items():
     else:
         ALIASES[nk] = _v
 
+# Одинаковый ник у разных людей: (msg_id, norm_key) — не учитывать в статистике.
+# Старый «Алексей» (сезон 1, пост 60) ≠ новый игрок «Алексей» с сезона 3.
+EXCLUDED_RESULTS: set[tuple[int, str]] = {
+    (60, "алексей"),
+}
+
 
 class PlayerRegistry:
     """Сопоставляет сырые имена каноническим; display-имя — самое частое написание."""
@@ -84,6 +90,8 @@ def main() -> None:
             "SELECT place, raw_name, kills, points FROM results WHERE msg_id=? ORDER BY place",
             (msg_id,),
         ):
+            if (msg_id, norm_key(raw_name)) in EXCLUDED_RESULTS:
+                continue
             key = reg.canon_key(raw_name)
             if key is None:
                 continue
