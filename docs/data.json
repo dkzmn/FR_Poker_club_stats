@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T23:36:33+00:00",
+ "generated_at": "2026-10-18T10:18:05+00:00",
  "channel": "FRPokerClub",
  "player_names": {
   "soulknight": "SoulKnight",
@@ -89,7 +89,7 @@
   "николета": "Николета",
   "ася": "Ася",
   "куру": "Куру",
-  "reit22": "Reit22",
+  "rait22": "rait22",
   "steel": "STEEL",
   "fin": "FIN",
   "анастасия": "Анастасия",
@@ -1508,7 +1508,7 @@
      "bh_titles": 0
     },
     {
-     "player_key": "reit22",
+     "player_key": "rait22",
      "points": 1160,
      "games": 2,
      "wins": 0,
@@ -5982,7 +5982,7 @@
     },
     {
      "place": 5,
-     "player_key": "reit22",
+     "player_key": "rait22",
      "kills": 0,
      "points": 850
     },
@@ -6390,7 +6390,7 @@
     },
     {
      "place": 8,
-     "player_key": "reit22",
+     "player_key": "rait22",
      "kills": 0,
      "points": 310
     }
@@ -9681,7 +9681,7 @@
     }
    ]
   },
-  "reit22": {
+  "rait22": {
    "games": 2,
    "wins": 0,
    "seconds": 0,
