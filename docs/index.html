@@ -275,8 +275,10 @@
   <div class="grid" id="cashView" style="display:none">
     <div class="card full">
       <h2 id="cashLbTitle">NO-MONEY-CASH — рейтинг</h2>
+      <div class="champ" id="cashChamp"></div>
       <p class="muted" style="margin:-6px 0 14px;font-size:13px">
-        В рейтинг попадает число фишек на момент завершения кэш игры. Не входит в турнирный сезон.
+        Пока серии нет финала — сумма фишек за обычные сессии. После финала таблица показывает
+        официальный итог серии (стеки финала уже с учётом прошлых игр). Не входит в турнирный сезон.
       </p>
       <div class="chartbox" id="cashLbBox"><canvas id="cashLbChart"></canvas></div>
     </div>
@@ -1041,6 +1043,10 @@ function renderCash() {
   const mobile = window.innerWidth < 600;
   const top = lb.slice(0, 18);
 
+  document.getElementById("cashChamp").innerHTML = cash.champion_key
+    ? `🏆 Чемпион кэш-серии: <b>${esc(name(cash.champion_key))}</b>`
+    : `<span class="muted">Кэш-серия продолжается — финал ещё впереди</span>`;
+
   document.getElementById("cashLbTitle").textContent =
     `${cash.name || "NO-MONEY-CASH"} — рейтинг` +
     (cash.sessions_count ? ` · ${cash.sessions_count} ${cash.sessions_count === 1 ? "сессия" : "сессий"}` : "");
@@ -1102,7 +1108,7 @@ function renderCash() {
   document.getElementById("cashSessions").innerHTML = sessions.length
     ? sessions.map(t => `
       <details>
-        <summary><b>${fmtDate(t.date)}</b> ${esc(t.name || "Cash")}
+        <summary><b>${fmtDate(t.date)}</b> ${esc(t.name || "Cash")}${t.is_final ? " 🏆" : ""}
           <span class="muted">· ${t.results.length} игроков</span>
           <a class="tg-post" href="https://t.me/${esc(DATA.channel)}/${t.msg_id}" target="_blank" rel="noopener"
              onclick="event.stopPropagation()">пост</a></summary>

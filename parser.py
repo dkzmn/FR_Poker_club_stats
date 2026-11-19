@@ -13,11 +13,18 @@ from pathlib import Path
 
 DB_PATH = Path(__file__).parent / "frpoker.db"
 
-# кэш: "Результаты NO-MONEY-CASH:" — отдельный рейтинг по фишкам, не турнир
+# кэш: "Результаты NO-MONEY-CASH:" / "РЕЗУЛЬТАТЫ NIGHT NO MONEY CASH"
 CASH_HEADER_RE = re.compile(
     r"^[👑🏆]?\s*Результаты\s+(?P<name>[^:\n]*CASH[^:\n]*)\s*:?\s*$",
     re.IGNORECASE,
 )
+# финал кэш-серии: "ФИНАЛ ПЕРВОЙ NO-MONEY-CASH СЕРИИ ЗАВЕРШЕН"
+CASH_FINAL_HEADER_RE = re.compile(
+    r"ФИНАЛ\s+.*?NO[\s\-]?MONEY[\s\-]?CASH\s+СЕРИИ\s+ЗАВЕРШЕН",
+    re.IGNORECASE,
+)
+# полный список мест финала (не короткий блок «Поздравляем победителей»)
+CASH_FINAL_RESULTS_RE = re.compile(r"результатами\s*:\s*$", re.IGNORECASE)
 
 # заголовок: "ПОБЕДИТЕЛИ ТУРНИРА <имя>", встречались опечатка "ПОБЕДИТЕ ТУРНИРА"
 # и вариант "🏆 Победители:" без слова ТУРНИРА (пост 77)
@@ -78,7 +85,8 @@ def init_db(conn: sqlite3.Connection) -> None:
         CREATE TABLE cash_games (
             msg_id INTEGER PRIMARY KEY,
             date_utc TEXT NOT NULL,
-            name TEXT                  -- NO-MONEY-CASH и т.п.
+            name TEXT,                 -- NO-MONEY-CASH, NIGHT NO MONEY CASH, ...
+            is_final INTEGER NOT NULL DEFAULT 0
         );
         CREATE TABLE cash_results (
             msg_id INTEGER NOT NULL REFERENCES cash_games(msg_id),
@@ -123,6 +131,35 @@ def parse_result_lines(lines: list[str], start: int) -> tuple[list[dict], list[s
     return results, unparsed
 
 
+def _cash_results_from_parsed(results: list[dict]) -> list[dict]:
+    # в кэше поле points regex'а — это фишки
+    return [
+        {
+            "place": r["place"],
+            "raw_name": r["raw_name"],
+            "chips": r["points"],
+        }
+        for r in results
+    ]
+
+
+def parse_cash_final(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | None:
+    """Финал NO-MONEY-CASH серии: итоговые стеки (уже с учётом прошлых игр)."""
+    if not CASH_FINAL_HEADER_RE.search(text):
+        return None
+    lines = text.split("\n")
+    start = None
+    for i, line in enumerate(lines):
+        if CASH_FINAL_RESULTS_RE.search(line.strip()):
+            start = i + 1
+            break
+    if start is None:
+        return None
+    results, unparsed = parse_result_lines(lines, start)
+    meta = {"name": "ФИНАЛ NO-MONEY-CASH", "is_final": 1}
+    return meta, _cash_results_from_parsed(results), unparsed
+
+
 def parse_cash(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | None:
     """NO-MONEY-CASH и подобные: места + фишки, не очки турнира."""
     lines = text.split("\n")
@@ -135,16 +172,7 @@ def parse_cash(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | N
     if header_idx is None:
         return None
     results, unparsed = parse_result_lines(lines, header_idx + 1)
-    # в кэше поле points regex'а — это фишки
-    cash_results = [
-        {
-            "place": r["place"],
-            "raw_name": r["raw_name"],
-            "chips": r["points"],
-        }
-        for r in results
-    ]
-    return {"name": name}, cash_results, unparsed
+    return {"name": name, "is_final": 0}, _cash_results_from_parsed(results), unparsed
 
 
 def parse_tournament(msg_id: int, text: str) -> tuple[dict, list[dict], list[str]] | None:
@@ -199,7 +227,8 @@ def main() -> None:
     rows = conn.execute("SELECT msg_id, date_utc, text FROM raw_messages ORDER BY msg_id").fetchall()
     n_tournaments = n_results = n_cash = n_cash_rows = 0
     for msg_id, date_utc, text in rows:
-        cash = parse_cash(msg_id, text)
+        # сначала финал кэш-серии — иначе обычный cash/tournament header может перехватить
+        cash = parse_cash_final(msg_id, text) or parse_cash(msg_id, text)
         if cash:
             meta, results, unparsed = cash
             if not results:
@@ -208,8 +237,8 @@ def main() -> None:
             for line in unparsed:
                 print(f"[warn] пост {msg_id}: нераспознанная строка: {line!r}", file=sys.stderr)
             conn.execute(
-                "INSERT INTO cash_games VALUES (?, ?, ?)",
-                (msg_id, date_utc, meta["name"]),
+                "INSERT INTO cash_games VALUES (?, ?, ?, ?)",
+                (msg_id, date_utc, meta["name"], meta.get("is_final", 0)),
             )
             conn.executemany(
                 "INSERT INTO cash_results VALUES (?, ?, ?, ?)",
@@ -219,7 +248,7 @@ def main() -> None:
             n_cash_rows += len(results)
             continue
 
-        # сначала финал: его пост тоже содержит строку "Победители:"
+        # сначала финал сезона: его пост тоже содержит строку "Победители:"
         parsed = parse_final(msg_id, text) or parse_tournament(msg_id, text)
         if not parsed:
             continue

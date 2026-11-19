@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T10:18:05+00:00",
+ "generated_at": "2026-11-19T10:37:15+00:00",
  "channel": "FRPokerClub",
  "player_names": {
   "soulknight": "SoulKnight",
@@ -97,10 +97,46 @@
   "bromatrom": "Bromatrom",
   "алексей": "Алексей",
   "каха": "Каха",
+  "slayer77": "slayer77",
+  "oleg": "Oleg",
+  "вуки": "Вуки",
+  "din023": "DiN023",
+  "kir": "Kir",
+  "victoria": "Victoria",
+  "rixter": "Rixter",
+  "deksik": "Deksik",
+  "vodnik": "vodnik",
+  "miyagi": "Miyagi",
+  "nikitrave": "NikitRave",
+  "dimka_afk": "Dimka_afk",
+  "лекс": "Лекс",
+  "redstar": "RedStar",
   "10off": "10off",
   "marilove": "MariLove",
+  "татарин": "Татарин",
+  "сицилиец": "Сицилиец",
+  "одинребай": "Один ребай",
+  "александр": "Александр",
+  "артем": "Артём",
+  "valma": "Valma",
+  "andersen777": "Andersen777",
+  "tishka": "Tishka",
+  "alex11": "ALEX11",
+  "пивнойбарон": "Пивной барон",
+  "джаш": "Джаш",
   "сокол": "Сокол",
-  "mordvin": "Mordvin"
+  "mordvin": "Mordvin",
+  "smile": "Smile",
+  "atlas": "Atlas",
+  "katamaran": "Katamaran",
+  "maxander": "maxander",
+  "kate": "kATE",
+  "f4ntik": "F4ntik",
+  "julvern": "JulVern",
+  "pigeon": "Pigeon",
+  "maximus": "Maximus",
+  "шулер228": "Шулер228",
+  "марияигоревна": "Мария Игоревна"
  },
  "seasons": [
   {
@@ -1164,149 +1200,226 @@
    "name": "Сезон 3",
    "start": "2026-08-30",
    "end": "2026-12-31",
-   "tournaments_count": 21,
+   "tournaments_count": 35,
    "leaderboard": [
     {
      "player_key": "dk",
-     "points": 21310,
-     "games": 15,
+     "points": 31320,
+     "games": 20,
      "wins": 3,
-     "seconds": 1,
+     "seconds": 3,
      "thirds": 5,
-     "podiums": 9,
-     "kills": 27,
-     "bh_titles": 3
+     "podiums": 11,
+     "kills": 40,
+     "bh_titles": 4
+    },
+    {
+     "player_key": "onetao",
+     "points": 28200,
+     "games": 18,
+     "wins": 2,
+     "seconds": 4,
+     "thirds": 2,
+     "podiums": 8,
+     "kills": 30,
+     "bh_titles": 2
     },
     {
      "player_key": "andreyptichies",
-     "points": 19730,
-     "games": 15,
+     "points": 27630,
+     "games": 24,
      "wins": 3,
      "seconds": 2,
      "thirds": 1,
      "podiums": 6,
-     "kills": 12,
-     "bh_titles": 1
-    },
-    {
-     "player_key": "гурупокера",
-     "points": 14030,
-     "games": 15,
-     "wins": 0,
-     "seconds": 3,
-     "thirds": 1,
-     "podiums": 4,
      "kills": 19,
      "bh_titles": 1
     },
     {
-     "player_key": "soulknight",
-     "points": 13980,
-     "games": 20,
-     "wins": 1,
-     "seconds": 0,
+     "player_key": "гурупокера",
+     "points": 24440,
+     "games": 22,
+     "wins": 0,
+     "seconds": 5,
      "thirds": 2,
-     "podiums": 3,
-     "kills": 16,
-     "bh_titles": 0
+     "podiums": 7,
+     "kills": 34,
+     "bh_titles": 2
     },
     {
-     "player_key": "xz_nike",
-     "points": 12410,
-     "games": 9,
-     "wins": 2,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 2,
-     "kills": 5,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "krysyuk",
-     "points": 11870,
-     "games": 8,
+     "player_key": "soulknight",
+     "points": 19670,
+     "games": 33,
      "wins": 1,
      "seconds": 0,
      "thirds": 3,
      "podiums": 4,
-     "kills": 13,
-     "bh_titles": 1
-    },
-    {
-     "player_key": "kobra",
-     "points": 11690,
-     "games": 10,
-     "wins": 0,
-     "seconds": 1,
-     "thirds": 2,
-     "podiums": 3,
      "kills": 18,
      "bh_titles": 0
     },
     {
-     "player_key": "onetao",
-     "points": 10720,
-     "games": 9,
-     "wins": 0,
-     "seconds": 3,
+     "player_key": "xz_nike",
+     "points": 19460,
+     "games": 12,
+     "wins": 3,
+     "seconds": 0,
      "thirds": 0,
      "podiums": 3,
-     "kills": 11,
+     "kills": 12,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "krysyuk",
+     "points": 16860,
+     "games": 12,
+     "wins": 1,
+     "seconds": 0,
+     "thirds": 4,
+     "podiums": 5,
+     "kills": 13,
+     "bh_titles": 1
+    },
+    {
+     "player_key": "ивананисимов",
+     "points": 16640,
+     "games": 12,
+     "wins": 1,
+     "seconds": 2,
+     "thirds": 0,
+     "podiums": 3,
+     "kills": 15,
+     "bh_titles": 1
+    },
+    {
+     "player_key": "pannda",
+     "points": 16420,
+     "games": 13,
+     "wins": 1,
+     "seconds": 2,
+     "thirds": 1,
+     "podiums": 4,
+     "kills": 5,
      "bh_titles": 0
     },
     {
      "player_key": "lo",
-     "points": 10630,
-     "games": 9,
+     "points": 15930,
+     "games": 13,
      "wins": 2,
      "seconds": 0,
-     "thirds": 1,
-     "podiums": 3,
-     "kills": 2,
+     "thirds": 2,
+     "podiums": 4,
+     "kills": 5,
      "bh_titles": 0
     },
     {
-     "player_key": "pannda",
-     "points": 9750,
-     "games": 6,
-     "wins": 1,
-     "seconds": 2,
-     "thirds": 0,
-     "podiums": 3,
-     "kills": 3,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "ивананисимов",
-     "points": 7840,
-     "games": 7,
+     "player_key": "kobra",
+     "points": 15380,
+     "games": 16,
      "wins": 0,
      "seconds": 1,
-     "thirds": 0,
-     "podiums": 1,
-     "kills": 8,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "laposjr",
-     "points": 7480,
-     "games": 5,
-     "wins": 1,
-     "seconds": 2,
-     "thirds": 0,
+     "thirds": 2,
      "podiums": 3,
-     "kills": 4,
+     "kills": 20,
      "bh_titles": 0
     },
     {
      "player_key": "ягодка",
-     "points": 7080,
-     "games": 6,
-     "wins": 0,
+     "points": 14440,
+     "games": 11,
+     "wins": 1,
      "seconds": 0,
      "thirds": 3,
+     "podiums": 4,
+     "kills": 4,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "вуки",
+     "points": 14040,
+     "games": 8,
+     "wins": 3,
+     "seconds": 0,
+     "thirds": 1,
+     "podiums": 4,
+     "kills": 10,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "laposjr",
+     "points": 12140,
+     "games": 10,
+     "wins": 2,
+     "seconds": 2,
+     "thirds": 0,
+     "podiums": 4,
+     "kills": 5,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "витяконь",
+     "points": 10370,
+     "games": 8,
+     "wins": 1,
+     "seconds": 1,
+     "thirds": 1,
      "podiums": 3,
+     "kills": 9,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "kir",
+     "points": 8270,
+     "games": 8,
+     "wins": 1,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 1,
+     "kills": 7,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "rixter",
+     "points": 6930,
+     "games": 6,
+     "wins": 0,
+     "seconds": 1,
+     "thirds": 1,
+     "podiums": 2,
      "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "туз",
+     "points": 6850,
+     "games": 6,
+     "wins": 2,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 2,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "жабазина",
+     "points": 6350,
+     "games": 6,
+     "wins": 1,
+     "seconds": 1,
+     "thirds": 0,
+     "podiums": 2,
+     "kills": 1,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "leo",
+     "points": 5980,
+     "games": 8,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 1,
      "bh_titles": 0
     },
     {
@@ -1321,14 +1434,36 @@
      "bh_titles": 0
     },
     {
-     "player_key": "leo",
-     "points": 5260,
-     "games": 7,
-     "wins": 0,
+     "player_key": "папавздании",
+     "points": 5380,
+     "games": 4,
+     "wins": 1,
      "seconds": 0,
+     "thirds": 1,
+     "podiums": 2,
+     "kills": 6,
+     "bh_titles": 1
+    },
+    {
+     "player_key": "татарин",
+     "points": 5330,
+     "games": 2,
+     "wins": 0,
+     "seconds": 2,
      "thirds": 0,
-     "podiums": 0,
-     "kills": 1,
+     "podiums": 2,
+     "kills": 3,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "fin",
+     "points": 4930,
+     "games": 5,
+     "wins": 0,
+     "seconds": 1,
+     "thirds": 1,
+     "podiums": 2,
+     "kills": 4,
      "bh_titles": 0
     },
     {
@@ -1343,26 +1478,15 @@
      "bh_titles": 0
     },
     {
-     "player_key": "жабазина",
-     "points": 4750,
+     "player_key": "marilove",
+     "points": 4170,
      "games": 4,
-     "wins": 1,
-     "seconds": 1,
-     "thirds": 0,
-     "podiums": 2,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "папавздании",
-     "points": 4640,
-     "games": 2,
-     "wins": 1,
+     "wins": 0,
      "seconds": 0,
-     "thirds": 1,
-     "podiums": 2,
-     "kills": 5,
-     "bh_titles": 1
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 2,
+     "bh_titles": 0
     },
     {
      "player_key": "николета",
@@ -1376,6 +1500,28 @@
      "bh_titles": 1
     },
     {
+     "player_key": "din023",
+     "points": 4090,
+     "games": 2,
+     "wins": 1,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 1,
+     "kills": 7,
+     "bh_titles": 1
+    },
+    {
+     "player_key": "meekaterin",
+     "points": 3660,
+     "games": 4,
+     "wins": 0,
+     "seconds": 1,
+     "thirds": 0,
+     "podiums": 1,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
      "player_key": "тафгай",
      "points": 3600,
      "games": 2,
@@ -1387,14 +1533,47 @@
      "bh_titles": 0
     },
     {
-     "player_key": "витяконь",
-     "points": 3220,
-     "games": 4,
+     "player_key": "slayer77",
+     "points": 3600,
+     "games": 2,
+     "wins": 0,
+     "seconds": 2,
+     "thirds": 0,
+     "podiums": 2,
+     "kills": 5,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "vodnik",
+     "points": 3580,
+     "games": 6,
+     "wins": 1,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 1,
+     "kills": 1,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "kudri",
+     "points": 3460,
+     "games": 5,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "10off",
+     "points": 3360,
+     "games": 3,
      "wins": 0,
      "seconds": 0,
      "thirds": 1,
      "podiums": 1,
-     "kills": 4,
+     "kills": 0,
      "bh_titles": 0
     },
     {
@@ -1420,9 +1599,9 @@
      "bh_titles": 0
     },
     {
-     "player_key": "meekaterin",
-     "points": 2920,
-     "games": 2,
+     "player_key": "сицилиец",
+     "points": 3020,
+     "games": 1,
      "wins": 0,
      "seconds": 1,
      "thirds": 0,
@@ -1432,8 +1611,8 @@
     },
     {
      "player_key": "lackypeek",
-     "points": 2780,
-     "games": 5,
+     "points": 2960,
+     "games": 6,
      "wins": 0,
      "seconds": 0,
      "thirds": 0,
@@ -1442,53 +1621,130 @@
      "bh_titles": 0
     },
     {
-     "player_key": "fin",
-     "points": 2740,
-     "games": 3,
+     "player_key": "deksik",
+     "points": 2900,
+     "games": 5,
      "wins": 0,
      "seconds": 0,
      "thirds": 1,
      "podiums": 1,
-     "kills": 4,
+     "kills": 2,
      "bh_titles": 0
     },
     {
-     "player_key": "туз",
-     "points": 2630,
-     "games": 3,
-     "wins": 1,
+     "player_key": "ladiesman_217",
+     "points": 2820,
+     "games": 4,
+     "wins": 0,
      "seconds": 0,
      "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "леха",
+     "points": 2290,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
      "podiums": 1,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "kudri",
-     "points": 1530,
-     "games": 3,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 0,
-     "kills": 0,
-     "bh_titles": 0
-    },
-    {
-     "player_key": "скрф",
-     "points": 1310,
-     "games": 3,
-     "wins": 0,
-     "seconds": 0,
-     "thirds": 0,
-     "podiums": 0,
      "kills": 0,
      "bh_titles": 0
     },
     {
      "player_key": "wride",
-     "points": 1240,
+     "points": 2190,
+     "games": 3,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "redstar",
+     "points": 2010,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
+     "podiums": 1,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "tishka",
+     "points": 1840,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "каха",
+     "points": 1830,
+     "games": 3,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 1,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "скрф",
+     "points": 1790,
+     "games": 5,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "miyagi",
+     "points": 1770,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 1,
+     "podiums": 1,
+     "kills": 3,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "одинребай",
+     "points": 1620,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "алексей",
+     "points": 1310,
      "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "alex11",
+     "points": 1190,
+     "games": 1,
      "wins": 0,
      "seconds": 0,
      "thirds": 0,
@@ -1519,6 +1775,17 @@
      "bh_titles": 0
     },
     {
+     "player_key": "andersen777",
+     "points": 1020,
+     "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
      "player_key": "биба",
      "points": 990,
      "games": 2,
@@ -1527,6 +1794,50 @@
      "thirds": 0,
      "podiums": 0,
      "kills": 3,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "nikitrave",
+     "points": 950,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 1,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "oleg",
+     "points": 900,
+     "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 2,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "nev",
+     "points": 830,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 4,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "лекс",
+     "points": 800,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
      "bh_titles": 0
     },
     {
@@ -1552,8 +1863,19 @@
      "bh_titles": 0
     },
     {
-     "player_key": "алексей",
-     "points": 590,
+     "player_key": "дама",
+     "points": 630,
+     "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "параллелепипед",
+     "points": 600,
      "games": 1,
      "wins": 0,
      "seconds": 0,
@@ -1574,6 +1896,17 @@
      "bh_titles": 0
     },
     {
+     "player_key": "dimka_afk",
+     "points": 500,
+     "games": 2,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
      "player_key": "los",
      "points": 500,
      "games": 1,
@@ -1585,7 +1918,7 @@
      "bh_titles": 0
     },
     {
-     "player_key": "ladiesman_217",
+     "player_key": "пивнойбарон",
      "points": 500,
      "games": 1,
      "wins": 0,
@@ -1596,9 +1929,9 @@
      "bh_titles": 0
     },
     {
-     "player_key": "каха",
-     "points": 450,
-     "games": 1,
+     "player_key": "mumimama",
+     "points": 440,
+     "games": 2,
      "wins": 0,
      "seconds": 0,
      "thirds": 0,
@@ -1673,8 +2006,85 @@
      "bh_titles": 0
     },
     {
-     "player_key": "дама",
+     "player_key": "victoria",
      "points": 240,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "опер_228",
+     "points": 210,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "александр",
+     "points": 200,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "артем",
+     "points": 180,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "радист",
+     "points": 170,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "valma",
+     "points": 160,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "джаш",
+     "points": 160,
+     "games": 1,
+     "wins": 0,
+     "seconds": 0,
+     "thirds": 0,
+     "podiums": 0,
+     "kills": 0,
+     "bh_titles": 0
+    },
+    {
+     "player_key": "фанатгурупокера67",
+     "points": 140,
      "games": 1,
      "wins": 0,
      "seconds": 0,
@@ -6685,76 +7095,1380 @@
      "points": 270
     }
    ]
+  },
+  {
+   "msg_id": 639,
+   "date": "2026-10-18",
+   "name": "JOKER",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "laposjr",
+     "kills": null,
+     "points": 1200
+    },
+    {
+     "place": 2,
+     "player_key": "slayer77",
+     "kills": null,
+     "points": 900
+    },
+    {
+     "place": 3,
+     "player_key": "pannda",
+     "kills": null,
+     "points": 680
+    },
+    {
+     "place": 4,
+     "player_key": "onetao",
+     "kills": null,
+     "points": 510
+    },
+    {
+     "place": 5,
+     "player_key": "fin",
+     "kills": null,
+     "points": 390
+    },
+    {
+     "place": 6,
+     "player_key": "mumimama",
+     "kills": null,
+     "points": 300
+    },
+    {
+     "place": 7,
+     "player_key": "oleg",
+     "kills": null,
+     "points": 230
+    },
+    {
+     "place": 8,
+     "player_key": "вуки",
+     "kills": null,
+     "points": 180
+    },
+    {
+     "place": 9,
+     "player_key": "ladiesman_217",
+     "kills": null,
+     "points": 140
+    }
+   ]
+  },
+  {
+   "msg_id": 649,
+   "date": "2026-10-21",
+   "name": "BOMBPOT BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "din023",
+   "bounty_hunter_kills": 7,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "din023",
+     "kills": 7,
+     "points": 3570
+    },
+    {
+     "place": 2,
+     "player_key": "slayer77",
+     "kills": 5,
+     "points": 2700
+    },
+    {
+     "place": 3,
+     "player_key": "onetao",
+     "kills": 2,
+     "points": 1890
+    },
+    {
+     "place": 4,
+     "player_key": "andreyptichies",
+     "kills": 4,
+     "points": 1700
+    },
+    {
+     "place": 5,
+     "player_key": "каха",
+     "kills": 1,
+     "points": 1100
+    },
+    {
+     "place": 6,
+     "player_key": "dk",
+     "kills": 0,
+     "points": 780
+    },
+    {
+     "place": 7,
+     "player_key": "гурупокера",
+     "kills": 4,
+     "points": 1000
+    },
+    {
+     "place": 8,
+     "player_key": "oleg",
+     "kills": 2,
+     "points": 670
+    },
+    {
+     "place": 9,
+     "player_key": "kir",
+     "kills": 0,
+     "points": 370
+    },
+    {
+     "place": 10,
+     "player_key": "laposjr",
+     "kills": 0,
+     "points": 300
+    },
+    {
+     "place": 11,
+     "player_key": "victoria",
+     "kills": 0,
+     "points": 240
+    },
+    {
+     "place": 12,
+     "player_key": "soulknight",
+     "kills": 0,
+     "points": 190
+    }
+   ]
+  },
+  {
+   "msg_id": 659,
+   "date": "2026-10-23",
+   "name": "BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "dk",
+   "bounty_hunter_kills": 7,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "onetao",
+     "kills": 5,
+     "points": 4820
+    },
+    {
+     "place": 2,
+     "player_key": "dk",
+     "kills": 7,
+     "points": 5020
+    },
+    {
+     "place": 3,
+     "player_key": "вуки",
+     "kills": 4,
+     "points": 2860
+    },
+    {
+     "place": 4,
+     "player_key": "pannda",
+     "kills": 1,
+     "points": 2100
+    },
+    {
+     "place": 5,
+     "player_key": "ягодка",
+     "kills": 3,
+     "points": 2220
+    },
+    {
+     "place": 6,
+     "player_key": "xz_nike",
+     "kills": 7,
+     "points": 2820
+    },
+    {
+     "place": 7,
+     "player_key": "krysyuk",
+     "kills": 0,
+     "points": 1080
+    },
+    {
+     "place": 8,
+     "player_key": "гурупокера",
+     "kills": 4,
+     "points": 1280
+    },
+    {
+     "place": 9,
+     "player_key": "leo",
+     "kills": 0,
+     "points": 720
+    },
+    {
+     "place": 10,
+     "player_key": "lo",
+     "kills": 3,
+     "points": 900
+    },
+    {
+     "place": 11,
+     "player_key": "kir",
+     "kills": 2,
+     "points": 700
+    },
+    {
+     "place": 12,
+     "player_key": "rixter",
+     "kills": 0,
+     "points": 420
+    },
+    {
+     "place": 13,
+     "player_key": "папавздании",
+     "kills": 1,
+     "points": 440
+    },
+    {
+     "place": 14,
+     "player_key": "laposjr",
+     "kills": 1,
+     "points": 380
+    },
+    {
+     "place": 15,
+     "player_key": "deksik",
+     "kills": 2,
+     "points": 440
+    },
+    {
+     "place": 16,
+     "player_key": "kobra",
+     "kills": 1,
+     "points": 300
+    },
+    {
+     "place": 17,
+     "player_key": "жабазина",
+     "kills": 1,
+     "points": 280
+    },
+    {
+     "place": 18,
+     "player_key": "soulknight",
+     "kills": 0,
+     "points": 160
+    },
+    {
+     "place": 19,
+     "player_key": "meekaterin",
+     "kills": 0,
+     "points": 140
+    },
+    {
+     "place": 20,
+     "player_key": "vodnik",
+     "kills": 0,
+     "points": 120
+    }
+   ]
+  },
+  {
+   "msg_id": 668,
+   "date": "2026-10-25",
+   "name": "DOUBLE ROLL & VIEW CARD",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "vodnik",
+     "kills": null,
+     "points": 2400
+    },
+    {
+     "place": 2,
+     "player_key": "fin",
+     "kills": null,
+     "points": 1800
+    },
+    {
+     "place": 3,
+     "player_key": "deksik",
+     "kills": null,
+     "points": 1350
+    },
+    {
+     "place": 4,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 1020
+    },
+    {
+     "place": 5,
+     "player_key": "kir",
+     "kills": null,
+     "points": 770
+    },
+    {
+     "place": 6,
+     "player_key": "andreyptichies",
+     "kills": null,
+     "points": 590
+    },
+    {
+     "place": 7,
+     "player_key": "kobra",
+     "kills": null,
+     "points": 450
+    },
+    {
+     "place": 8,
+     "player_key": "kudri",
+     "kills": null,
+     "points": 350
+    },
+    {
+     "place": 9,
+     "player_key": "скрф",
+     "kills": null,
+     "points": 270
+    }
+   ]
+  },
+  {
+   "msg_id": 674,
+   "date": "2026-10-28",
+   "name": "DEEPSTACK BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "гурупокера",
+   "bounty_hunter_kills": 6,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "kir",
+     "kills": 3,
+     "points": 2870
+    },
+    {
+     "place": 2,
+     "player_key": "гурупокера",
+     "kills": 6,
+     "points": 2540
+    },
+    {
+     "place": 3,
+     "player_key": "miyagi",
+     "kills": 3,
+     "points": 1770
+    },
+    {
+     "place": 4,
+     "player_key": "andreyptichies",
+     "kills": 1,
+     "points": 1210
+    },
+    {
+     "place": 5,
+     "player_key": "nikitrave",
+     "kills": 1,
+     "points": 950
+    },
+    {
+     "place": 6,
+     "player_key": "ягодка",
+     "kills": 1,
+     "points": 750
+    },
+    {
+     "place": 7,
+     "player_key": "vodnik",
+     "kills": 1,
+     "points": 600
+    },
+    {
+     "place": 8,
+     "player_key": "kobra",
+     "kills": 1,
+     "points": 490
+    },
+    {
+     "place": 9,
+     "player_key": "dimka_afk",
+     "kills": 0,
+     "points": 300
+    },
+    {
+     "place": 10,
+     "player_key": "soulknight",
+     "kills": 0,
+     "points": 240
+    }
+   ]
+  },
+  {
+   "msg_id": 695,
+   "date": "2026-10-30",
+   "name": "HALLOWEEN EVENT",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "xz_nike",
+     "kills": null,
+     "points": 3820
+    },
+    {
+     "place": 2,
+     "player_key": "витяконь",
+     "kills": null,
+     "points": 3020
+    },
+    {
+     "place": 3,
+     "player_key": "lo",
+     "kills": null,
+     "points": 2460
+    },
+    {
+     "place": 4,
+     "player_key": "laposjr",
+     "kills": null,
+     "points": 2100
+    },
+    {
+     "place": 5,
+     "player_key": "pannda",
+     "kills": null,
+     "points": 1720
+    },
+    {
+     "place": 6,
+     "player_key": "жабазина",
+     "kills": null,
+     "points": 1320
+    },
+    {
+     "place": 7,
+     "player_key": "ивананисимов",
+     "kills": null,
+     "points": 1380
+    },
+    {
+     "place": 8,
+     "player_key": "krysyuk",
+     "kills": null,
+     "points": 880
+    },
+    {
+     "place": 9,
+     "player_key": "rixter",
+     "kills": null,
+     "points": 820
+    },
+    {
+     "place": 10,
+     "player_key": "лекс",
+     "kills": null,
+     "points": 800
+    },
+    {
+     "place": 11,
+     "player_key": "ягодка",
+     "kills": null,
+     "points": 500
+    },
+    {
+     "place": 12,
+     "player_key": "kobra",
+     "kills": null,
+     "points": 420
+    },
+    {
+     "place": 13,
+     "player_key": "andreyptichies",
+     "kills": null,
+     "points": 340
+    },
+    {
+     "place": 14,
+     "player_key": "гурупокера",
+     "kills": null,
+     "points": 280
+    },
+    {
+     "place": 15,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 240
+    },
+    {
+     "place": 16,
+     "player_key": "вуки",
+     "kills": null,
+     "points": 200
+    },
+    {
+     "place": 17,
+     "player_key": "lackypeek",
+     "kills": null,
+     "points": 180
+    },
+    {
+     "place": 18,
+     "player_key": "kir",
+     "kills": null,
+     "points": 160
+    },
+    {
+     "place": 19,
+     "player_key": "фанатгурупокера67",
+     "kills": null,
+     "points": 140
+    },
+    {
+     "place": 20,
+     "player_key": "vodnik",
+     "kills": null,
+     "points": 120
+    }
+   ]
+  },
+  {
+   "msg_id": 706,
+   "date": "2026-11-01",
+   "name": "MAFIA",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "onetao",
+     "kills": null,
+     "points": 3360
+    },
+    {
+     "place": 2,
+     "player_key": "гурупокера",
+     "kills": null,
+     "points": 2750
+    },
+    {
+     "place": 3,
+     "player_key": "redstar",
+     "kills": null,
+     "points": 2010
+    },
+    {
+     "place": 4,
+     "player_key": "kudri",
+     "kills": null,
+     "points": 1580
+    },
+    {
+     "place": 5,
+     "player_key": "10off",
+     "kills": null,
+     "points": 1250
+    },
+    {
+     "place": 6,
+     "player_key": "marilove",
+     "kills": null,
+     "points": 980
+    },
+    {
+     "place": 7,
+     "player_key": "deksik",
+     "kills": null,
+     "points": 780
+    },
+    {
+     "place": 8,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 620
+    },
+    {
+     "place": 9,
+     "player_key": "kobra",
+     "kills": null,
+     "points": 500
+    },
+    {
+     "place": 10,
+     "player_key": "дама",
+     "kills": null,
+     "points": 390
+    },
+    {
+     "place": 11,
+     "player_key": "kir",
+     "kills": null,
+     "points": 420
+    },
+    {
+     "place": 12,
+     "player_key": "туз",
+     "kills": null,
+     "points": 260
+    },
+    {
+     "place": 13,
+     "player_key": "скрф",
+     "kills": null,
+     "points": 210
+    },
+    {
+     "place": 14,
+     "player_key": "ladiesman_217",
+     "kills": null,
+     "points": 180
+    },
+    {
+     "place": 15,
+     "player_key": "vodnik",
+     "kills": null,
+     "points": 150
+    }
+   ]
+  },
+  {
+   "msg_id": 723,
+   "date": "2026-11-04",
+   "name": "PROGRESSIVE BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "ивананисимов",
+   "bounty_hunter_kills": 7,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "ивананисимов",
+     "kills": 7,
+     "points": 4020
+    },
+    {
+     "place": 2,
+     "player_key": "татарин",
+     "kills": 3,
+     "points": 2630
+    },
+    {
+     "place": 3,
+     "player_key": "гурупокера",
+     "kills": 1,
+     "points": 2090
+    },
+    {
+     "place": 4,
+     "player_key": "вуки",
+     "kills": 3,
+     "points": 1690
+    },
+    {
+     "place": 5,
+     "player_key": "andreyptichies",
+     "kills": 1,
+     "points": 1180
+    },
+    {
+     "place": 6,
+     "player_key": "pannda",
+     "kills": 1,
+     "points": 950
+    },
+    {
+     "place": 7,
+     "player_key": "dk",
+     "kills": 1,
+     "points": 760
+    },
+    {
+     "place": 8,
+     "player_key": "din023",
+     "kills": 0,
+     "points": 520
+    },
+    {
+     "place": 9,
+     "player_key": "rixter",
+     "kills": 0,
+     "points": 400
+    },
+    {
+     "place": 10,
+     "player_key": "nev",
+     "kills": 4,
+     "points": 830
+    },
+    {
+     "place": 11,
+     "player_key": "soulknight",
+     "kills": 1,
+     "points": 360
+    },
+    {
+     "place": 12,
+     "player_key": "опер_228",
+     "kills": 0,
+     "points": 210
+    },
+    {
+     "place": 13,
+     "player_key": "радист",
+     "kills": 0,
+     "points": 170
+    }
+   ]
+  },
+  {
+   "msg_id": 729,
+   "date": "2026-11-06",
+   "name": "DISCIPLINE",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "ягодка",
+     "kills": null,
+     "points": 3600
+    },
+    {
+     "place": 2,
+     "player_key": "татарин",
+     "kills": null,
+     "points": 2700
+    },
+    {
+     "place": 3,
+     "player_key": "krysyuk",
+     "kills": null,
+     "points": 2030
+    },
+    {
+     "place": 4,
+     "player_key": "kobra",
+     "kills": null,
+     "points": 1530
+    },
+    {
+     "place": 5,
+     "player_key": "lo",
+     "kills": null,
+     "points": 1160
+    },
+    {
+     "place": 6,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 890
+    },
+    {
+     "place": 7,
+     "player_key": "laposjr",
+     "kills": null,
+     "points": 680
+    },
+    {
+     "place": 8,
+     "player_key": "витяконь",
+     "kills": null,
+     "points": 530
+    },
+    {
+     "place": 9,
+     "player_key": "xz_nike",
+     "kills": null,
+     "points": 410
+    }
+   ]
+  },
+  {
+   "msg_id": 741,
+   "date": "2026-11-08",
+   "name": "DEEPSTACK",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "туз",
+     "kills": null,
+     "points": 3720
+    },
+    {
+     "place": 2,
+     "player_key": "сицилиец",
+     "kills": null,
+     "points": 3020
+    },
+    {
+     "place": 3,
+     "player_key": "rixter",
+     "kills": null,
+     "points": 2460
+    },
+    {
+     "place": 4,
+     "player_key": "ladiesman_217",
+     "kills": null,
+     "points": 2000
+    },
+    {
+     "place": 5,
+     "player_key": "одинребай",
+     "kills": null,
+     "points": 1620
+    },
+    {
+     "place": 6,
+     "player_key": "marilove",
+     "kills": null,
+     "points": 1320
+    },
+    {
+     "place": 7,
+     "player_key": "onetao",
+     "kills": null,
+     "points": 1080
+    },
+    {
+     "place": 8,
+     "player_key": "andreyptichies",
+     "kills": null,
+     "points": 880
+    },
+    {
+     "place": 9,
+     "player_key": "алексей",
+     "kills": null,
+     "points": 720
+    },
+    {
+     "place": 10,
+     "player_key": "параллелепипед",
+     "kills": null,
+     "points": 600
+    },
+    {
+     "place": 11,
+     "player_key": "вуки",
+     "kills": null,
+     "points": 500
+    },
+    {
+     "place": 12,
+     "player_key": "10off",
+     "kills": null,
+     "points": 420
+    },
+    {
+     "place": 13,
+     "player_key": "pannda",
+     "kills": null,
+     "points": 340
+    },
+    {
+     "place": 14,
+     "player_key": "каха",
+     "kills": null,
+     "points": 280
+    },
+    {
+     "place": 15,
+     "player_key": "ивананисимов",
+     "kills": null,
+     "points": 240
+    },
+    {
+     "place": 16,
+     "player_key": "александр",
+     "kills": null,
+     "points": 200
+    },
+    {
+     "place": 17,
+     "player_key": "артем",
+     "kills": null,
+     "points": 180
+    },
+    {
+     "place": 18,
+     "player_key": "valma",
+     "kills": null,
+     "points": 160
+    },
+    {
+     "place": 19,
+     "player_key": "deksik",
+     "kills": null,
+     "points": 140
+    },
+    {
+     "place": 20,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 120
+    }
+   ]
+  },
+  {
+   "msg_id": 749,
+   "date": "2026-11-11",
+   "name": "BOMBPOT BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "onetao",
+   "bounty_hunter_kills": 7,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "витяконь",
+     "kills": 5,
+     "points": 3370
+    },
+    {
+     "place": 2,
+     "player_key": "dk",
+     "kills": 3,
+     "points": 2500
+    },
+    {
+     "place": 3,
+     "player_key": "onetao",
+     "kills": 7,
+     "points": 2390
+    },
+    {
+     "place": 4,
+     "player_key": "kir",
+     "kills": 2,
+     "points": 1500
+    },
+    {
+     "place": 5,
+     "player_key": "krysyuk",
+     "kills": 0,
+     "points": 1000
+    },
+    {
+     "place": 6,
+     "player_key": "lo",
+     "kills": 0,
+     "points": 780
+    },
+    {
+     "place": 7,
+     "player_key": "andersen777",
+     "kills": 0,
+     "points": 600
+    },
+    {
+     "place": 8,
+     "player_key": "гурупокера",
+     "kills": 0,
+     "points": 470
+    },
+    {
+     "place": 9,
+     "player_key": "marilove",
+     "kills": 2,
+     "points": 570
+    },
+    {
+     "place": 10,
+     "player_key": "ивананисимов",
+     "kills": 0,
+     "points": 300
+    },
+    {
+     "place": 11,
+     "player_key": "soulknight",
+     "kills": 0,
+     "points": 240
+    },
+    {
+     "place": 12,
+     "player_key": "vodnik",
+     "kills": 0,
+     "points": 190
+    }
+   ]
+  },
+  {
+   "msg_id": 760,
+   "date": "2026-11-13",
+   "name": "EDUCATION",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "вуки",
+     "kills": null,
+     "points": 3560
+    },
+    {
+     "place": 2,
+     "player_key": "ивананисимов",
+     "kills": null,
+     "points": 2860
+    },
+    {
+     "place": 3,
+     "player_key": "леха",
+     "kills": null,
+     "points": 2290
+    },
+    {
+     "place": 4,
+     "player_key": "tishka",
+     "kills": null,
+     "points": 1840
+    },
+    {
+     "place": 5,
+     "player_key": "kir",
+     "kills": null,
+     "points": 1480
+    },
+    {
+     "place": 6,
+     "player_key": "alex11",
+     "kills": null,
+     "points": 1190
+    },
+    {
+     "place": 7,
+     "player_key": "wride",
+     "kills": null,
+     "points": 950
+    },
+    {
+     "place": 8,
+     "player_key": "onetao",
+     "kills": null,
+     "points": 770
+    },
+    {
+     "place": 9,
+     "player_key": "rixter",
+     "kills": null,
+     "points": 630
+    },
+    {
+     "place": 10,
+     "player_key": "пивнойбарон",
+     "kills": null,
+     "points": 500
+    },
+    {
+     "place": 11,
+     "player_key": "pannda",
+     "kills": null,
+     "points": 410
+    },
+    {
+     "place": 12,
+     "player_key": "andreyptichies",
+     "kills": null,
+     "points": 340
+    },
+    {
+     "place": 13,
+     "player_key": "ягодка",
+     "kills": null,
+     "points": 290
+    },
+    {
+     "place": 14,
+     "player_key": "витяконь",
+     "kills": null,
+     "points": 230
+    },
+    {
+     "place": 15,
+     "player_key": "dimka_afk",
+     "kills": null,
+     "points": 200
+    },
+    {
+     "place": 16,
+     "player_key": "джаш",
+     "kills": null,
+     "points": 160
+    },
+    {
+     "place": 17,
+     "player_key": "mumimama",
+     "kills": null,
+     "points": 140
+    },
+    {
+     "place": 18,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 130
+    }
+   ]
+  },
+  {
+   "msg_id": 768,
+   "date": "2026-11-15",
+   "name": "DEALER CHOICE",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": null,
+   "bounty_hunter_kills": null,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "вуки",
+     "kills": null,
+     "points": 2870
+    },
+    {
+     "place": 2,
+     "player_key": "rixter",
+     "kills": null,
+     "points": 2200
+    },
+    {
+     "place": 3,
+     "player_key": "10off",
+     "kills": null,
+     "points": 1690
+    },
+    {
+     "place": 4,
+     "player_key": "marilove",
+     "kills": null,
+     "points": 1300
+    },
+    {
+     "place": 5,
+     "player_key": "andreyptichies",
+     "kills": null,
+     "points": 1000
+    },
+    {
+     "place": 6,
+     "player_key": "onetao",
+     "kills": null,
+     "points": 780
+    },
+    {
+     "place": 7,
+     "player_key": "meekaterin",
+     "kills": null,
+     "points": 600
+    },
+    {
+     "place": 8,
+     "player_key": "pannda",
+     "kills": null,
+     "points": 470
+    },
+    {
+     "place": 9,
+     "player_key": "soulknight",
+     "kills": null,
+     "points": 370
+    },
+    {
+     "place": 10,
+     "player_key": "папавздании",
+     "kills": null,
+     "points": 300
+    },
+    {
+     "place": 11,
+     "player_key": "туз",
+     "kills": null,
+     "points": 240
+    },
+    {
+     "place": 12,
+     "player_key": "deksik",
+     "kills": null,
+     "points": 190
+    }
+   ]
+  },
+  {
+   "msg_id": 780,
+   "date": "2026-11-18",
+   "name": "BOUNTY",
+   "is_final": false,
+   "season_id": 3,
+   "bounty_hunter_key": "onetao",
+   "bounty_hunter_kills": 5,
+   "results": [
+    {
+     "place": 1,
+     "player_key": "вуки",
+     "kills": 3,
+     "points": 2180
+    },
+    {
+     "place": 2,
+     "player_key": "onetao",
+     "kills": 5,
+     "points": 1880
+    },
+    {
+     "place": 3,
+     "player_key": "soulknight",
+     "kills": 1,
+     "points": 1110
+    },
+    {
+     "place": 4,
+     "player_key": "dk",
+     "kills": 2,
+     "points": 950
+    },
+    {
+     "place": 5,
+     "player_key": "andreyptichies",
+     "kills": 1,
+     "points": 660
+    },
+    {
+     "place": 6,
+     "player_key": "andersen777",
+     "kills": 0,
+     "points": 420
+    }
+   ]
   }
  ],
  "cash": {
   "name": "NO-MONEY-CASH",
-  "sessions_count": 3,
+  "sessions_count": 7,
   "leaderboard": [
    {
-    "player_key": "10off",
-    "chips": 164300,
-    "sessions": 3,
-    "wins": 1,
-    "seconds": 0,
-    "thirds": 1,
-    "podiums": 2,
-    "best_chips": 124000
-   },
-   {
-    "player_key": "kobra",
-    "chips": 125300,
-    "sessions": 1,
-    "wins": 1,
+    "player_key": "pigeon",
+    "chips": 782200,
+    "sessions": 0,
+    "wins": 0,
     "seconds": 0,
     "thirds": 0,
-    "podiums": 1,
-    "best_chips": 125300
+    "podiums": 0,
+    "best_chips": 782200
    },
    {
-    "player_key": "leo",
-    "chips": 106700,
-    "sessions": 2,
-    "wins": 1,
+    "player_key": "f4ntik",
+    "chips": 486700,
+    "sessions": 1,
+    "wins": 0,
     "seconds": 0,
-    "thirds": 1,
-    "podiums": 2,
-    "best_chips": 66500
+    "thirds": 0,
+    "podiums": 0,
+    "best_chips": 486700
    },
    {
     "player_key": "onetao",
-    "chips": 103600,
+    "chips": 190800,
+    "sessions": 4,
+    "wins": 0,
+    "seconds": 3,
+    "thirds": 0,
+    "podiums": 3,
+    "best_chips": 190800
+   },
+   {
+    "player_key": "maximus",
+    "chips": 68200,
+    "sessions": 0,
+    "wins": 0,
+    "seconds": 0,
+    "thirds": 0,
+    "podiums": 0,
+    "best_chips": 68200
+   },
+   {
+    "player_key": "гурупокера",
+    "chips": 0,
     "sessions": 1,
-    "wins": 0,
-    "seconds": 1,
+    "wins": 1,
+    "seconds": 0,
     "thirds": 0,
     "podiums": 1,
-    "best_chips": 103600
+    "best_chips": 262600
    },
    {
-    "player_key": "жабазина",
-    "chips": 73600,
+    "player_key": "вуки",
+    "chips": 0,
+    "sessions": 3,
+    "wins": 0,
+    "seconds": 0,
+    "thirds": 0,
+    "podiums": 0,
+    "best_chips": 14000
+   },
+   {
+    "player_key": "laposjr",
+    "chips": 0,
     "sessions": 2,
     "wins": 0,
     "seconds": 1,
     "thirds": 0,
     "podiums": 1,
-    "best_chips": 73600
+    "best_chips": 281700
    },
    {
-    "player_key": "mumimama",
-    "chips": 38600,
+    "player_key": "rixter",
+    "chips": 0,
+    "sessions": 3,
+    "wins": 0,
+    "seconds": 0,
+    "thirds": 0,
+    "podiums": 0,
+    "best_chips": 0
+   },
+   {
+    "player_key": "atlas",
+    "chips": 0,
     "sessions": 2,
     "wins": 0,
-    "seconds": 1,
-    "thirds": 0,
+    "seconds": 0,
+    "thirds": 1,
     "podiums": 1,
-    "best_chips": 38600
+    "best_chips": 101300
+   },
+   {
+    "player_key": "шулер228",
+    "chips": 0,
+    "sessions": 0,
+    "wins": 0,
+    "seconds": 0,
+    "thirds": 0,
+    "podiums": 0,
+    "best_chips": 0
    },
    {
     "player_key": "xz_nike",
-    "chips": 34400,
-    "sessions": 1,
+    "chips": 0,
+    "sessions": 5,
     "wins": 0,
     "seconds": 0,
     "thirds": 0,
@@ -6762,59 +8476,69 @@
     "best_chips": 34400
    },
    {
-    "player_key": "фанатгурупокера67",
-    "chips": 32700,
-    "sessions": 1,
-    "wins": 0,
+    "player_key": "витяконь",
+    "chips": 0,
+    "sessions": 5,
+    "wins": 1,
+    "seconds": 0,
+    "thirds": 0,
+    "podiums": 1,
+    "best_chips": 534000
+   },
+   {
+    "player_key": "smile",
+    "chips": 0,
+    "sessions": 3,
+    "wins": 1,
     "seconds": 0,
     "thirds": 1,
-    "podiums": 1,
-    "best_chips": 32700
+    "podiums": 2,
+    "best_chips": 221600
    },
    {
-    "player_key": "soulknight",
-    "chips": 18500,
-    "sessions": 3,
+    "player_key": "марияигоревна",
+    "chips": 0,
+    "sessions": 0,
     "wins": 0,
     "seconds": 0,
     "thirds": 0,
     "podiums": 0,
-    "best_chips": 18500
+    "best_chips": 0
    },
    {
-    "player_key": "krysyuk",
-    "chips": 16500,
-    "sessions": 2,
+    "player_key": "alex11",
+    "chips": 0,
+    "sessions": 0,
     "wins": 0,
     "seconds": 0,
     "thirds": 0,
     "podiums": 0,
-    "best_chips": 16500
+    "best_chips": 0
    },
    {
-    "player_key": "ladiesman_217",
-    "chips": 6500,
-    "sessions": 1,
+    "player_key": "leo",
+    "chips": 0,
+    "sessions": 4,
+    "wins": 1,
+    "seconds": 1,
+    "thirds": 1,
+    "podiums": 3,
+    "best_chips": 78700
+   },
+   {
+    "player_key": "татарин",
+    "chips": 0,
+    "sessions": 0,
     "wins": 0,
     "seconds": 0,
     "thirds": 0,
     "podiums": 0,
-    "best_chips": 6500
-   },
-   {
-    "player_key": "ивананисимов",
-    "chips": 5300,
-    "sessions": 3,
-    "wins": 0,
-    "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 5300
+    "best_chips": 0
    },
    {
     "player_key": "marilove",
     "chips": 0,
-    "sessions": 3,
+    "sessions": 4,
     "wins": 0,
     "seconds": 0,
     "thirds": 0,
@@ -6822,74 +8546,34 @@
     "best_chips": 0
    },
    {
-    "player_key": "витяконь",
+    "player_key": "10off",
+    "chips": 0,
+    "sessions": 4,
+    "wins": 1,
+    "seconds": 0,
+    "thirds": 1,
+    "podiums": 2,
+    "best_chips": 124000
+   },
+   {
+    "player_key": "andreyptichies",
     "chips": 0,
     "sessions": 2,
     "wins": 0,
     "seconds": 0,
     "thirds": 0,
     "podiums": 0,
-    "best_chips": 0
+    "best_chips": 3500
    },
    {
-    "player_key": "pannda",
+    "player_key": "soulknight",
     "chips": 0,
-    "sessions": 2,
+    "sessions": 6,
     "wins": 0,
     "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 0
-   },
-   {
-    "player_key": "параллелепипед",
-    "chips": 0,
-    "sessions": 1,
-    "wins": 0,
-    "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 0
-   },
-   {
-    "player_key": "idmedvedev",
-    "chips": 0,
-    "sessions": 1,
-    "wins": 0,
-    "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 0
-   },
-   {
-    "player_key": "сокол",
-    "chips": 0,
-    "sessions": 1,
-    "wins": 0,
-    "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 0
-   },
-   {
-    "player_key": "laposjr",
-    "chips": 0,
-    "sessions": 1,
-    "wins": 0,
-    "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 0
-   },
-   {
-    "player_key": "mordvin",
-    "chips": 0,
-    "sessions": 1,
-    "wins": 0,
-    "seconds": 0,
-    "thirds": 0,
-    "podiums": 0,
-    "best_chips": 0
+    "thirds": 1,
+    "podiums": 1,
+    "best_chips": 18500
    }
   ],
   "sessions": [
@@ -6897,6 +8581,7 @@
     "msg_id": 529,
     "date": "2026-09-19",
     "name": "NO-MONEY-CASH",
+    "is_final": false,
     "season_id": 3,
     "results": [
      {
@@ -6960,6 +8645,7 @@
     "msg_id": 562,
     "date": "2026-09-26",
     "name": "NO-MONEY-CASH",
+    "is_final": false,
     "season_id": 3,
     "results": [
      {
@@ -7008,6 +8694,7 @@
     "msg_id": 608,
     "date": "2026-10-10",
     "name": "NO-MONEY-CASH",
+    "is_final": false,
     "season_id": 3,
     "results": [
      {
@@ -7086,20 +8773,432 @@
       "chips": 0
      }
     ]
+   },
+   {
+    "msg_id": 636,
+    "date": "2026-10-17",
+    "name": "NO-MONEY-CASH",
+    "is_final": false,
+    "season_id": 3,
+    "results": [
+     {
+      "place": 1,
+      "player_key": "fin",
+      "chips": 267900
+     },
+     {
+      "place": 2,
+      "player_key": "onetao",
+      "chips": 67400
+     },
+     {
+      "place": 3,
+      "player_key": "soulknight",
+      "chips": 0
+     },
+     {
+      "place": 4,
+      "player_key": "xz_nike",
+      "chips": 0
+     },
+     {
+      "place": 5,
+      "player_key": "din023",
+      "chips": 0
+     },
+     {
+      "place": 6,
+      "player_key": "lackypeek",
+      "chips": 0
+     },
+     {
+      "place": 7,
+      "player_key": "папавздании",
+      "chips": 0
+     },
+     {
+      "place": 8,
+      "player_key": "meekaterin",
+      "chips": 0
+     }
+    ]
+   },
+   {
+    "msg_id": 665,
+    "date": "2026-10-24",
+    "name": "NO-MONEY-CASH",
+    "is_final": false,
+    "season_id": 3,
+    "results": [
+     {
+      "place": 1,
+      "player_key": "smile",
+      "chips": 221600
+     },
+     {
+      "place": 2,
+      "player_key": "onetao",
+      "chips": 24800
+     },
+     {
+      "place": 3,
+      "player_key": "pannda",
+      "chips": 22500
+     },
+     {
+      "place": 4,
+      "player_key": "andreyptichies",
+      "chips": 3500
+     },
+     {
+      "place": 5,
+      "player_key": "xz_nike",
+      "chips": 2600
+     },
+     {
+      "place": 6,
+      "player_key": "soulknight",
+      "chips": 0
+     },
+     {
+      "place": 7,
+      "player_key": "deksik",
+      "chips": 0
+     },
+     {
+      "place": 8,
+      "player_key": "вуки",
+      "chips": 0
+     },
+     {
+      "place": 9,
+      "player_key": "rixter",
+      "chips": 0
+     },
+     {
+      "place": 10,
+      "player_key": "витяконь",
+      "chips": 0
+     },
+     {
+      "place": 11,
+      "player_key": "10off",
+      "chips": 0
+     },
+     {
+      "place": 12,
+      "player_key": "marilove",
+      "chips": 0
+     }
+    ]
+   },
+   {
+    "msg_id": 700,
+    "date": "2026-10-31",
+    "name": "SPOOKY NO MONEY CASH",
+    "is_final": false,
+    "season_id": 3,
+    "results": [
+     {
+      "place": 1,
+      "player_key": "витяконь",
+      "chips": 534000
+     },
+     {
+      "place": 2,
+      "player_key": "laposjr",
+      "chips": 281700
+     },
+     {
+      "place": 3,
+      "player_key": "atlas",
+      "chips": 101300
+     },
+     {
+      "place": 4,
+      "player_key": "pannda",
+      "chips": 61400
+     },
+     {
+      "place": 5,
+      "player_key": "miyagi",
+      "chips": 0
+     },
+     {
+      "place": 6,
+      "player_key": "andreyptichies",
+      "chips": 0
+     },
+     {
+      "place": 7,
+      "player_key": "rixter",
+      "chips": 0
+     },
+     {
+      "place": 8,
+      "player_key": "xz_nike",
+      "chips": 0
+     },
+     {
+      "place": 9,
+      "player_key": "вуки",
+      "chips": 0
+     },
+     {
+      "place": 10,
+      "player_key": "leo",
+      "chips": 0
+     },
+     {
+      "place": 11,
+      "player_key": "smile",
+      "chips": 0
+     },
+     {
+      "place": 12,
+      "player_key": "kobra",
+      "chips": 0
+     },
+     {
+      "place": 13,
+      "player_key": "katamaran",
+      "chips": 0
+     },
+     {
+      "place": 14,
+      "player_key": "maxander",
+      "chips": 0
+     },
+     {
+      "place": 15,
+      "player_key": "kate",
+      "chips": 0
+     }
+    ]
+   },
+   {
+    "msg_id": 736,
+    "date": "2026-11-08",
+    "name": "NIGHT NO MONEY CASH",
+    "is_final": false,
+    "season_id": 3,
+    "results": [
+     {
+      "place": 1,
+      "player_key": "гурупокера",
+      "chips": 262600
+     },
+     {
+      "place": 2,
+      "player_key": "leo",
+      "chips": 78700
+     },
+     {
+      "place": 3,
+      "player_key": "smile",
+      "chips": 43300
+     },
+     {
+      "place": 4,
+      "player_key": "алексей",
+      "chips": 27800
+     },
+     {
+      "place": 5,
+      "player_key": "rait22",
+      "chips": 24600
+     },
+     {
+      "place": 6,
+      "player_key": "f4ntik",
+      "chips": 23900
+     },
+     {
+      "place": 7,
+      "player_key": "вуки",
+      "chips": 14000
+     },
+     {
+      "place": 8,
+      "player_key": "lackypeek",
+      "chips": 1300
+     },
+     {
+      "place": 9,
+      "player_key": "soulknight",
+      "chips": 0
+     },
+     {
+      "place": 10,
+      "player_key": "xz_nike",
+      "chips": 0
+     },
+     {
+      "place": 11,
+      "player_key": "витяконь",
+      "chips": 0
+     },
+     {
+      "place": 12,
+      "player_key": "rixter",
+      "chips": 0
+     },
+     {
+      "place": 13,
+      "player_key": "atlas",
+      "chips": 0
+     },
+     {
+      "place": 14,
+      "player_key": "julvern",
+      "chips": 0
+     },
+     {
+      "place": 15,
+      "player_key": "onetao",
+      "chips": 0
+     },
+     {
+      "place": 16,
+      "player_key": "dk",
+      "chips": 0
+     },
+     {
+      "place": 17,
+      "player_key": "kir",
+      "chips": 0
+     }
+    ]
+   },
+   {
+    "msg_id": 766,
+    "date": "2026-11-15",
+    "name": "ФИНАЛ NO-MONEY-CASH",
+    "is_final": true,
+    "season_id": 3,
+    "results": [
+     {
+      "place": 1,
+      "player_key": "pigeon",
+      "chips": 782200
+     },
+     {
+      "place": 2,
+      "player_key": "f4ntik",
+      "chips": 486700
+     },
+     {
+      "place": 3,
+      "player_key": "onetao",
+      "chips": 190800
+     },
+     {
+      "place": 4,
+      "player_key": "maximus",
+      "chips": 68200
+     },
+     {
+      "place": 5,
+      "player_key": "гурупокера",
+      "chips": 0
+     },
+     {
+      "place": 6,
+      "player_key": "вуки",
+      "chips": 0
+     },
+     {
+      "place": 7,
+      "player_key": "laposjr",
+      "chips": 0
+     },
+     {
+      "place": 8,
+      "player_key": "rixter",
+      "chips": 0
+     },
+     {
+      "place": 9,
+      "player_key": "atlas",
+      "chips": 0
+     },
+     {
+      "place": 10,
+      "player_key": "шулер228",
+      "chips": 0
+     },
+     {
+      "place": 11,
+      "player_key": "xz_nike",
+      "chips": 0
+     },
+     {
+      "place": 12,
+      "player_key": "витяконь",
+      "chips": 0
+     },
+     {
+      "place": 13,
+      "player_key": "smile",
+      "chips": 0
+     },
+     {
+      "place": 14,
+      "player_key": "марияигоревна",
+      "chips": 0
+     },
+     {
+      "place": 15,
+      "player_key": "alex11",
+      "chips": 0
+     },
+     {
+      "place": 16,
+      "player_key": "leo",
+      "chips": 0
+     },
+     {
+      "place": 17,
+      "player_key": "татарин",
+      "chips": 0
+     },
+     {
+      "place": 18,
+      "player_key": "marilove",
+      "chips": 0
+     },
+     {
+      "place": 19,
+      "player_key": "10off",
+      "chips": 0
+     },
+     {
+      "place": 20,
+      "player_key": "andreyptichies",
+      "chips": 0
+     },
+     {
+      "place": 21,
+      "player_key": "soulknight",
+      "chips": 0
+     }
+    ]
    }
-  ]
+  ],
+  "champion_key": "pigeon",
+  "final_msg_id": 766
  },
  "players": {
   "soulknight": {
-   "games": 74,
+   "games": 87,
    "wins": 7,
    "seconds": 3,
-   "thirds": 7,
-   "fourths": 7,
-   "podiums": 17,
-   "points_total": 60740,
+   "thirds": 8,
+   "fourths": 8,
+   "podiums": 18,
+   "points_total": 66430,
    "max_points": 3340,
-   "kills": 64,
+   "kills": 66,
    "bh_titles": 1,
    "deep_wins": 1,
    "joker_wins": 1,
@@ -7118,7 +9217,7 @@
    ],
    "best_season_rank": 2,
    "first_seen": "2026-01-22",
-   "last_seen": "2026-10-16",
+   "last_seen": "2026-11-18",
    "badges": [
     {
      "emoji": "👑",
@@ -7164,13 +9263,13 @@
    ]
   },
   "скрф": {
-   "games": 9,
+   "games": 11,
    "wins": 2,
    "seconds": 2,
    "thirds": 0,
    "fourths": 0,
    "podiums": 4,
-   "points_total": 3690,
+   "points_total": 4170,
    "max_points": 2060,
    "kills": 0,
    "bh_titles": 0,
@@ -7182,12 +9281,16 @@
    "rating_top3": [],
    "best_season_rank": 28,
    "first_seen": "2026-01-22",
-   "last_seen": "2026-09-13",
+   "last_seen": "2026-11-01",
    "badges": [
     {
      "emoji": "🥇",
      "text": "2 победы",
      "n": 2
+    },
+    {
+     "emoji": "🎯",
+     "text": "Частый гость (10+ турниров)"
     }
    ]
   },
@@ -7225,16 +9328,16 @@
    ]
   },
   "гурупокера": {
-   "games": 59,
+   "games": 66,
    "wins": 14,
-   "seconds": 8,
-   "thirds": 3,
+   "seconds": 10,
+   "thirds": 4,
    "fourths": 7,
-   "podiums": 25,
-   "points_total": 71370,
+   "podiums": 28,
+   "points_total": 81780,
    "max_points": 4010,
-   "kills": 89,
-   "bh_titles": 3,
+   "kills": 104,
+   "bh_titles": 4,
    "deep_wins": 0,
    "joker_wins": 0,
    "mafia_wins": 0,
@@ -7251,15 +9354,11 @@
     [
      2,
      1
-    ],
-    [
-     3,
-     3
     ]
    ],
    "best_season_rank": 1,
    "first_seen": "2026-02-20",
-   "last_seen": "2026-10-16",
+   "last_seen": "2026-11-11",
    "badges": [
     {
      "emoji": "🏆",
@@ -7273,23 +9372,18 @@
      "cls": "crown-gold"
     },
     {
-     "emoji": "👑",
-     "text": "№3 рейтинга сезона 3",
-     "cls": "crown-bronze"
-    },
-    {
      "emoji": "🥇",
      "text": "14 побед",
      "n": 14
     },
     {
      "emoji": "💀",
-     "text": "Bounty Hunter ×3",
-     "n": 3
+     "text": "Bounty Hunter ×4",
+     "n": 4
     },
     {
-     "emoji": "🗡️",
-     "text": "Головорез (50+ баунти)"
+     "emoji": "☠️",
+     "text": "Палач (100+ баунти)"
     },
     {
      "emoji": "💎",
@@ -7307,13 +9401,13 @@
    ]
   },
   "ladiesman_217": {
-   "games": 22,
+   "games": 25,
    "wins": 2,
    "seconds": 6,
    "thirds": 4,
-   "fourths": 2,
+   "fourths": 3,
    "podiums": 12,
-   "points_total": 20175,
+   "points_total": 22495,
    "max_points": 2810,
    "kills": 8,
    "bh_titles": 0,
@@ -7330,7 +9424,7 @@
    ],
    "best_season_rank": 2,
    "first_seen": "2026-02-27",
-   "last_seen": "2026-10-11",
+   "last_seen": "2026-11-08",
    "badges": [
     {
      "emoji": "👑",
@@ -7343,23 +9437,19 @@
      "n": 2
     },
     {
-     "emoji": "🔥",
-     "text": "Подиум 50%+ (55% топ-3 при 22 играх)"
-    },
-    {
-     "emoji": "🎯",
-     "text": "Частый гость (10+ турниров)"
+     "emoji": "🎖",
+     "text": "Ветеран клуба (25+ турниров)"
     }
    ]
   },
   "параллелепипед": {
-   "games": 4,
+   "games": 5,
    "wins": 1,
    "seconds": 0,
    "thirds": 1,
    "fourths": 0,
    "podiums": 2,
-   "points_total": 5080,
+   "points_total": 5680,
    "max_points": 3440,
    "kills": 4,
    "bh_titles": 0,
@@ -7371,7 +9461,7 @@
    "rating_top3": [],
    "best_season_rank": 10,
    "first_seen": "2026-03-11",
-   "last_seen": "2026-08-05",
+   "last_seen": "2026-11-08",
    "badges": [
     {
      "emoji": "🥇",
@@ -7381,13 +9471,13 @@
    ]
   },
   "meekaterin": {
-   "games": 31,
+   "games": 33,
    "wins": 8,
    "seconds": 5,
    "thirds": 1,
    "fourths": 5,
    "podiums": 14,
-   "points_total": 41630,
+   "points_total": 42370,
    "max_points": 4100,
    "kills": 46,
    "bh_titles": 1,
@@ -7399,7 +9489,7 @@
    "rating_top3": [],
    "best_season_rank": 4,
    "first_seen": "2026-03-11",
-   "last_seen": "2026-10-11",
+   "last_seen": "2026-11-15",
    "badges": [
     {
      "emoji": "🥇",
@@ -7463,15 +9553,15 @@
    ]
   },
   "nev": {
-   "games": 1,
+   "games": 2,
    "wins": 0,
    "seconds": 0,
    "thirds": 1,
    "fourths": 0,
    "podiums": 1,
-   "points_total": 1190,
+   "points_total": 2020,
    "max_points": 1190,
-   "kills": 0,
+   "kills": 4,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -7481,17 +9571,17 @@
    "rating_top3": [],
    "best_season_rank": 19,
    "first_seen": "2026-03-13",
-   "last_seen": "2026-03-13",
+   "last_seen": "2026-11-04",
    "badges": []
   },
   "фанатгурупокера67": {
-   "games": 3,
+   "games": 4,
    "wins": 1,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 1,
-   "points_total": 3750,
+   "points_total": 3890,
    "max_points": 2840,
    "kills": 0,
    "bh_titles": 0,
@@ -7503,7 +9593,7 @@
    "rating_top3": [],
    "best_season_rank": 12,
    "first_seen": "2026-03-13",
-   "last_seen": "2026-06-21",
+   "last_seen": "2026-10-30",
    "badges": [
     {
      "emoji": "🥇",
@@ -7517,13 +9607,13 @@
    ]
   },
   "радист": {
-   "games": 1,
+   "games": 2,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 0,
-   "points_total": 350,
+   "points_total": 520,
    "max_points": 350,
    "kills": 0,
    "bh_titles": 0,
@@ -7535,17 +9625,17 @@
    "rating_top3": [],
    "best_season_rank": 26,
    "first_seen": "2026-03-13",
-   "last_seen": "2026-03-13",
+   "last_seen": "2026-11-04",
    "badges": []
   },
   "опер_228": {
-   "games": 1,
+   "games": 2,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 0,
-   "points_total": 210,
+   "points_total": 420,
    "max_points": 210,
    "kills": 0,
    "bh_titles": 0,
@@ -7557,19 +9647,19 @@
    "rating_top3": [],
    "best_season_rank": 27,
    "first_seen": "2026-03-13",
-   "last_seen": "2026-03-13",
+   "last_seen": "2026-11-04",
    "badges": []
   },
   "lo": {
-   "games": 29,
+   "games": 33,
    "wins": 2,
    "seconds": 1,
-   "thirds": 6,
+   "thirds": 7,
    "fourths": 3,
-   "podiums": 9,
-   "points_total": 28285,
+   "podiums": 10,
+   "points_total": 33585,
    "max_points": 2960,
-   "kills": 6,
+   "kills": 9,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 1,
@@ -7579,7 +9669,7 @@
    "rating_top3": [],
    "best_season_rank": 9,
    "first_seen": "2026-03-21",
-   "last_seen": "2026-10-14",
+   "last_seen": "2026-11-11",
    "badges": [
     {
      "emoji": "🥇",
@@ -7754,13 +9844,13 @@
    ]
   },
   "krysyuk": {
-   "games": 27,
+   "games": 31,
    "wins": 2,
    "seconds": 1,
-   "thirds": 8,
+   "thirds": 9,
    "fourths": 7,
-   "podiums": 11,
-   "points_total": 31920,
+   "podiums": 12,
+   "points_total": 36910,
    "max_points": 3470,
    "kills": 15,
    "bh_titles": 1,
@@ -7770,9 +9860,9 @@
    "bounty_wins": 1,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 6,
+   "best_season_rank": 7,
    "first_seen": "2026-04-03",
-   "last_seen": "2026-10-14",
+   "last_seen": "2026-11-11",
    "badges": [
     {
      "emoji": "🥇",
@@ -7839,16 +9929,16 @@
    "badges": []
   },
   "dk": {
-   "games": 39,
+   "games": 44,
    "wins": 6,
-   "seconds": 5,
+   "seconds": 7,
    "thirds": 10,
-   "fourths": 8,
-   "podiums": 21,
-   "points_total": 55500,
-   "max_points": 4310,
-   "kills": 49,
-   "bh_titles": 3,
+   "fourths": 9,
+   "podiums": 23,
+   "points_total": 65510,
+   "max_points": 5020,
+   "kills": 62,
+   "bh_titles": 4,
    "deep_wins": 2,
    "joker_wins": 0,
    "mafia_wins": 2,
@@ -7862,7 +9952,7 @@
    ],
    "best_season_rank": 1,
    "first_seen": "2026-04-15",
-   "last_seen": "2026-10-14",
+   "last_seen": "2026-11-18",
    "badges": [
     {
      "emoji": "👑",
@@ -7876,12 +9966,12 @@
     },
     {
      "emoji": "💀",
-     "text": "Bounty Hunter ×3",
-     "n": 3
+     "text": "Bounty Hunter ×4",
+     "n": 4
     },
     {
-     "emoji": "🏹",
-     "text": "Охотник (25+ баунти)"
+     "emoji": "🗡️",
+     "text": "Головорез (50+ баунти)"
     },
     {
      "emoji": "💎",
@@ -7904,7 +9994,7 @@
     },
     {
      "emoji": "🔥",
-     "text": "Подиум 50%+ (54% топ-3 при 39 играх)"
+     "text": "Подиум 50%+ (52% топ-3 при 44 играх)"
     },
     {
      "emoji": "🎖",
@@ -7913,15 +10003,15 @@
    ]
   },
   "папавздании": {
-   "games": 28,
+   "games": 30,
    "wins": 5,
    "seconds": 7,
    "thirds": 4,
    "fourths": 2,
    "podiums": 16,
-   "points_total": 45160,
+   "points_total": 45900,
    "max_points": 5820,
-   "kills": 68,
+   "kills": 69,
    "bh_titles": 3,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -7936,7 +10026,7 @@
    ],
    "best_season_rank": 3,
    "first_seen": "2026-04-15",
-   "last_seen": "2026-10-11",
+   "last_seen": "2026-11-15",
    "badges": [
     {
      "emoji": "👑",
@@ -7971,7 +10061,7 @@
     },
     {
      "emoji": "🔥",
-     "text": "Подиум 50%+ (57% топ-3 при 28 играх)"
+     "text": "Подиум 50%+ (53% топ-3 при 30 играх)"
     },
     {
      "emoji": "🎖",
@@ -7980,15 +10070,15 @@
    ]
   },
   "pannda": {
-   "games": 27,
+   "games": 34,
    "wins": 3,
    "seconds": 8,
-   "thirds": 4,
-   "fourths": 5,
-   "podiums": 15,
-   "points_total": 37450,
+   "thirds": 5,
+   "fourths": 6,
+   "podiums": 16,
+   "points_total": 44120,
    "max_points": 3300,
-   "kills": 20,
+   "kills": 22,
    "bh_titles": 1,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -7998,7 +10088,7 @@
    "rating_top3": [],
    "best_season_rank": 6,
    "first_seen": "2026-04-18",
-   "last_seen": "2026-10-14",
+   "last_seen": "2026-11-15",
    "badges": [
     {
      "emoji": "🥇",
@@ -8013,10 +10103,6 @@
     {
      "emoji": "🥊",
      "text": "Bounty-победитель"
-    },
-    {
-     "emoji": "🔥",
-     "text": "Подиум 50%+ (56% топ-3 при 27 играх)"
     },
     {
      "emoji": "🎖",
@@ -8080,15 +10166,15 @@
    "badges": []
   },
   "andreyptichies": {
-   "games": 27,
+   "games": 36,
    "wins": 5,
    "seconds": 3,
    "thirds": 1,
-   "fourths": 5,
+   "fourths": 7,
    "podiums": 9,
-   "points_total": 37190,
+   "points_total": 45090,
    "max_points": 3630,
-   "kills": 26,
+   "kills": 33,
    "bh_titles": 2,
    "deep_wins": 1,
    "joker_wins": 0,
@@ -8098,17 +10184,17 @@
    "rating_top3": [
     [
      3,
-     2
+     3
     ]
    ],
-   "best_season_rank": 2,
+   "best_season_rank": 3,
    "first_seen": "2026-04-22",
-   "last_seen": "2026-10-16",
+   "last_seen": "2026-11-18",
    "badges": [
     {
      "emoji": "👑",
-     "text": "№2 рейтинга сезона 3",
-     "cls": "crown-silver"
+     "text": "№3 рейтинга сезона 3",
+     "cls": "crown-bronze"
     },
     {
      "emoji": "🥇",
@@ -8176,15 +10262,15 @@
    ]
   },
   "ягодка": {
-   "games": 20,
-   "wins": 2,
+   "games": 25,
+   "wins": 3,
    "seconds": 2,
    "thirds": 5,
    "fourths": 2,
-   "podiums": 9,
-   "points_total": 23520,
-   "max_points": 3230,
-   "kills": 10,
+   "podiums": 10,
+   "points_total": 30880,
+   "max_points": 3600,
+   "kills": 14,
    "bh_titles": 1,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -8194,12 +10280,12 @@
    "rating_top3": [],
    "best_season_rank": 10,
    "first_seen": "2026-05-06",
-   "last_seen": "2026-10-16",
+   "last_seen": "2026-11-13",
    "badges": [
     {
      "emoji": "🥇",
-     "text": "2 победы",
-     "n": 2
+     "text": "3 победы",
+     "n": 3
     },
     {
      "emoji": "💀",
@@ -8207,13 +10293,17 @@
      "n": 1
     },
     {
+     "emoji": "💎",
+     "text": "Большой улов (3500+ очков за турнир)"
+    },
+    {
      "emoji": "🥊",
      "text": "Bounty-победитель ×2",
      "n": 2
     },
     {
-     "emoji": "🎯",
-     "text": "Частый гость (10+ турниров)"
+     "emoji": "🎖",
+     "text": "Ветеран клуба (25+ турниров)"
     }
    ]
   },
@@ -8250,13 +10340,13 @@
    ]
   },
   "leo": {
-   "games": 21,
+   "games": 22,
    "wins": 0,
    "seconds": 1,
    "thirds": 4,
    "fourths": 2,
    "podiums": 5,
-   "points_total": 17650,
+   "points_total": 18370,
    "max_points": 1970,
    "kills": 9,
    "bh_titles": 0,
@@ -8268,7 +10358,7 @@
    "rating_top3": [],
    "best_season_rank": 12,
    "first_seen": "2026-05-23",
-   "last_seen": "2026-10-11",
+   "last_seen": "2026-10-23",
    "badges": [
     {
      "emoji": "🎯",
@@ -8343,14 +10433,14 @@
    "badges": []
   },
   "kudri": {
-   "games": 7,
+   "games": 9,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
-   "fourths": 2,
+   "fourths": 3,
    "podiums": 0,
-   "points_total": 3390,
-   "max_points": 840,
+   "points_total": 5320,
+   "max_points": 1580,
    "kills": 0,
    "bh_titles": 0,
    "deep_wins": 0,
@@ -8359,9 +10449,9 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 28,
+   "best_season_rank": 31,
    "first_seen": "2026-05-31",
-   "last_seen": "2026-09-13",
+   "last_seen": "2026-11-01",
    "badges": [
     {
      "emoji": "🫧",
@@ -8436,13 +10526,13 @@
    "badges": []
   },
   "mumimama": {
-   "games": 4,
+   "games": 6,
    "wins": 0,
    "seconds": 0,
    "thirds": 1,
    "fourths": 0,
    "podiums": 1,
-   "points_total": 2120,
+   "points_total": 2560,
    "max_points": 1130,
    "kills": 0,
    "bh_titles": 0,
@@ -8454,7 +10544,7 @@
    "rating_top3": [],
    "best_season_rank": 30,
    "first_seen": "2026-06-12",
-   "last_seen": "2026-08-09",
+   "last_seen": "2026-11-13",
    "badges": []
   },
   "семенсергеевич": {
@@ -8529,15 +10619,15 @@
    "badges": []
   },
   "жабазина": {
-   "games": 8,
+   "games": 10,
    "wins": 1,
    "seconds": 2,
    "thirds": 0,
    "fourths": 0,
    "podiums": 3,
-   "points_total": 8930,
+   "points_total": 10530,
    "max_points": 2570,
-   "kills": 2,
+   "kills": 3,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -8545,14 +10635,18 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 17,
+   "best_season_rank": 19,
    "first_seen": "2026-06-17",
-   "last_seen": "2026-10-14",
+   "last_seen": "2026-10-30",
    "badges": [
     {
      "emoji": "🥇",
      "text": "1 победа",
      "n": 1
+    },
+    {
+     "emoji": "🎯",
+     "text": "Частый гость (10+ турниров)"
     }
    ]
   },
@@ -8579,26 +10673,44 @@
    "badges": []
   },
   "ивананисимов": {
-   "games": 12,
-   "wins": 0,
-   "seconds": 2,
+   "games": 17,
+   "wins": 1,
+   "seconds": 3,
    "thirds": 2,
    "fourths": 3,
-   "podiums": 4,
-   "points_total": 14630,
-   "max_points": 3300,
-   "kills": 9,
-   "bh_titles": 0,
+   "podiums": 6,
+   "points_total": 23430,
+   "max_points": 4020,
+   "kills": 16,
+   "bh_titles": 1,
    "deep_wins": 0,
    "joker_wins": 0,
    "mafia_wins": 0,
-   "bounty_wins": 0,
+   "bounty_wins": 1,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 11,
+   "best_season_rank": 8,
    "first_seen": "2026-06-21",
-   "last_seen": "2026-10-14",
+   "last_seen": "2026-11-13",
    "badges": [
+    {
+     "emoji": "🥇",
+     "text": "1 победа",
+     "n": 1
+    },
+    {
+     "emoji": "💀",
+     "text": "Bounty Hunter ×1",
+     "n": 1
+    },
+    {
+     "emoji": "💎",
+     "text": "Большой улов (3500+ очков за турнир)"
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
+    },
     {
      "emoji": "🎯",
      "text": "Частый гость (10+ турниров)"
@@ -8682,17 +10794,17 @@
    ]
   },
   "туз": {
-   "games": 22,
-   "wins": 4,
+   "games": 25,
+   "wins": 5,
    "seconds": 2,
    "thirds": 3,
    "fourths": 3,
-   "podiums": 9,
-   "points_total": 28350,
+   "podiums": 10,
+   "points_total": 32570,
    "max_points": 4380,
    "kills": 24,
    "bh_titles": 2,
-   "deep_wins": 0,
+   "deep_wins": 1,
    "joker_wins": 1,
    "mafia_wins": 0,
    "bounty_wins": 1,
@@ -8700,12 +10812,12 @@
    "rating_top3": [],
    "best_season_rank": 6,
    "first_seen": "2026-07-17",
-   "last_seen": "2026-09-20",
+   "last_seen": "2026-11-15",
    "badges": [
     {
      "emoji": "🥇",
-     "text": "4 победы",
-     "n": 4
+     "text": "5 побед",
+     "n": 5
     },
     {
      "emoji": "💀",
@@ -8717,6 +10829,10 @@
      "text": "Большой улов (3500+ очков за турнир)"
     },
     {
+     "emoji": "💥",
+     "text": "Deepstack-победитель"
+    },
+    {
      "emoji": "🃏",
      "text": "Joker-победитель"
     },
@@ -8725,19 +10841,19 @@
      "text": "Bounty-победитель"
     },
     {
-     "emoji": "🎯",
-     "text": "Частый гость (10+ турниров)"
+     "emoji": "🎖",
+     "text": "Ветеран клуба (25+ турниров)"
     }
    ]
   },
   "дама": {
-   "games": 8,
+   "games": 9,
    "wins": 1,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 1,
-   "points_total": 6860,
+   "points_total": 7250,
    "max_points": 4310,
    "kills": 0,
    "bh_titles": 0,
@@ -8749,7 +10865,7 @@
    "rating_top3": [],
    "best_season_rank": 16,
    "first_seen": "2026-07-17",
-   "last_seen": "2026-09-03",
+   "last_seen": "2026-11-01",
    "badges": [
     {
      "emoji": "🥇",
@@ -8767,13 +10883,13 @@
    ]
   },
   "wride": {
-   "games": 10,
+   "games": 11,
    "wins": 1,
    "seconds": 0,
    "thirds": 0,
    "fourths": 3,
    "podiums": 1,
-   "points_total": 10320,
+   "points_total": 11270,
    "max_points": 2960,
    "kills": 10,
    "bh_titles": 1,
@@ -8785,7 +10901,7 @@
    "rating_top3": [],
    "best_season_rank": 14,
    "first_seen": "2026-07-17",
-   "last_seen": "2026-09-16",
+   "last_seen": "2026-11-13",
    "badges": [
     {
      "emoji": "🥇",
@@ -8812,15 +10928,15 @@
    ]
   },
   "kobra": {
-   "games": 22,
+   "games": 28,
    "wins": 0,
    "seconds": 3,
    "thirds": 4,
-   "fourths": 2,
+   "fourths": 3,
    "podiums": 7,
-   "points_total": 23280,
+   "points_total": 26970,
    "max_points": 2410,
-   "kills": 28,
+   "kills": 30,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -8828,13 +10944,49 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 7,
+   "best_season_rank": 11,
    "first_seen": "2026-07-22",
-   "last_seen": "2026-10-11",
+   "last_seen": "2026-11-06",
    "badges": [
     {
      "emoji": "🏹",
      "text": "Охотник (25+ баунти)"
+    },
+    {
+     "emoji": "🎖",
+     "text": "Ветеран клуба (25+ турниров)"
+    }
+   ]
+  },
+  "laposjr": {
+   "games": 11,
+   "wins": 2,
+   "seconds": 2,
+   "thirds": 0,
+   "fourths": 1,
+   "podiums": 4,
+   "points_total": 12970,
+   "max_points": 2400,
+   "kills": 5,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 1,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 14,
+   "first_seen": "2026-07-22",
+   "last_seen": "2026-11-06",
+   "badges": [
+    {
+     "emoji": "🥇",
+     "text": "2 победы",
+     "n": 2
+    },
+    {
+     "emoji": "🃏",
+     "text": "Joker-победитель"
     },
     {
      "emoji": "🎯",
@@ -8842,42 +10994,14 @@
     }
    ]
   },
-  "laposjr": {
-   "games": 6,
-   "wins": 1,
-   "seconds": 2,
-   "thirds": 0,
-   "fourths": 0,
-   "podiums": 3,
-   "points_total": 8310,
-   "max_points": 2400,
-   "kills": 4,
-   "bh_titles": 0,
-   "deep_wins": 0,
-   "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
-   "champion_seasons": [],
-   "rating_top3": [],
-   "best_season_rank": 12,
-   "first_seen": "2026-07-22",
-   "last_seen": "2026-10-16",
-   "badges": [
-    {
-     "emoji": "🥇",
-     "text": "1 победа",
-     "n": 1
-    }
-   ]
-  },
   "lackypeek": {
-   "games": 10,
+   "games": 11,
    "wins": 1,
    "seconds": 1,
    "thirds": 0,
    "fourths": 1,
    "podiums": 2,
-   "points_total": 7020,
+   "points_total": 7200,
    "max_points": 2060,
    "kills": 2,
    "bh_titles": 0,
@@ -8889,7 +11013,7 @@
    "rating_top3": [],
    "best_season_rank": 21,
    "first_seen": "2026-07-22",
-   "last_seen": "2026-10-09",
+   "last_seen": "2026-10-30",
    "badges": [
     {
      "emoji": "🥇",
@@ -8919,7 +11043,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 14,
+   "best_season_rank": 17,
    "first_seen": "2026-07-26",
    "last_seen": "2026-09-13",
    "badges": [
@@ -9111,13 +11235,13 @@
    "badges": []
   },
   "леха": {
-   "games": 3,
+   "games": 4,
    "wins": 1,
    "seconds": 0,
-   "thirds": 0,
+   "thirds": 1,
    "fourths": 1,
-   "podiums": 1,
-   "points_total": 4530,
+   "podiums": 2,
+   "points_total": 6820,
    "max_points": 3020,
    "kills": 0,
    "bh_titles": 0,
@@ -9129,7 +11253,7 @@
    "rating_top3": [],
    "best_season_rank": 20,
    "first_seen": "2026-08-16",
-   "last_seen": "2026-08-28",
+   "last_seen": "2026-11-13",
    "badges": [
     {
      "emoji": "🥇",
@@ -9292,7 +11416,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 16,
+   "best_season_rank": 18,
    "first_seen": "2026-08-21",
    "last_seen": "2026-09-18",
    "badges": []
@@ -9314,7 +11438,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 45,
+   "best_season_rank": 50,
    "first_seen": "2026-08-23",
    "last_seen": "2026-09-13",
    "badges": []
@@ -9386,26 +11510,36 @@
    "badges": []
   },
   "витяконь": {
-   "games": 4,
-   "wins": 0,
-   "seconds": 0,
+   "games": 8,
+   "wins": 1,
+   "seconds": 1,
    "thirds": 1,
    "fourths": 0,
-   "podiums": 1,
-   "points_total": 3220,
-   "max_points": 1330,
-   "kills": 4,
+   "podiums": 3,
+   "points_total": 10370,
+   "max_points": 3370,
+   "kills": 9,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
    "mafia_wins": 0,
-   "bounty_wins": 0,
+   "bounty_wins": 1,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 21,
+   "best_season_rank": 15,
    "first_seen": "2026-09-04",
-   "last_seen": "2026-10-09",
-   "badges": []
+   "last_seen": "2026-11-13",
+   "badges": [
+    {
+     "emoji": "🥇",
+     "text": "1 победа",
+     "n": 1
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
+    }
+   ]
   },
   "евражка": {
    "games": 1,
@@ -9424,7 +11558,7 @@
    "bounty_wins": 1,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 22,
+   "best_season_rank": 35,
    "first_seen": "2026-09-09",
    "last_seen": "2026-09-09",
    "badges": [
@@ -9461,32 +11595,73 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 33,
+   "best_season_rank": 54,
    "first_seen": "2026-09-09",
    "last_seen": "2026-10-11",
    "badges": []
   },
   "onetao": {
-   "games": 9,
-   "wins": 0,
-   "seconds": 3,
-   "thirds": 0,
-   "fourths": 1,
-   "podiums": 3,
-   "points_total": 10720,
-   "max_points": 2740,
-   "kills": 11,
-   "bh_titles": 0,
+   "games": 18,
+   "wins": 2,
+   "seconds": 4,
+   "thirds": 2,
+   "fourths": 2,
+   "podiums": 8,
+   "points_total": 28200,
+   "max_points": 4820,
+   "kills": 30,
+   "bh_titles": 2,
    "deep_wins": 0,
    "joker_wins": 0,
-   "mafia_wins": 0,
-   "bounty_wins": 0,
+   "mafia_wins": 1,
+   "bounty_wins": 1,
    "champion_seasons": [],
-   "rating_top3": [],
-   "best_season_rank": 8,
+   "rating_top3": [
+    [
+     3,
+     2
+    ]
+   ],
+   "best_season_rank": 2,
    "first_seen": "2026-09-13",
-   "last_seen": "2026-10-14",
-   "badges": []
+   "last_seen": "2026-11-18",
+   "badges": [
+    {
+     "emoji": "👑",
+     "text": "№2 рейтинга сезона 3",
+     "cls": "crown-silver"
+    },
+    {
+     "emoji": "🥇",
+     "text": "2 победы",
+     "n": 2
+    },
+    {
+     "emoji": "💀",
+     "text": "Bounty Hunter ×2",
+     "n": 2
+    },
+    {
+     "emoji": "🏹",
+     "text": "Охотник (25+ баунти)"
+    },
+    {
+     "emoji": "💎",
+     "text": "Большой улов (3500+ очков за турнир)"
+    },
+    {
+     "emoji": "🕵️",
+     "text": "Mafia-победитель"
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
+    },
+    {
+     "emoji": "🎯",
+     "text": "Частый гость (10+ турниров)"
+    }
+   ]
   },
   "lyrisimus": {
    "games": 2,
@@ -9505,7 +11680,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 46,
+   "best_season_rank": 73,
    "first_seen": "2026-09-13",
    "last_seen": "2026-09-20",
    "badges": []
@@ -9527,21 +11702,21 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 20,
+   "best_season_rank": 30,
    "first_seen": "2026-09-16",
    "last_seen": "2026-10-01",
    "badges": []
   },
   "xz_nike": {
-   "games": 9,
-   "wins": 2,
+   "games": 12,
+   "wins": 3,
    "seconds": 0,
    "thirds": 0,
    "fourths": 2,
-   "podiums": 2,
-   "points_total": 12410,
+   "podiums": 3,
+   "points_total": 19460,
    "max_points": 4310,
-   "kills": 5,
+   "kills": 12,
    "bh_titles": 0,
    "deep_wins": 0,
    "joker_wins": 0,
@@ -9549,18 +11724,22 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 5,
+   "best_season_rank": 6,
    "first_seen": "2026-09-16",
-   "last_seen": "2026-10-16",
+   "last_seen": "2026-11-06",
    "badges": [
     {
      "emoji": "🥇",
-     "text": "2 победы",
-     "n": 2
+     "text": "3 победы",
+     "n": 3
     },
     {
      "emoji": "💎",
      "text": "Большой улов (3500+ очков за турнир)"
+    },
+    {
+     "emoji": "🎯",
+     "text": "Частый гость (10+ турниров)"
     }
    ]
   },
@@ -9581,7 +11760,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 44,
+   "best_season_rank": 71,
    "first_seen": "2026-09-16",
    "last_seen": "2026-09-16",
    "badges": []
@@ -9603,7 +11782,7 @@
    "bounty_wins": 1,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 19,
+   "best_season_rank": 27,
    "first_seen": "2026-09-18",
    "last_seen": "2026-10-16",
    "badges": [
@@ -9644,7 +11823,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 37,
+   "best_season_rank": 63,
    "first_seen": "2026-09-20",
    "last_seen": "2026-09-20",
    "badges": []
@@ -9666,7 +11845,7 @@
    "bounty_wins": 1,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 23,
+   "best_season_rank": 36,
    "first_seen": "2026-09-23",
    "last_seen": "2026-09-23",
    "badges": [
@@ -9698,7 +11877,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 32,
+   "best_season_rank": 52,
    "first_seen": "2026-09-23",
    "last_seen": "2026-10-07",
    "badges": []
@@ -9720,19 +11899,19 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 35,
+   "best_season_rank": 60,
    "first_seen": "2026-09-23",
    "last_seen": "2026-09-23",
    "badges": []
   },
   "fin": {
-   "games": 3,
+   "games": 5,
    "wins": 0,
-   "seconds": 0,
+   "seconds": 1,
    "thirds": 1,
    "fourths": 0,
-   "podiums": 1,
-   "points_total": 2740,
+   "podiums": 2,
+   "points_total": 4930,
    "max_points": 1870,
    "kills": 4,
    "bh_titles": 0,
@@ -9742,9 +11921,9 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 26,
+   "best_season_rank": 24,
    "first_seen": "2026-09-24",
-   "last_seen": "2026-10-11",
+   "last_seen": "2026-10-25",
    "badges": []
   },
   "анастасия": {
@@ -9764,7 +11943,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 43,
+   "best_season_rank": 70,
    "first_seen": "2026-10-01",
    "last_seen": "2026-10-01",
    "badges": []
@@ -9786,7 +11965,7 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 31,
+   "best_season_rank": 51,
    "first_seen": "2026-10-09",
    "last_seen": "2026-10-09",
    "badges": []
@@ -9808,20 +11987,20 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 34,
+   "best_season_rank": 59,
    "first_seen": "2026-10-09",
    "last_seen": "2026-10-09",
    "badges": []
   },
   "алексей": {
-   "games": 1,
+   "games": 2,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 0,
-   "points_total": 590,
-   "max_points": 590,
+   "points_total": 1310,
+   "max_points": 720,
    "kills": 0,
    "bh_titles": 0,
    "deep_wins": 0,
@@ -9830,20 +12009,199 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 36,
+   "best_season_rank": 49,
    "first_seen": "2026-10-16",
-   "last_seen": "2026-10-16",
+   "last_seen": "2026-11-08",
    "badges": []
   },
   "каха": {
+   "games": 3,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 1830,
+   "max_points": 1100,
+   "kills": 1,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 45,
+   "first_seen": "2026-10-16",
+   "last_seen": "2026-11-08",
+   "badges": []
+  },
+  "slayer77": {
+   "games": 2,
+   "wins": 0,
+   "seconds": 2,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 2,
+   "points_total": 3600,
+   "max_points": 2700,
+   "kills": 5,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 31,
+   "first_seen": "2026-10-18",
+   "last_seen": "2026-10-21",
+   "badges": []
+  },
+  "oleg": {
+   "games": 2,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 900,
+   "max_points": 670,
+   "kills": 2,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 56,
+   "first_seen": "2026-10-18",
+   "last_seen": "2026-10-21",
+   "badges": []
+  },
+  "вуки": {
+   "games": 8,
+   "wins": 3,
+   "seconds": 0,
+   "thirds": 1,
+   "fourths": 1,
+   "podiums": 4,
+   "points_total": 14040,
+   "max_points": 3560,
+   "kills": 10,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 1,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 13,
+   "first_seen": "2026-10-18",
+   "last_seen": "2026-11-18",
+   "badges": [
+    {
+     "emoji": "🥇",
+     "text": "3 победы",
+     "n": 3
+    },
+    {
+     "emoji": "💎",
+     "text": "Большой улов (3500+ очков за турнир)"
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
+    }
+   ]
+  },
+  "din023": {
+   "games": 2,
+   "wins": 1,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 4090,
+   "max_points": 3570,
+   "kills": 7,
+   "bh_titles": 1,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 1,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 28,
+   "first_seen": "2026-10-21",
+   "last_seen": "2026-11-04",
+   "badges": [
+    {
+     "emoji": "🥇",
+     "text": "1 победа",
+     "n": 1
+    },
+    {
+     "emoji": "💀",
+     "text": "Bounty Hunter ×1",
+     "n": 1
+    },
+    {
+     "emoji": "💎",
+     "text": "Большой улов (3500+ очков за турнир)"
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
+    }
+   ]
+  },
+  "kir": {
+   "games": 8,
+   "wins": 1,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 1,
+   "podiums": 1,
+   "points_total": 8270,
+   "max_points": 2870,
+   "kills": 7,
+   "bh_titles": 0,
+   "deep_wins": 1,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 1,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 16,
+   "first_seen": "2026-10-21",
+   "last_seen": "2026-11-13",
+   "badges": [
+    {
+     "emoji": "🥇",
+     "text": "1 победа",
+     "n": 1
+    },
+    {
+     "emoji": "💥",
+     "text": "Deepstack-победитель"
+    },
+    {
+     "emoji": "🥊",
+     "text": "Bounty-победитель"
+    }
+   ]
+  },
+  "victoria": {
    "games": 1,
    "wins": 0,
    "seconds": 0,
    "thirds": 0,
    "fourths": 0,
    "podiums": 0,
-   "points_total": 450,
-   "max_points": 450,
+   "points_total": 240,
+   "max_points": 240,
    "kills": 0,
    "bh_titles": 0,
    "deep_wins": 0,
@@ -9852,9 +12210,487 @@
    "bounty_wins": 0,
    "champion_seasons": [],
    "rating_top3": [],
-   "best_season_rank": 40,
-   "first_seen": "2026-10-16",
-   "last_seen": "2026-10-16",
+   "best_season_rank": 74,
+   "first_seen": "2026-10-21",
+   "last_seen": "2026-10-21",
+   "badges": []
+  },
+  "rixter": {
+   "games": 6,
+   "wins": 0,
+   "seconds": 1,
+   "thirds": 1,
+   "fourths": 0,
+   "podiums": 2,
+   "points_total": 6930,
+   "max_points": 2460,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 17,
+   "first_seen": "2026-10-23",
+   "last_seen": "2026-11-15",
+   "badges": []
+  },
+  "deksik": {
+   "games": 5,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 1,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 2900,
+   "max_points": 1350,
+   "kills": 2,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 39,
+   "first_seen": "2026-10-23",
+   "last_seen": "2026-11-15",
+   "badges": []
+  },
+  "vodnik": {
+   "games": 6,
+   "wins": 1,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 3580,
+   "max_points": 2400,
+   "kills": 1,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 32,
+   "first_seen": "2026-10-23",
+   "last_seen": "2026-11-11",
+   "badges": [
+    {
+     "emoji": "🥇",
+     "text": "1 победа",
+     "n": 1
+    }
+   ]
+  },
+  "miyagi": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 1,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 1770,
+   "max_points": 1770,
+   "kills": 3,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 47,
+   "first_seen": "2026-10-28",
+   "last_seen": "2026-10-28",
+   "badges": []
+  },
+  "nikitrave": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 950,
+   "max_points": 950,
+   "kills": 1,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 55,
+   "first_seen": "2026-10-28",
+   "last_seen": "2026-10-28",
+   "badges": []
+  },
+  "dimka_afk": {
+   "games": 2,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 500,
+   "max_points": 300,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 64,
+   "first_seen": "2026-10-28",
+   "last_seen": "2026-11-13",
+   "badges": []
+  },
+  "лекс": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 800,
+   "max_points": 800,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 58,
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "badges": []
+  },
+  "redstar": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 1,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 2010,
+   "max_points": 2010,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 43,
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-01",
+   "badges": []
+  },
+  "10off": {
+   "games": 3,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 1,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 3360,
+   "max_points": 1690,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 34,
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-15",
+   "badges": []
+  },
+  "marilove": {
+   "games": 4,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 1,
+   "podiums": 0,
+   "points_total": 4170,
+   "max_points": 1320,
+   "kills": 2,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 26,
+   "first_seen": "2026-11-01",
+   "last_seen": "2026-11-15",
+   "badges": [
+    {
+     "emoji": "🫧",
+     "text": "Бабл-бой"
+    }
+   ]
+  },
+  "татарин": {
+   "games": 2,
+   "wins": 0,
+   "seconds": 2,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 2,
+   "points_total": 5330,
+   "max_points": 2700,
+   "kills": 3,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 23,
+   "first_seen": "2026-11-04",
+   "last_seen": "2026-11-06",
+   "badges": []
+  },
+  "сицилиец": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 1,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 1,
+   "points_total": 3020,
+   "max_points": 3020,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 37,
+   "first_seen": "2026-11-08",
+   "last_seen": "2026-11-08",
+   "badges": []
+  },
+  "одинребай": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 1620,
+   "max_points": 1620,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 48,
+   "first_seen": "2026-11-08",
+   "last_seen": "2026-11-08",
+   "badges": []
+  },
+  "александр": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 200,
+   "max_points": 200,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 76,
+   "first_seen": "2026-11-08",
+   "last_seen": "2026-11-08",
+   "badges": []
+  },
+  "артем": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 180,
+   "max_points": 180,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 77,
+   "first_seen": "2026-11-08",
+   "last_seen": "2026-11-08",
+   "badges": []
+  },
+  "valma": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 160,
+   "max_points": 160,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 79,
+   "first_seen": "2026-11-08",
+   "last_seen": "2026-11-08",
+   "badges": []
+  },
+  "andersen777": {
+   "games": 2,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 1020,
+   "max_points": 600,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 53,
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-18",
+   "badges": []
+  },
+  "tishka": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 1,
+   "podiums": 0,
+   "points_total": 1840,
+   "max_points": 1840,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 44,
+   "first_seen": "2026-11-13",
+   "last_seen": "2026-11-13",
+   "badges": [
+    {
+     "emoji": "🫧",
+     "text": "Бабл-бой"
+    }
+   ]
+  },
+  "alex11": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 1190,
+   "max_points": 1190,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 50,
+   "first_seen": "2026-11-13",
+   "last_seen": "2026-11-13",
+   "badges": []
+  },
+  "пивнойбарон": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 500,
+   "max_points": 500,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 66,
+   "first_seen": "2026-11-13",
+   "last_seen": "2026-11-13",
+   "badges": []
+  },
+  "джаш": {
+   "games": 1,
+   "wins": 0,
+   "seconds": 0,
+   "thirds": 0,
+   "fourths": 0,
+   "podiums": 0,
+   "points_total": 160,
+   "max_points": 160,
+   "kills": 0,
+   "bh_titles": 0,
+   "deep_wins": 0,
+   "joker_wins": 0,
+   "mafia_wins": 0,
+   "bounty_wins": 0,
+   "champion_seasons": [],
+   "rating_top3": [],
+   "best_season_rank": 80,
+   "first_seen": "2026-11-13",
+   "last_seen": "2026-11-13",
    "badges": []
   }
  }
