@@ -13,6 +13,7 @@ DB_PATH = ROOT / "frpoker.db"
 OUT_PATH = ROOT / "docs" / "data.json"
 
 SEASONS = json.loads((ROOT / "seasons.json").read_text())
+CASH_SEASONS = json.loads((ROOT / "cash_seasons.json").read_text())
 ALIASES_RAW = json.loads((ROOT / "aliases.json").read_text())
 
 
@@ -76,6 +77,20 @@ def season_for(date_str: str) -> dict | None:
     return matched
 
 
+def cash_season_for(date_str: str) -> dict | None:
+    d = date_str[:10]
+    matched = None
+    for s in CASH_SEASONS:
+        if d >= s["start"]:
+            matched = s
+    if matched and d > matched["end"]:
+        print(
+            f"[warn] дата {d} позже конца кэш-серии {matched['id']} — обновите cash_seasons.json",
+            file=sys.stderr,
+        )
+    return matched
+
+
 def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     reg = PlayerRegistry()
@@ -117,7 +132,7 @@ def main() -> None:
             }
         )
 
-    # --- кэш-игры (отдельный рейтинг по фишкам) ---
+    # --- кэш-игры (отдельный рейтинг по фишкам, по сериям) ---
     cash_sessions = []
     for msg_id, date_utc, name, is_final in conn.execute(
         "SELECT msg_id, date_utc, name, is_final FROM cash_games ORDER BY date_utc"
@@ -131,78 +146,65 @@ def main() -> None:
             if key is None:
                 continue
             results.append({"place": place, "player_key": key, "chips": chips})
-        season = season_for(date_utc)
+        cash_season = cash_season_for(date_utc)
         cash_sessions.append(
             {
                 "msg_id": msg_id,
                 "date": date_utc[:10],
                 "name": name,
                 "is_final": bool(is_final),
-                "season_id": season["id"] if season else None,
+                "season_id": cash_season["id"] if cash_season else None,
                 "results": results,
             }
         )
 
-    cash_regular = [s for s in cash_sessions if not s["is_final"]]
-    cash_finals = [s for s in cash_sessions if s["is_final"]]
+    cash_seasons_out = []
+    for cs in CASH_SEASONS:
+        st = [s for s in cash_sessions if s["season_id"] == cs["id"]]
+        finals = [s for s in st if s["is_final"]]
+        stats: dict[str, dict] = defaultdict(
+            lambda: {
+                "chips": 0, "sessions": 0, "wins": 0, "seconds": 0, "thirds": 0,
+                "podiums": 0, "best_chips": 0,
+            }
+        )
+        # сумма всех игр серии, включая финал
+        for session in st:
+            for r in session["results"]:
+                p = stats[r["player_key"]]
+                chips = r["chips"] or 0
+                p["sessions"] += 1
+                p["chips"] += chips
+                if chips > p["best_chips"]:
+                    p["best_chips"] = chips
+                p["wins"] += r["place"] == 1
+                p["seconds"] += r["place"] == 2
+                p["thirds"] += r["place"] == 3
+                p["podiums"] += r["place"] <= 3
 
-    cash_stats: dict[str, dict] = defaultdict(
-        lambda: {
-            "chips": 0, "sessions": 0, "wins": 0, "seconds": 0, "thirds": 0,
-            "podiums": 0, "best_chips": 0,
-        }
-    )
-    # финал публикует стеки уже с учётом прошлых игр — в сумму сессий не входит
-    for session in cash_regular:
-        for r in session["results"]:
-            p = cash_stats[r["player_key"]]
-            chips = r["chips"] or 0
-            p["sessions"] += 1
-            p["chips"] += chips
-            if chips > p["best_chips"]:
-                p["best_chips"] = chips
-            p["wins"] += r["place"] == 1
-            p["seconds"] += r["place"] == 2
-            p["thirds"] += r["place"] == 3
-            p["podiums"] += r["place"] <= 3
-
-    cash_champion = None
-    cash_final_msg_id = None
-    if cash_finals:
-        # финал = официальный итог серии (стеки уже с учётом прошлых игр)
-        final = cash_finals[0]
-        winner = next((r for r in final["results"] if r["place"] == 1), None)
-        cash_champion = winner["player_key"] if winner else None
-        cash_final_msg_id = final["msg_id"]
-        cash_leaderboard = []
-        for r in final["results"]:
-            prev = cash_stats[r["player_key"]]
-            chips = r["chips"] or 0
-            cash_leaderboard.append(
-                {
-                    "player_key": r["player_key"],
-                    "chips": chips,
-                    "sessions": prev["sessions"],
-                    "wins": prev["wins"],
-                    "seconds": prev["seconds"],
-                    "thirds": prev["thirds"],
-                    "podiums": prev["podiums"],
-                    "best_chips": max(prev["best_chips"], chips),
-                }
-            )
-    else:
-        cash_leaderboard = sorted(
-            ({"player_key": k, **v} for k, v in cash_stats.items()),
+        leaderboard = sorted(
+            ({"player_key": k, **v} for k, v in stats.items()),
             key=lambda p: (-p["chips"], -p["wins"], -p["podiums"], -p["sessions"]),
+        )
+        champion = None
+        if finals:
+            winner = next((r for r in finals[0]["results"] if r["place"] == 1), None)
+            champion = winner["player_key"] if winner else None
+
+        cash_seasons_out.append(
+            {
+                **cs,
+                "sessions_count": len(st),
+                "leaderboard": leaderboard,
+                "sessions": st,
+                "champion_key": champion,
+                "final_msg_id": finals[0]["msg_id"] if finals else None,
+            }
         )
 
     cash_out = {
         "name": "NO-MONEY-CASH",
-        "sessions_count": len(cash_regular),
-        "leaderboard": cash_leaderboard,
-        "sessions": cash_sessions,
-        "champion_key": cash_champion,
-        "final_msg_id": cash_final_msg_id,
+        "seasons": cash_seasons_out,
     }
 
     # --- сезонные агрегаты ---

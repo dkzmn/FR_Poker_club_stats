@@ -27,6 +27,10 @@
   .tabs button { background: var(--card); color: var(--text); border: 1px solid var(--line); padding: 9px 20px;
                  border-radius: 22px; cursor: pointer; font-size: 15px; }
   .tabs button.active { background: var(--accent); color: #14181f; border-color: var(--accent); font-weight: 700; }
+  .subtabs { display: flex; gap: 6px; justify-content: center; margin: 0 0 16px; flex-wrap: wrap; }
+  .subtabs button { background: var(--card2); color: var(--text); border: 1px solid var(--line); padding: 6px 14px;
+                    border-radius: 16px; cursor: pointer; font-size: 13px; font-family: inherit; }
+  .subtabs button.active { background: var(--accent); color: #14181f; border-color: var(--accent); font-weight: 700; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   /* до ~1100px таблица сезона на всю ширину — иначе в половине сетки обрезаются колонки */
   @media (max-width: 1099px) { .grid { grid-template-columns: 1fr; } }
@@ -273,12 +277,12 @@
   </div>
 
   <div class="grid" id="cashView" style="display:none">
-    <div class="card full">
+    <div class="card full" style="padding-bottom:10px">
+      <div class="subtabs" id="cashSeasonTabs"></div>
       <h2 id="cashLbTitle">NO-MONEY-CASH — рейтинг</h2>
       <div class="champ" id="cashChamp"></div>
       <p class="muted" style="margin:-6px 0 14px;font-size:13px">
-        Пока серии нет финала — сумма фишек за обычные сессии. После финала таблица показывает
-        официальный итог серии (стеки финала уже с учётом прошлых игр). Не входит в турнирный сезон.
+        Сумма фишек за все игры серии, включая финал. Не входит в турнирный сезон.
       </p>
       <div class="chartbox" id="cashLbBox"><canvas id="cashLbChart"></canvas></div>
     </div>
@@ -364,6 +368,7 @@
 <script>
 const PALETTE = ["#e0b34c","#4c9be0","#3fb96a","#e05c4c","#b46ce0","#4ce0d2","#e08d4c","#8ea3c7"];
 let DATA, activeTab; // id сезона | "players" | "cash" | "calc" | "awards"
+let activeCashSeason; // id кэш-серии
 let calcUnlocked = sessionStorage.getItem("frCalcUnlock") === "1";
 let SERVER_AWARDS = [];
 let AWARDS = [];
@@ -1037,23 +1042,59 @@ function fmtChips(n) {
   return (n ?? 0).toLocaleString("ru-RU");
 }
 
+function cashSeasons() {
+  return DATA.cash?.seasons || [];
+}
+
+function currentCashSeason() {
+  const seasons = cashSeasons();
+  if (!seasons.length) return null;
+  return seasons.find(s => s.id === activeCashSeason) || seasons[seasons.length - 1];
+}
+
+function renderCashSeasonTabs() {
+  const box = document.getElementById("cashSeasonTabs");
+  const seasons = cashSeasons();
+  if (!seasons.length) {
+    box.innerHTML = "";
+    return;
+  }
+  if (activeCashSeason == null || !seasons.some(s => s.id === activeCashSeason)) {
+    const withSessions = [...seasons].reverse().find(s => (s.sessions_count || 0) > 0);
+    activeCashSeason = (withSessions || seasons[seasons.length - 1]).id;
+  }
+  box.innerHTML = seasons.map(s =>
+    `<button type="button" data-cash-season="${s.id}" class="${s.id === activeCashSeason ? "active" : ""}">${esc(s.name)}</button>`
+  ).join("");
+  box.querySelectorAll("button").forEach(btn => {
+    btn.onclick = () => {
+      activeCashSeason = +btn.dataset.cashSeason;
+      renderCash();
+    };
+  });
+}
+
 function renderCash() {
-  const cash = DATA.cash || { leaderboard: [], sessions: [], sessions_count: 0, name: "NO-MONEY-CASH" };
-  const lb = cash.leaderboard || [];
+  renderCashSeasonTabs();
+  const season = currentCashSeason();
+  const cashName = DATA.cash?.name || "NO-MONEY-CASH";
+  const lb = season?.leaderboard || [];
   const mobile = window.innerWidth < 600;
   const top = lb.slice(0, 18);
 
-  document.getElementById("cashChamp").innerHTML = cash.champion_key
-    ? `🏆 Чемпион кэш-серии: <b>${esc(name(cash.champion_key))}</b>`
-    : `<span class="muted">Кэш-серия продолжается — финал ещё впереди</span>`;
+  document.getElementById("cashChamp").innerHTML = season?.champion_key
+    ? `🏆 Чемпион ${esc(season.name)}: <b>${esc(name(season.champion_key))}</b>`
+    : `<span class="muted">${esc(season?.name || "Серия")} продолжается — финал ещё впереди</span>`;
 
+  const n = season?.sessions_count || 0;
   document.getElementById("cashLbTitle").textContent =
-    `${cash.name || "NO-MONEY-CASH"} — рейтинг` +
-    (cash.sessions_count ? ` · ${cash.sessions_count} ${cash.sessions_count === 1 ? "сессия" : "сессий"}` : "");
+    `${cashName} — ${season?.name || "рейтинг"}` +
+    (n ? ` · ${n} ${n === 1 ? "сессия" : n < 5 ? "сессии" : "сессий"}` : "");
 
   document.getElementById("cashLbBox").style.height =
     Math.max(120, top.length * (mobile ? 24 : 28) + 50) + "px";
   cashLbChart?.destroy();
+  cashLbChart = null;
   if (top.length) {
     cashLbChart = new Chart(document.getElementById("cashLbChart"), {
       type: "bar",
@@ -1104,7 +1145,7 @@ function renderCash() {
         ).join("")
       : `<tr><td colspan="8" class="muted">Пока нет кэш-сессий</td></tr>`);
 
-  const sessions = [...(cash.sessions || [])].reverse();
+  const sessions = [...(season?.sessions || [])].reverse();
   document.getElementById("cashSessions").innerHTML = sessions.length
     ? sessions.map(t => `
       <details>
