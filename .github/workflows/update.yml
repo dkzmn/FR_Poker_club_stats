@@ -33,15 +33,20 @@ permissions:
   pages: write
   id-token: write
 
+# не запускать параллельные деплои Pages (иначе артефакт иногда «теряется»)
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -71,9 +76,9 @@ jobs:
           git push
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
