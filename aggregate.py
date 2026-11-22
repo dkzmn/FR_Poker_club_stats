@@ -164,7 +164,8 @@ def main() -> None:
         finals = [s for s in st if s["is_final"]]
         stats: dict[str, dict] = defaultdict(
             lambda: {
-                "chips": 0, "sessions": 0, "wins": 0, "seconds": 0, "thirds": 0,
+                "chips": 0, "sessions": 0, "plus_games": 0,
+                "wins": 0, "seconds": 0, "thirds": 0,
                 "podiums": 0, "best_chips": 0,
             }
         )
@@ -174,6 +175,8 @@ def main() -> None:
                 p = stats[r["player_key"]]
                 chips = r["chips"] or 0
                 p["sessions"] += 1
+                if chips > 0:
+                    p["plus_games"] += 1
                 p["chips"] += chips
                 if chips > p["best_chips"]:
                     p["best_chips"] = chips

@@ -1129,7 +1129,8 @@ function renderCash() {
   }
 
   document.getElementById("cashLbTable").innerHTML =
-    `<tr><th>#</th><th>Игрок</th><th class="num">Фишки</th><th class="num">Сессий</th>
+    `<tr><th>#</th><th>Игрок</th><th class="num">Фишки</th><th class="num">Игр</th>
+     <th class="num">Плюсовых игр</th>
      <th class="num">🥇</th><th class="num">🥈</th><th class="num">🥉</th>
      <th class="num m-hide">лучший</th></tr>` +
     (lb.length
@@ -1138,12 +1139,13 @@ function renderCash() {
            <td>${esc(name(r.player_key))}</td>
            <td class="num">${fmtChips(r.chips)}</td>
            <td class="num">${r.sessions}</td>
+           <td class="num">${r.plus_games ?? 0}</td>
            <td class="num">${r.wins}</td>
            <td class="num">${r.seconds}</td>
            <td class="num">${r.thirds}</td>
            <td class="num m-hide">${fmtChips(r.best_chips)}</td></tr>`
         ).join("")
-      : `<tr><td colspan="8" class="muted">Пока нет кэш-сессий</td></tr>`);
+      : `<tr><td colspan="9" class="muted">Пока нет кэш-сессий</td></tr>`);
 
   const sessions = [...(season?.sessions || [])].reverse();
   document.getElementById("cashSessions").innerHTML = sessions.length
