@@ -15,12 +15,31 @@ OUT_PATH = ROOT / "docs" / "data.json"
 SEASONS = json.loads((ROOT / "seasons.json").read_text())
 CASH_SEASONS = json.loads((ROOT / "cash_seasons.json").read_text())
 ALIASES_RAW = json.loads((ROOT / "aliases.json").read_text())
+CORRECTIONS_RAW = json.loads((ROOT / "corrections.json").read_text())
 
 
 def norm_key(name: str) -> str:
     """Ключ для сопоставления имён: без регистра, пробелов, ё->е."""
     s = unicodedata.normalize("NFKC", name).casefold().replace("ё", "е")
     return "".join(s.split())
+
+
+# msg_id -> norm_key(raw_name) -> {chips|points|kills: ...}
+CORRECTIONS: dict[int, dict[str, dict]] = {}
+for _mid, _players in CORRECTIONS_RAW.items():
+    if str(_mid).startswith("_") or not isinstance(_players, dict):
+        continue
+    CORRECTIONS[int(_mid)] = {norm_key(n): fields for n, fields in _players.items()}
+
+
+def apply_correction(msg_id: int, raw_name: str, fields: dict) -> dict:
+    """Накладывает ручные правки из corrections.json на поля результата."""
+    corr = CORRECTIONS.get(msg_id, {}).get(norm_key(raw_name))
+    if not corr:
+        return fields
+    out = dict(fields)
+    out.update(corr)
+    return out
 
 
 # "Старое": "Канон" — склейка; "Игрок": null — исключить из статистики.
@@ -110,12 +129,15 @@ def main() -> None:
             key = reg.canon_key(raw_name)
             if key is None:
                 continue
+            fixed = apply_correction(
+                msg_id, raw_name, {"kills": kills, "points": points}
+            )
             results.append(
                 {
                     "place": place,
                     "player_key": key,
-                    "kills": kills,
-                    "points": points,
+                    "kills": fixed["kills"],
+                    "points": fixed["points"],
                 }
             )
         season = season_for(date_utc)
@@ -145,7 +167,8 @@ def main() -> None:
             key = reg.canon_key(raw_name)
             if key is None:
                 continue
-            results.append({"place": place, "player_key": key, "chips": chips})
+            fixed = apply_correction(msg_id, raw_name, {"chips": chips})
+            results.append({"place": place, "player_key": key, "chips": fixed["chips"]})
         cash_season = cash_season_for(date_utc)
         cash_sessions.append(
             {
